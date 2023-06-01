@@ -3,6 +3,7 @@ package com.dream.school.api
 import com.dream.school.vo.GradeVO
 import org.springframework.http.MediaType
 import org.springframework.validation.annotation.Validated
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import java.math.BigInteger
@@ -31,5 +32,5 @@ interface SchoolApi {
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun list(@Valid id: BigInteger?): String
+    fun list(@RequestBody id: BigInteger): String
 }
