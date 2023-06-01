@@ -1,5 +1,6 @@
 package com.dream.school.api
 
+import com.dream.school.vo.GradeVO
 import org.springframework.http.MediaType
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.RequestMapping
@@ -9,6 +10,13 @@ import javax.validation.Valid
 
 @Validated
 interface SchoolApi {
+    @RequestMapping(
+        method = [RequestMethod.POST],
+        value = ["/school/grade"],
+        produces = ["application/json"]
+    )
+    fun grade(): List<GradeVO>
+
     @RequestMapping(
         method = [RequestMethod.POST],
         value = ["/school/add"],
