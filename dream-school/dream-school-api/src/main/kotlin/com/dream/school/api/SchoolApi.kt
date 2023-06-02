@@ -13,7 +13,7 @@ import javax.validation.Valid
 interface SchoolApi {
     @RequestMapping(
         method = [RequestMethod.POST],
-        value = ["/school/grade"],
+        value = ["/school/gradeList"],
         produces = ["application/json"]
     )
     fun gradeList(): List<GradeVO>
