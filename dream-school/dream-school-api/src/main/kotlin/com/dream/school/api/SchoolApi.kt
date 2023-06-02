@@ -16,7 +16,14 @@ interface SchoolApi {
         value = ["/school/grade"],
         produces = ["application/json"]
     )
-    fun grade(): List<GradeVO>
+    fun gradeList(): List<GradeVO>
+
+    @RequestMapping(
+        method = [RequestMethod.POST],
+        value = ["/school/grade"],
+        produces = ["application/json"]
+    )
+    fun grade(): Map<String, Map<String, String>>
 
     @RequestMapping(
         method = [RequestMethod.POST],

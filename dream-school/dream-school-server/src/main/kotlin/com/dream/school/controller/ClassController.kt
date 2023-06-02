@@ -9,4 +9,8 @@ class ClassController: ClassApi {
     override fun list(): String {
         return "班级列表"
     }
+
+    private fun grade(): Map<String, Map<String, String>> {
+        return mapOf()
+    }
 }
