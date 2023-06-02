@@ -9,8 +9,8 @@ import java.time.temporal.ChronoUnit
 @Service
 class DatetimeServiceImpl(): DatetimeService {
     /**
-     * @param chronoNum 频率
-     * @param chronoUnit 频率时间
+     * @param chronoNum 频率, 比如两周1次 传值2
+     * @param chronoUnit 频率时间 比如两周1次 传值周WEEKS
      * @param startDateTime 频率开始时间
      * @param now 当前时间
      */
