@@ -10,6 +10,7 @@ data class AreaDTO(
     var path: String? = null,
     var level: String? = null,
     var childCount: Int? = null,
-    var child: AreaDTO? = null
+    var child: MutableList<AreaDTO>? = null,
+    var children: AreaDTO? = null,
 ) {
 }

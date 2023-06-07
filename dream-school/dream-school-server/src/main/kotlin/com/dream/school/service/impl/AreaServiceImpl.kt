@@ -20,15 +20,39 @@ class AreaServiceImpl(
     /**
      * 地区树形图
      */
-    override fun areaTree(): List<AreaVO> {
+    override fun areaTree(): List<AreaDTO> {
         val areaList = areaTable.select().find()
-            ?.map {
-                AreaVO(
+            .map {
+                AreaDTO(
                     code = it.code,
-                    name = it.name
+                    name = it.name,
+                    parent = it.parent,
+                    child = mutableListOf()
                 )
             }
-        return areaList ?: listOf()
+        // 以code为主键, 以本身为value
+        val areaMap = areaList.associateBy { it.code }
+        areaList.forEach { areaIt->
+            if (areaIt.parent != null) {
+                areaMap[areaIt.code]?.let {
+                    areaMap[areaIt.parent]?.child?.add(it)
+                }
+
+            }
+        }
+        val areaFilterList = areaList.filter { it.parent == null }
+        printAreaTree(areaFilterList, 0)
+        return areaFilterList
+    }
+
+    fun printAreaTree(areaList: List<AreaDTO>, level: Int) {
+        val indent = " ".repeat(level * 2)
+        for (area in areaList) {
+            println("$indent${area.name}")
+            area.child?.let {
+                printAreaTree(it, level + 1)
+            }
+        }
     }
 
     /**
@@ -39,7 +63,7 @@ class AreaServiceImpl(
     ): AreaDTO {
         teep++
         println("------外次--------")
-        areaDTO.child?.let {
+        areaDTO.children?.let {
             areaRecursion(it)
         }
         val teepName = when(teep){
@@ -74,7 +98,7 @@ class AreaServiceImpl(
 
             listIt.forEach {forEachIt->
                 if (forEachIt.parent != null) {
-                    areaListMap[forEachIt.parent]?.child = areaListMap[forEachIt.code]
+                    areaListMap[forEachIt.parent]?.children = areaListMap[forEachIt.code]
                 }
             }
             areaListMap

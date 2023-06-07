@@ -87,13 +87,13 @@ val AREA = AreaVO(
 val AREA_DOT = AreaDTO(
     code = "34",
     name = "安徽省",
-    child = AreaDTO(
+    children = AreaDTO(
         code = "3402",
         name = "芜湖市",
-        child = AreaDTO(
+        children = AreaDTO(
             code = "340203",
             name = "弋江区",
-            child = AreaDTO(
+            children = AreaDTO(
                 code = "340203001",
                 name = "弋江区街道社区1",
             )

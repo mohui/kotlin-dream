@@ -7,7 +7,7 @@ interface AreaService {
     /**
      * 树形图
      */
-    fun areaTree(): List<AreaVO>
+    fun areaTree(): List<AreaDTO>
     /**
      * 地区递归
      */
