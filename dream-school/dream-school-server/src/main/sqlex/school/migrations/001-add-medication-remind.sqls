@@ -1,27 +1,66 @@
--- create on 2022/7/19, by wanghehui
-
--- 数据库Schema描述文件, 执行DDL操作
-CREATE TABLE mr_medication_remind
+-- 健康计划表
+CREATE TABLE `mr_health_plan`
 (
-    kn_id         bigint unsigned NOT NULL primary key COMMENT '唯一主键',
-    kn_patient_id bigint unsigned NOT NULL COMMENT '患者id',
-    kn_drug_name  varchar(255)    NOT NULL DEFAULT '' COMMENT '药品名称',
-    kn_time       time            NOT NULL COMMENT '时间',
-    kn_monday     tinyint         NOT NULL DEFAULT 0 COMMENT '周一,1:选中,0未选中',
-    kn_tuesday    tinyint         NOT NULL DEFAULT 0 COMMENT '周二,1:选中,0未选中',
-    kn_wednesday  tinyint         NOT NULL DEFAULT 0 COMMENT '周三,1:选中,0未选中',
-    kn_thursday   tinyint         NOT NULL DEFAULT 0 COMMENT '周四,1:选中,0未选中',
-    kn_friday     tinyint         NOT NULL DEFAULT 0 COMMENT '周五,1:选中,0未选中',
-    kn_saturday   tinyint         NOT NULL DEFAULT 0 COMMENT '周六,1:选中,0未选中',
-    kn_sunday     tinyint         NOT NULL DEFAULT 0 COMMENT '周日,1:选中,0未选中',
-    kn_status     tinyint         NOT NULL DEFAULT 1 COMMENT '状态, 1可用,0不可用',
-    kn_created_by bigint unsigned          DEFAULT NULL COMMENT '创建人id',
-    kn_created_at datetime(3)     NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT '创建时间',
-    kn_updated_by bigint unsigned          DEFAULT NULL COMMENT '修改人id',
-    kn_updated_at datetime(3)     NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '修改时间',
-    index index_wek (kn_monday, kn_tuesday, kn_wednesday, kn_thursday, kn_friday, kn_saturday, kn_sunday),
-    index index_time (kn_time)
+    `kn_id`               bigint unsigned                         NOT NULL COMMENT '唯一主键',
+    `kn_patient_id`       bigint unsigned                         NOT NULL COMMENT '患者id',
+    `kn_name`             varchar(255) COLLATE utf8mb4_general_ci NOT NULL              DEFAULT '' COMMENT '计划名称',
+    `kn_sub_name`         varchar(255) COLLATE utf8mb4_general_ci                       DEFAULT '' COMMENT '计划名称-标题',
+    `kn_desc`             varchar(255) COLLATE utf8mb4_general_ci                       DEFAULT '' COMMENT '计划描述',
+    `kn_type`             varchar(200) COLLATE utf8mb4_general_ci NOT NULL COMMENT '类型: BEHAVIOR_VISIT: 行为习惯随访,DRUG: 药品,HYPERTENSION_VISIT: 高血压随访,EXERCISE_PROGRAM: 运动方案,BLOOD_PRESSURE_MEASUREMENT: 测血压',
+    `kn_time`             time                                                          DEFAULT NULL COMMENT '时间',
+    `is_monday`           tinyint(1)                              NOT NULL              DEFAULT '0' COMMENT '周一,true:选中,false:未选中',
+    `is_tuesday`          tinyint(1)                              NOT NULL              DEFAULT '0' COMMENT '周二,true:选中,false:未选中',
+    `is_wednesday`        tinyint(1)                              NOT NULL              DEFAULT '0' COMMENT '周三,true:选中,false:未选中',
+    `is_thursday`         tinyint(1)                              NOT NULL              DEFAULT '0' COMMENT '周四,true:选中,false:未选中',
+    `is_friday`           tinyint(1)                              NOT NULL              DEFAULT '0' COMMENT '周五,true:选中,false:未选中',
+    `is_saturday`         tinyint(1)                              NOT NULL              DEFAULT '0' COMMENT '周六,true:选中,false:未选中',
+    `is_sunday`           tinyint(1)                                                    DEFAULT '0' COMMENT '周日,true:选中,false:未选中',
+    `kn_cycle_start_time` datetime(3)                             NOT NULL              DEFAULT CURRENT_TIMESTAMP(3) COMMENT '周期开始时间',
+    `kn_cycle_end_time`   datetime(3)                                                   DEFAULT NULL COMMENT '周期结束时间',
+    `is_used`             tinyint(1)                              NOT NULL              DEFAULT '1' COMMENT '状态, true:可用,false: 不可用',
+    `is_del`              tinyint(1)                              NOT NULL              DEFAULT '0' COMMENT '是否删除: true: 删除, false: 未删除',
+    `kn_created_by`       bigint unsigned                                               DEFAULT NULL COMMENT '创建人id',
+    `kn_created_at`       datetime(3)                             NOT NULL              DEFAULT CURRENT_TIMESTAMP(3) COMMENT '创建时间',
+    `kn_updated_by`       bigint unsigned                                               DEFAULT NULL COMMENT '修改人id',
+    `kn_updated_at`       datetime(3)                             NOT NULL              DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '修改时间',
+    `kn_display_time`     datetime(3)                             NOT NULL              DEFAULT CURRENT_TIMESTAMP(3) COMMENT '显示时间: 时间之后的显示',
+    `external_key`        varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '扩展字段',
+    `kn_group`            varchar(64) COLLATE utf8mb4_general_ci                        DEFAULT NULL COMMENT '分组',
+    `is_clock_display`    tinyint(1)                              NOT NULL              DEFAULT '1' COMMENT '打卡完成后是否显示',
+    PRIMARY KEY (`kn_id`),
+    KEY `index_time` (`kn_time`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_general_ci
-    COMMENT = '定时用药表';
+  COLLATE = utf8mb4_general_ci COMMENT ='健康计划表';
+
+
+CREATE TABLE `mr_frequency`
+(
+    `kn_id`                  bigint unsigned                                              NOT NULL COMMENT '唯一主键',
+    `kn_health_plan_id`      bigint unsigned                                              NOT NULL COMMENT '主表',
+    `kn_explain_id`          bigint unsigned                                                       DEFAULT NULL COMMENT '上级',
+    `kn_frequency_time`      int                                                          NOT NULL COMMENT '频次时间',
+    `kn_frequency_time_unit` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '频次时间单位',
+    `kn_frequency_num`       int                                                          NOT NULL COMMENT '达标频次数量',
+    `kn_frequency_num_unit`  varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '频次数量单位',
+    `kn_frequency_max_num`   int                                                          NOT NULL COMMENT '最大完成频次数量',
+    `kn_created_by`          bigint unsigned                                                       DEFAULT NULL COMMENT '创建人id',
+    `kn_created_at`          datetime(3)                                                  NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT '创建时间',
+    PRIMARY KEY (`kn_id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_general_ci COMMENT ='健康计划打卡频率表';
+
+CREATE TABLE `mr_clock_in`
+(
+    `kn_id`             bigint unsigned NOT NULL COMMENT '唯一主键',
+    `kn_health_plan_id` bigint unsigned NOT NULL COMMENT '主表',
+    `kn_time`           time                     DEFAULT NULL COMMENT '时间',
+    `kn_clock_at`       datetime(3)     NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT '打卡时间',
+    `kn_created_by`     bigint unsigned          DEFAULT NULL COMMENT '创建人id',
+    `kn_created_at`     datetime(3)     NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT '创建时间',
+    PRIMARY KEY (`kn_id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_general_ci COMMENT ='健康计划打卡流水表';
+

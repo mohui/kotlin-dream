@@ -1,0 +1,2131 @@
+-- 创建地区表
+CREATE TABLE area
+(
+    code       varchar(36)  NOT NULL COMMENT '编码',
+    name       varchar(255) NOT NULL COMMENT '名称',
+    parent     varchar(36)  NULL COMMENT '父级',
+    path       varchar(255) NOT NULL COMMENT '路径',
+    label      varchar(255) NOT NULL COMMENT '类型; province: 省, city: 市, centre: 中心层, hospital.center: 服务中心/卫生院, hospital.station: 卫生站/卫生室',
+    created_at datetime(3)  NOT NULL DEFAULT CURRENT_TIMESTAMP(3) COMMENT '创建时间',
+    updated_at datetime(3)  NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3) COMMENT '修改时间',
+    PRIMARY KEY (code)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_general_ci
+    COMMENT = '地区表';
+
+
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('34', '安徽省', NULL, '34', 'province', '2020-05-26 14:05:24.858', '2020-10-24 13:03:15.054');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('3402', '芜湖市', '34', '34.3402', 'city', '2020-05-26 14:05:24.855', '2020-10-24 13:03:15.079');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('340203', '弋江区', '3402', '34.3402.340203', 'district', '2020-05-26 14:05:24.866', '2020-10-24 13:03:15.144');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('340208', '三山区', '3402', '34.3402.340208', 'district', '2020-05-26 14:05:24.872', '2020-10-24 13:03:15.164');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('340202', '镜湖区', '3402', '34.3402.340202', 'district', '2020-05-26 14:05:24.863', '2020-10-24 13:03:15.171');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('340223', '南陵县', '3402', '34.3402.340223', 'district', '2020-05-26 14:05:24.88', '2020-10-24 13:03:15.11');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('340271', '经开区', '3402', '34.3402.340271', 'district', '2020-06-18 13:40:37.011', '2020-10-24 13:03:15.13');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('340207', '鸠江区', '3402', '34.3402.340207', 'district', '2020-05-26 14:05:24.869', '2020-10-24 13:03:15.087');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('24abb230-a9ed-49a7-bef0-043539b2f8c7', '弋江区白马街道社区卫生服务中心',
+        'bf55c402-e1d6-417a-afe3-49e578acb85a',
+        '34.3402.340203.bf55c402-e1d6-417a-afe3-49e578acb85a.24abb230-a9ed-49a7-bef0-043539b2f8c7', 'hospital.center',
+        '2021-01-04 15:13:39.482', '2021-01-04 15:13:39.482');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('42a550f3-f176-496a-b664-037f39ed20ec', '弋江区火龙街道社区卫生服务中心',
+        '8dfa5535-a7ca-4300-bd48-92f1b032404b',
+        '34.3402.340203.8dfa5535-a7ca-4300-bd48-92f1b032404b.42a550f3-f176-496a-b664-037f39ed20ec', 'hospital.center',
+        '2021-01-04 15:13:39.597', '2021-01-04 15:13:39.597');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('22d28de5-05f2-4d7d-885c-6d7643abc969', '滨江社区卫生服务中心', '9331b528-4e39-4c2e-9264-d6b7c7152edf',
+        '34.3402.340202.9331b528-4e39-4c2e-9264-d6b7c7152edf.22d28de5-05f2-4d7d-885c-6d7643abc969', 'hospital.center',
+        '2021-01-04 15:13:39.764', '2021-01-04 15:13:39.764');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('01361ae1-11fd-4923-ad69-c53b743cc46f', '弋江区南瑞街道社区卫生服务中心铁桥分部',
+        '417e7c38-c444-4633-a014-3a43cdfa0d27',
+        '34.3402.340203.417e7c38-c444-4633-a014-3a43cdfa0d27.01361ae1-11fd-4923-ad69-c53b743cc46f', 'hospital.center',
+        '2021-01-04 15:13:39.413', '2021-01-04 15:13:39.413');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('dd161baf-8088-4a1a-a329-ddc853b07572', '方村街道社区卫生服务中心', '1ce002b9-99db-4620-bd68-b37200bf89d5',
+        '34.3402.340202.1ce002b9-99db-4620-bd68-b37200bf89d5.dd161baf-8088-4a1a-a329-ddc853b07572', 'hospital.center',
+        '2021-01-04 15:13:39.911', '2021-01-04 15:13:39.911');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6e4a533c-6c86-424a-9635-d252e2dee66e', '荆山社区卫生服务中心', '467f5db8-ac6a-43b6-a325-5089abf5b4c3',
+        '34.3402.340202.467f5db8-ac6a-43b6-a325-5089abf5b4c3.6e4a533c-6c86-424a-9635-d252e2dee66e', 'hospital.center',
+        '2021-01-04 15:13:39.979', '2021-01-04 15:13:39.979');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('bf55c402-e1d6-417a-afe3-49e578acb85a', '弋江区白马街道社区卫生服务中心', '340203',
+        '34.3402.340203.bf55c402-e1d6-417a-afe3-49e578acb85a', 'centre.center', '2021-01-04 15:13:39.476',
+        '2021-01-04 15:13:39.476');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('dbec1ce9-450a-4a61-9814-4ce2b37db4ea', '弋江区澛港街道社区卫生服务中心', '340203',
+        '34.3402.340203.dbec1ce9-450a-4a61-9814-4ce2b37db4ea', 'centre.center', '2021-01-04 15:13:39.529',
+        '2021-01-04 15:13:39.529');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9331b528-4e39-4c2e-9264-d6b7c7152edf', '滨江社区卫生服务中心', '340202',
+        '34.3402.340202.9331b528-4e39-4c2e-9264-d6b7c7152edf', 'centre.center', '2021-01-04 15:13:39.758',
+        '2021-01-04 15:13:39.758');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('340225', '无为市', '3402', '34.3402.340225', 'district', '2020-05-26 14:05:24.882',
+        '2023-03-23 10:52:54.350745');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('340221', '湾沚区', '3402', '34.3402.340221', 'district', '2020-05-26 14:05:24.874',
+        '2023-03-23 10:52:54.422357');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2db34a4a-ab57-4844-bf76-1cd3ee44cb18', '鸠江区四褐山街道社区卫生服务中心',
+        'a60b15c4-a423-4244-9c35-4e1bc158fd29',
+        '34.3402.340207.a60b15c4-a423-4244-9c35-4e1bc158fd29.2db34a4a-ab57-4844-bf76-1cd3ee44cb18', 'hospital.center',
+        '2021-01-04 15:13:40.032', '2021-01-04 15:13:40.032');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7a68bce9-fce6-4437-ac71-be4a318b3626', '鸠江区白茆镇中心卫生院', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.7a68bce9-fce6-4437-ac71-be4a318b3626', 'hospital.center',
+        '2021-01-04 15:13:40.109', '2021-01-04 15:13:40.109');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b7efbc72-b4ce-4d22-91b5-154a7f03c582', '鸠江区沈巷镇中心卫生院', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.b7efbc72-b4ce-4d22-91b5-154a7f03c582', 'hospital.center',
+        '2021-01-04 15:13:40.243', '2021-01-04 15:13:40.243');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7d363cc2-b565-4be8-ab24-f2ee8894698f', '鸠江区汤沟镇中心卫生院', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.7d363cc2-b565-4be8-ab24-f2ee8894698f', 'hospital.center',
+        '2021-01-04 15:13:40.451', '2021-01-04 15:13:40.451');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('05280dd4-d003-4eca-a3b6-ca3788ea6ec8', '鸠江区湾里街道社区卫生服务中心',
+        '2e7b7071-7252-4134-8180-7388fd3f7074',
+        '34.3402.340207.2e7b7071-7252-4134-8180-7388fd3f7074.05280dd4-d003-4eca-a3b6-ca3788ea6ec8', 'hospital.center',
+        '2021-01-04 15:13:40.522', '2021-01-04 15:13:40.522');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('22b83a4d-e5e2-4cfc-a730-82cc163ef6a3', '龙山街道社区卫生服务中心', '9a107463-4624-4403-9c01-ccd184c09541',
+        '34.3402.340271.9a107463-4624-4403-9c01-ccd184c09541.22b83a4d-e5e2-4cfc-a730-82cc163ef6a3', 'hospital.center',
+        '2021-01-04 15:13:40.602', '2021-01-04 15:13:40.602');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4f6de3c9-cb62-4692-bb48-d0b4e22df20b', '鸠江区裕溪口街道社区卫生服务中心',
+        '413a85ea-0749-4a66-97f7-b0bbccfdd593',
+        '34.3402.340207.413a85ea-0749-4a66-97f7-b0bbccfdd593.4f6de3c9-cb62-4692-bb48-d0b4e22df20b', 'hospital.center',
+        '2021-01-04 15:13:40.656', '2021-01-04 15:13:40.656');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5ed50ff8-f54e-4df7-b182-be7d1c55f81a', '三山区龙湖街道社区卫生服务中心',
+        '08dce031-90f2-498e-9efd-08e45480bf2c',
+        '34.3402.340208.08dce031-90f2-498e-9efd-08e45480bf2c.5ed50ff8-f54e-4df7-b182-be7d1c55f81a', 'hospital.center',
+        '2021-01-04 15:13:40.845', '2021-01-04 15:13:40.845');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('459cd4dd-d706-4a20-9017-d002767ae442', '三山区高安街道社区卫生服务中心',
+        '18486fe5-4125-41c8-808c-5838f7536aff',
+        '34.3402.340208.18486fe5-4125-41c8-808c-5838f7536aff.459cd4dd-d706-4a20-9017-d002767ae442', 'hospital.center',
+        '2021-01-04 15:13:40.894', '2021-01-04 15:13:40.894');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('0f72b7a4-2bb4-4353-8d0a-b42719b51fad', '三山区保定街道社区卫生服务中心',
+        '8de8223f-8fed-4c73-a8a6-beb0c2de477d',
+        '34.3402.340208.8de8223f-8fed-4c73-a8a6-beb0c2de477d.0f72b7a4-2bb4-4353-8d0a-b42719b51fad', 'hospital.center',
+        '2021-01-04 15:13:40.952', '2021-01-04 15:13:40.952');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('0d73cb19-a56f-4cd8-a23e-0c13b45adb38', '鸠江区官陡街道社区卫生服务中心',
+        '2e9ec91b-67e0-49ce-9d4e-88635450603b',
+        '34.3402.340207.2e9ec91b-67e0-49ce-9d4e-88635450603b.0d73cb19-a56f-4cd8-a23e-0c13b45adb38', 'hospital.center',
+        '2021-01-04 15:13:41.041', '2021-01-04 15:13:41.041');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('015c25b0-fb96-4f36-83ed-f2e8862561a0', '平铺镇中心卫生院', '515f834c-072e-42bd-9cde-f3cd219f1fb0',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0.015c25b0-fb96-4f36-83ed-f2e8862561a0', 'hospital.center',
+        '2021-01-04 15:13:41.396', '2021-01-04 15:13:41.396');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('14a80fcb-a486-4f10-ab8b-4860a3f30cdf', '峨山镇卫生院', 'c98be9c5-23c1-405c-b102-e4641214b9e9',
+        '34.3402.340222.c98be9c5-23c1-405c-b102-e4641214b9e9.14a80fcb-a486-4f10-ab8b-4860a3f30cdf', 'hospital.center',
+        '2021-01-04 15:13:41.468', '2021-01-04 15:13:41.468');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('cb784157-076b-4980-b16e-3cca2115b4d8', '繁阳社区卫生服务中心', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.cb784157-076b-4980-b16e-3cca2115b4d8', 'hospital.center',
+        '2021-01-04 15:13:41.55', '2021-01-04 15:13:41.55');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('bac6128b-f5ec-47b9-b6fa-f0fde0abdada', '荻港镇中心卫生院', 'e1f4b409-5acc-40aa-b969-7e3581093396',
+        '34.3402.340222.e1f4b409-5acc-40aa-b969-7e3581093396.bac6128b-f5ec-47b9-b6fa-f0fde0abdada', 'hospital.center',
+        '2021-01-04 15:13:41.696', '2021-01-04 15:13:41.696');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('0472288a-6ed7-4434-a39b-dad8f69520ed', '新港镇卫生院', 'd7b9eeff-1f6b-4c97-8887-e5336df17839',
+        '34.3402.340222.d7b9eeff-1f6b-4c97-8887-e5336df17839.0472288a-6ed7-4434-a39b-dad8f69520ed', 'hospital.center',
+        '2021-01-04 15:13:41.784', '2021-01-04 15:13:41.784');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7df86fb7-e58c-4016-8026-2375231bf7c0', '黄浒社区', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.7df86fb7-e58c-4016-8026-2375231bf7c0', 'hospital.station',
+        '2021-01-04 15:13:41.321', '2021-01-04 15:13:41.321');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7bdb0c07-437e-4efe-a94c-ab545f049e04', '峨山镇凤形村卫生室1', 'c98be9c5-23c1-405c-b102-e4641214b9e9',
+        '34.3402.340222.c98be9c5-23c1-405c-b102-e4641214b9e9.7bdb0c07-437e-4efe-a94c-ab545f049e04', 'hospital.station',
+        '2021-01-04 15:13:41.477', '2021-01-04 15:13:41.477');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b6da9689-e70f-46ae-8261-43d8f2783e45', '龙山街道凤凰城社区卫生服务站', '9a107463-4624-4403-9c01-ccd184c09541',
+        '34.3402.340271.9a107463-4624-4403-9c01-ccd184c09541.b6da9689-e70f-46ae-8261-43d8f2783e45', 'hospital.station',
+        '2021-01-04 15:13:40.616', '2021-01-04 15:13:40.616');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8618d431-ed4f-4860-8ed1-7d6d08e73ff0', '峨桥镇东湾村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.8618d431-ed4f-4860-8ed1-7d6d08e73ff0', 'hospital.station',
+        '2021-01-04 15:13:40.695', '2021-01-04 15:13:40.695');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('14c62bc4-65ee-476e-a9f5-06eeff0dd28d', '峨桥镇农庄村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.14c62bc4-65ee-476e-a9f5-06eeff0dd28d', 'hospital.station',
+        '2021-01-04 15:13:40.694', '2021-01-04 15:13:40.694');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('cd4d3f40-d822-4d8a-b761-e91ce9fb66b3', '平铺镇寒塘村卫生室', '515f834c-072e-42bd-9cde-f3cd219f1fb0',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0.cd4d3f40-d822-4d8a-b761-e91ce9fb66b3', 'hospital.station',
+        '2021-01-04 15:13:41.41', '2021-01-04 15:13:41.41');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7a878ec6-6a68-4927-9884-3b13ceaff2d5', '汤沟镇早映村卫生室', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.7a878ec6-6a68-4927-9884-3b13ceaff2d5', 'hospital.station',
+        '2021-01-04 15:13:40.465', '2021-01-04 15:13:40.465');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8b92f04a-54de-489b-87b9-f7cfee881f99', '沈巷镇凤城村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.8b92f04a-54de-489b-87b9-f7cfee881f99', 'hospital.station',
+        '2021-01-04 15:13:40.261', '2021-01-04 15:13:40.261');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('489ffc45-349d-4820-a7c9-158f3c295501', '镜湖新城社区卫生服务中心', '7f6a2a66-aa81-49f7-b687-8d9f1bfe20d3',
+        '34.3402.340202.7f6a2a66-aa81-49f7-b687-8d9f1bfe20d3.489ffc45-349d-4820-a7c9-158f3c295501', 'hospital.center',
+        '2021-01-04 15:13:39.838', '2021-01-04 15:13:39.838');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8c124eb8-ae49-4b96-93a7-1c2d84e82335', '繁阳镇西苑社区居委会', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.8c124eb8-ae49-4b96-93a7-1c2d84e82335', 'hospital.station',
+        '2021-01-04 15:13:41.565', '2021-01-04 15:13:41.565');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2d33b5ad-9406-4578-93ed-cfe3eabfad07', '峨桥镇桂港村卫生站', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.2d33b5ad-9406-4578-93ed-cfe3eabfad07', 'hospital.station',
+        '2021-01-04 15:13:40.693', '2021-01-04 15:13:40.693');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('fc0bc622-103f-42f0-b5b1-77f6208e0fa4', '斗村村卫生室', '1ce002b9-99db-4620-bd68-b37200bf89d5',
+        '34.3402.340202.1ce002b9-99db-4620-bd68-b37200bf89d5.fc0bc622-103f-42f0-b5b1-77f6208e0fa4', 'hospital.station',
+        '2021-01-04 15:13:39.924', '2021-01-04 15:13:39.924');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('863f00ec-66f3-4ada-8557-84253d9f0de8', '横山枣元村卫生室', '8d8281c1-fd77-41f8-a498-99900863212c',
+        '34.3402.340222.8d8281c1-fd77-41f8-a498-99900863212c.863f00ec-66f3-4ada-8557-84253d9f0de8', 'hospital.station',
+        '2021-01-04 15:13:41.529', '2021-01-04 15:13:41.529');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a35a94ca-d072-4de2-a4e3-235dbf1ab317', '镜湖新城社区卫生服务中心赭麓分部',
+        'beadff6a-0473-4403-9bb8-2d415540b54a',
+        '34.3402.340202.beadff6a-0473-4403-9bb8-2d415540b54a.a35a94ca-d072-4de2-a4e3-235dbf1ab317', 'hospital.center',
+        '2021-01-04 15:13:41.092', '2021-01-04 15:13:41.092');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5fa38661-a87b-4a72-ab7b-f227a2c7e593', '峨桥镇浮城村卫生站', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.5fa38661-a87b-4a72-ab7b-f227a2c7e593', 'hospital.station',
+        '2021-01-04 15:13:40.694', '2021-01-04 15:13:40.694');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9db877d7-cbf8-40f1-a634-d8c2420c39b4', '天城村卫生室', '1ce002b9-99db-4620-bd68-b37200bf89d5',
+        '34.3402.340202.1ce002b9-99db-4620-bd68-b37200bf89d5.9db877d7-cbf8-40f1-a634-d8c2420c39b4', 'hospital.station',
+        '2021-01-04 15:13:39.923', '2021-01-04 15:13:39.923');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('0895c95a-6b5b-49e1-923d-0ead134be9c3', '平铺镇新林社区卫生服务站', '515f834c-072e-42bd-9cde-f3cd219f1fb0',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0.0895c95a-6b5b-49e1-923d-0ead134be9c3', 'hospital.station',
+        '2021-01-04 15:13:41.409', '2021-01-04 15:13:41.409');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f4043aff-0f33-4b30-8f56-0712b0694a15', '澛港街道柏庄社区卫生服务站', 'dbec1ce9-450a-4a61-9814-4ce2b37db4ea',
+        '34.3402.340203.dbec1ce9-450a-4a61-9814-4ce2b37db4ea.f4043aff-0f33-4b30-8f56-0712b0694a15', 'hospital.station',
+        '2021-01-04 15:13:39.547', '2021-01-04 15:13:39.547');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7ff9acf9-87a4-40fd-833d-4fc2e79c72b7', '汤沟镇流泗村卫生室', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.7ff9acf9-87a4-40fd-833d-4fc2e79c72b7', 'hospital.station',
+        '2021-01-04 15:13:40.466', '2021-01-04 15:13:40.466');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('799bb920-1870-445f-ba47-381ddc1eef8b', '芦南赭圻村卫生室', 'e1f4b409-5acc-40aa-b969-7e3581093396',
+        '34.3402.340222.e1f4b409-5acc-40aa-b969-7e3581093396.799bb920-1870-445f-ba47-381ddc1eef8b', 'hospital.station',
+        '2021-01-04 15:13:41.705', '2021-01-04 15:13:41.705');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('dec67075-4255-4737-b029-99f7149abf33', '二坝镇龙泉卫生室', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.dec67075-4255-4737-b029-99f7149abf33', 'hospital.station',
+        '2021-01-04 15:13:40.379', '2021-01-04 15:13:40.379');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8589b47d-d47e-4bf4-b514-613f2bb692d0', '峨桥镇浮城村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.8589b47d-d47e-4bf4-b514-613f2bb692d0', 'hospital.station',
+        '2021-01-04 15:13:40.694', '2021-01-04 15:13:40.694');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('24491ad8-8dbe-4d05-8e14-06d043577e43', '火龙街道火龙村卫生室', '8dfa5535-a7ca-4300-bd48-92f1b032404b',
+        '34.3402.340203.8dfa5535-a7ca-4300-bd48-92f1b032404b.24491ad8-8dbe-4d05-8e14-06d043577e43', 'hospital.station',
+        '2021-01-04 15:13:39.609', '2021-01-04 15:13:39.609');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c3ae7289-45b6-4e92-ba2e-c63975c25287', '荷塘社区卫生服务站', '1609acf6-3d82-440a-924d-de295d5edfb2',
+        '34.3402.340202.1609acf6-3d82-440a-924d-de295d5edfb2.c3ae7289-45b6-4e92-ba2e-c63975c25287', 'hospital.station',
+        '2021-01-04 15:13:40.001', '2021-01-04 15:13:40.001');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('74fb279c-e3e4-47bb-b446-3efb97e5e881', '峨山镇象形村卫生室', 'c98be9c5-23c1-405c-b102-e4641214b9e9',
+        '34.3402.340222.c98be9c5-23c1-405c-b102-e4641214b9e9.74fb279c-e3e4-47bb-b446-3efb97e5e881', 'hospital.station',
+        '2021-01-04 15:13:41.477', '2021-01-04 15:13:41.477');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c304637b-e9ec-438f-90b5-21934c2cda0b', '繁阳镇城西村卫生室', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.c304637b-e9ec-438f-90b5-21934c2cda0b', 'hospital.station',
+        '2021-01-04 15:13:41.566', '2021-01-04 15:13:41.566');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('0a9163e6-beff-442f-a042-1001eeeb0c33', '三山街道上游村卫生室', '4c7774be-5a61-477e-9fe2-cdb9cdf876fa',
+        '34.3402.340208.4c7774be-5a61-477e-9fe2-cdb9cdf876fa.0a9163e6-beff-442f-a042-1001eeeb0c33', 'hospital.station',
+        '2021-01-04 15:13:40.989', '2021-01-04 15:13:40.989');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4fdeba3b-0fce-4f1a-87a3-64f2f929f9da', '高安街道白象村卫生室', '18486fe5-4125-41c8-808c-5838f7536aff',
+        '34.3402.340208.18486fe5-4125-41c8-808c-5838f7536aff.4fdeba3b-0fce-4f1a-87a3-64f2f929f9da', 'hospital.station',
+        '2021-01-04 15:13:40.903', '2021-01-04 15:13:40.903');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('704b301f-8f5d-482f-8e1f-91f44a2ebca2', '孙村镇义兴村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.704b301f-8f5d-482f-8e1f-91f44a2ebca2', 'hospital.station',
+        '2021-01-04 15:13:41.321', '2021-01-04 15:13:41.321');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b7d41128-2bd4-4dd3-a31c-f590c1194760', '香苑社区卫生服务站', '07fd8a63-fd85-4bd0-9372-ec4310edd6a9',
+        '34.3402.340202.07fd8a63-fd85-4bd0-9372-ec4310edd6a9.b7d41128-2bd4-4dd3-a31c-f590c1194760', 'hospital.station',
+        '2021-01-04 15:13:39.873', '2021-01-04 15:13:39.873');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6705cd4b-60da-4c15-bcbd-f7214ef62c4d', '龙山街道翡翠湾社区卫生服务站', '9a107463-4624-4403-9c01-ccd184c09541',
+        '34.3402.340271.9a107463-4624-4403-9c01-ccd184c09541.6705cd4b-60da-4c15-bcbd-f7214ef62c4d', 'hospital.station',
+        '2021-01-04 15:13:40.615', '2021-01-04 15:13:40.615');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8f8f88e8-7bb7-4d77-b216-b4996de9758f', '扬子社区卫生服务站', '9a66b162-5489-4add-ab5c-ae07716863c5',
+        '34.3402.340202.9a66b162-5489-4add-ab5c-ae07716863c5.8f8f88e8-7bb7-4d77-b216-b4996de9758f', 'hospital.station',
+        '2021-01-04 15:13:39.808', '2021-01-04 15:13:39.808');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('771a59ca-f918-404e-90b8-02b7934ba68c', '黄浒万里村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.771a59ca-f918-404e-90b8-02b7934ba68c', 'hospital.station',
+        '2021-01-04 15:13:41.321', '2021-01-04 15:13:41.321');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a71219e8-e61d-4421-89d7-6e0a82178e90', '荻港镇芦南社区卫生服务站', 'e1f4b409-5acc-40aa-b969-7e3581093396',
+        '34.3402.340222.e1f4b409-5acc-40aa-b969-7e3581093396.a71219e8-e61d-4421-89d7-6e0a82178e90', 'hospital.station',
+        '2021-01-04 15:13:41.705', '2021-01-04 15:13:41.705');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('df683248-0016-495d-901f-2a11497fc24b', '高安街道矶山村卫生室', '18486fe5-4125-41c8-808c-5838f7536aff',
+        '34.3402.340208.18486fe5-4125-41c8-808c-5838f7536aff.df683248-0016-495d-901f-2a11497fc24b', 'hospital.station',
+        '2021-01-04 15:13:40.903', '2021-01-04 15:13:40.903');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2ca20d09-ce91-4ba7-b1ae-265e340c33f4', '花园村卫生室', '1ce002b9-99db-4620-bd68-b37200bf89d5',
+        '34.3402.340202.1ce002b9-99db-4620-bd68-b37200bf89d5.2ca20d09-ce91-4ba7-b1ae-265e340c33f4', 'hospital.station',
+        '2021-01-04 15:13:39.923', '2021-01-04 15:13:39.923');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('cc063565-e5fd-4566-827e-3da7cc94e091', '龙山街道龙湖社区卫生服务站', '9a107463-4624-4403-9c01-ccd184c09541',
+        '34.3402.340271.9a107463-4624-4403-9c01-ccd184c09541.cc063565-e5fd-4566-827e-3da7cc94e091', 'hospital.station',
+        '2021-01-04 15:13:40.616', '2021-01-04 15:13:40.616');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('281f5d8e-91ee-4a04-a9a4-ab0ea8cf6a2d', '澛港街道牌楼村卫生室', 'dbec1ce9-450a-4a61-9814-4ce2b37db4ea',
+        '34.3402.340203.dbec1ce9-450a-4a61-9814-4ce2b37db4ea.281f5d8e-91ee-4a04-a9a4-ab0ea8cf6a2d', 'hospital.station',
+        '2021-01-04 15:13:39.546', '2021-01-04 15:13:39.546');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b149579b-fb02-4c56-ad39-c2666820d4db', '马塘街道弋江嘉园卫生服务站', '7dc8edb1-3d60-4e4d-a4a0-b7ce90bdf2c7',
+        '34.3402.340203.7dc8edb1-3d60-4e4d-a4a0-b7ce90bdf2c7.b149579b-fb02-4c56-ad39-c2666820d4db', 'hospital.station',
+        '2021-01-04 15:13:39.455', '2021-01-04 15:13:39.455');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('88bd4232-4706-41fa-9ff9-e949c457719b', '新港镇新东村东山卫生室', 'd7b9eeff-1f6b-4c97-8887-e5336df17839',
+        '34.3402.340222.d7b9eeff-1f6b-4c97-8887-e5336df17839.88bd4232-4706-41fa-9ff9-e949c457719b', 'hospital.station',
+        '2021-01-04 15:13:41.792', '2021-01-04 15:13:41.792');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('64c3a92d-fe33-4355-a2b3-071fcda35cee', '白茆镇新园村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.64c3a92d-fe33-4355-a2b3-071fcda35cee', 'hospital.station',
+        '2021-01-04 15:13:40.134', '2021-01-04 15:13:40.134');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a4b21b4a-3c10-4f74-81cc-c93e0cc1342a', '新林官塘村卫生室', '515f834c-072e-42bd-9cde-f3cd219f1fb0',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0.a4b21b4a-3c10-4f74-81cc-c93e0cc1342a', 'hospital.station',
+        '2021-01-04 15:13:41.41', '2021-01-04 15:13:41.41');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('603a4d14-8c90-4f35-91a7-89cf0c2378d0', '白茆镇义圩村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.603a4d14-8c90-4f35-91a7-89cf0c2378d0', 'hospital.station',
+        '2021-01-04 15:13:40.134', '2021-01-04 15:13:40.134');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6dbd3415-f51e-4f62-aaf8-dcaf5ed572bf', '马塘街道港西村卫生室', '7dc8edb1-3d60-4e4d-a4a0-b7ce90bdf2c7',
+        '34.3402.340203.7dc8edb1-3d60-4e4d-a4a0-b7ce90bdf2c7.6dbd3415-f51e-4f62-aaf8-dcaf5ed572bf', 'hospital.station',
+        '2021-01-04 15:13:39.454', '2021-01-04 15:13:39.454');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6365183c-18ab-417a-8081-8e4172b1bf14', '三山街道新庄村磨山卫生室', '4c7774be-5a61-477e-9fe2-cdb9cdf876fa',
+        '34.3402.340208.4c7774be-5a61-477e-9fe2-cdb9cdf876fa.6365183c-18ab-417a-8081-8e4172b1bf14', 'hospital.station',
+        '2021-01-04 15:13:40.989', '2021-01-04 15:13:40.989');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a7f51548-d1b4-4f65-a9e7-79b4a5195ec8', '白马街道清竹村卫生室', 'bf55c402-e1d6-417a-afe3-49e578acb85a',
+        '34.3402.340203.bf55c402-e1d6-417a-afe3-49e578acb85a.a7f51548-d1b4-4f65-a9e7-79b4a5195ec8', 'hospital.station',
+        '2021-01-04 15:13:39.496', '2021-01-04 15:13:39.496');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('45932dc2-d8c3-41f9-ba94-e94354d4d6e4', '三山街道三山村广银卫生站', '4c7774be-5a61-477e-9fe2-cdb9cdf876fa',
+        '34.3402.340208.4c7774be-5a61-477e-9fe2-cdb9cdf876fa.45932dc2-d8c3-41f9-ba94-e94354d4d6e4', 'hospital.station',
+        '2021-01-04 15:13:40.988', '2021-01-04 15:13:40.988');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8f301257-166d-4c21-9876-0f51613e198b', '高安街道草山村卫生站', '18486fe5-4125-41c8-808c-5838f7536aff',
+        '34.3402.340208.18486fe5-4125-41c8-808c-5838f7536aff.8f301257-166d-4c21-9876-0f51613e198b', 'hospital.station',
+        '2021-01-04 15:13:40.903', '2021-01-04 15:13:40.903');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('3299f158-20a8-4b61-a17b-f353015b9387', '马坝街道团队', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.3299f158-20a8-4b61-a17b-f353015b9387', 'hospital.station',
+        '2021-01-04 15:13:41.563', '2021-01-04 15:13:41.563');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('315a1844-189f-40df-97ca-e14855d17b60', '沈巷镇四连村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.315a1844-189f-40df-97ca-e14855d17b60', 'hospital.station',
+        '2021-01-04 15:13:40.26', '2021-01-04 15:13:40.26');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1d266131-a3c7-4cab-868c-33962519be9a', '三山街道新庄村许村卫生站', '4c7774be-5a61-477e-9fe2-cdb9cdf876fa',
+        '34.3402.340208.4c7774be-5a61-477e-9fe2-cdb9cdf876fa.1d266131-a3c7-4cab-868c-33962519be9a', 'hospital.station',
+        '2021-01-04 15:13:40.988', '2021-01-04 15:13:40.988');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c6a0e468-1e6c-45e6-8ab8-4044f4ab5959', '峨桥镇茶亭村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.c6a0e468-1e6c-45e6-8ab8-4044f4ab5959', 'hospital.station',
+        '2021-01-04 15:13:40.696', '2021-01-04 15:13:40.696');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1e44d2ca-da2d-44d8-98e3-8003ee7f5cfd', '新港镇荷圩村卫生室', 'd7b9eeff-1f6b-4c97-8887-e5336df17839',
+        '34.3402.340222.d7b9eeff-1f6b-4c97-8887-e5336df17839.1e44d2ca-da2d-44d8-98e3-8003ee7f5cfd', 'hospital.station',
+        '2021-01-04 15:13:41.792', '2021-01-04 15:13:41.792');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('3adceaa4-8997-43b0-bc5b-6250b176a9cc', '高安街道义合村卫生站', '18486fe5-4125-41c8-808c-5838f7536aff',
+        '34.3402.340208.18486fe5-4125-41c8-808c-5838f7536aff.3adceaa4-8997-43b0-bc5b-6250b176a9cc', 'hospital.station',
+        '2021-01-04 15:13:40.903', '2021-01-04 15:13:40.903');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('3d5aa468-4381-44fe-a8db-07c48eb71a0a', '红星社区卫生服务站', '1609acf6-3d82-440a-924d-de295d5edfb2',
+        '34.3402.340202.1609acf6-3d82-440a-924d-de295d5edfb2.3d5aa468-4381-44fe-a8db-07c48eb71a0a', 'hospital.station',
+        '2021-01-04 15:13:40.001', '2021-01-04 15:13:40.001');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9593c2a7-63f7-467c-9a35-01987551aab4', '清水街道大闸卫生服务站', '61940548-1a15-45e1-b8b6-72d194c2590a',
+        '34.3402.340207.61940548-1a15-45e1-b8b6-72d194c2590a.9593c2a7-63f7-467c-9a35-01987551aab4', 'hospital.station',
+        '2021-01-04 15:13:40.074', '2021-01-04 15:13:40.074');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('760c49d7-8748-4b27-8089-a4ebeced1fef', '澛港街道儒林西苑卫生服务站', 'dbec1ce9-450a-4a61-9814-4ce2b37db4ea',
+        '34.3402.340203.dbec1ce9-450a-4a61-9814-4ce2b37db4ea.760c49d7-8748-4b27-8089-a4ebeced1fef', 'hospital.station',
+        '2021-01-04 15:13:39.547', '2021-01-04 15:13:39.547');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ef6f5694-29ab-420f-804b-dc2a3483184c', '白茆镇七洲村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.ef6f5694-29ab-420f-804b-dc2a3483184c', 'hospital.station',
+        '2021-01-04 15:13:40.135', '2021-01-04 15:13:40.135');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2dac344f-611f-47e4-a5f5-c66fc9afa52a', '园丁二区社区卫生服务站', '07fd8a63-fd85-4bd0-9372-ec4310edd6a9',
+        '34.3402.340202.07fd8a63-fd85-4bd0-9372-ec4310edd6a9.2dac344f-611f-47e4-a5f5-c66fc9afa52a', 'hospital.station',
+        '2021-01-04 15:13:39.872', '2021-01-04 15:13:39.872');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5eae7841-706e-4a41-a45c-29bc661e1554', '保定街道联群村卫生室', '8de8223f-8fed-4c73-a8a6-beb0c2de477d',
+        '34.3402.340208.8de8223f-8fed-4c73-a8a6-beb0c2de477d.5eae7841-706e-4a41-a45c-29bc661e1554', 'hospital.station',
+        '2021-01-04 15:13:40.96', '2021-01-04 15:13:40.96');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('06350a0a-a986-4523-8828-29e6a656b8b7', '赤沙代亭村卫生室', '9200fc30-e7da-4941-bc8a-7eb726b2a1ed',
+        '34.3402.340222.9200fc30-e7da-4941-bc8a-7eb726b2a1ed.06350a0a-a986-4523-8828-29e6a656b8b7', 'hospital.station',
+        '2021-01-04 15:13:41.757', '2021-01-04 15:13:41.757');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ca8f4263-c45f-41e0-9599-dc49091d94d3', '万春街道新民社区卫生服务站', '011f46c7-0d49-4eb5-8011-e41c67f4ea0a',
+        '34.3402.340271.011f46c7-0d49-4eb5-8011-e41c67f4ea0a.ca8f4263-c45f-41e0-9599-dc49091d94d3', 'hospital.station',
+        '2021-01-04 15:13:40.565', '2021-01-04 15:13:40.565');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5993ef1f-b876-48d1-a1ca-263cfafffe8c', '四褐山街道四湾社区服务站', 'a60b15c4-a423-4244-9c35-4e1bc158fd29',
+        '34.3402.340207.a60b15c4-a423-4244-9c35-4e1bc158fd29.5993ef1f-b876-48d1-a1ca-263cfafffe8c', 'hospital.station',
+        '2021-01-04 15:13:40.04', '2021-01-04 15:13:40.04');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('fb43b43e-dd40-49d3-9a2f-65146bbacbf9', '繁阳镇铁塔村卫生室', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.fb43b43e-dd40-49d3-9a2f-65146bbacbf9', 'hospital.station',
+        '2021-01-04 15:13:41.567', '2021-01-04 15:13:41.567');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('415ac232-b6a2-4223-9e98-dad5bda8e36e', '三山街道新庄村文芳卫生站', '4c7774be-5a61-477e-9fe2-cdb9cdf876fa',
+        '34.3402.340208.4c7774be-5a61-477e-9fe2-cdb9cdf876fa.415ac232-b6a2-4223-9e98-dad5bda8e36e', 'hospital.station',
+        '2021-01-04 15:13:40.988', '2021-01-04 15:13:40.988');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('986e64da-8389-4f3b-b5c0-833c525e059e', '峨桥镇石谷村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.986e64da-8389-4f3b-b5c0-833c525e059e', 'hospital.station',
+        '2021-01-04 15:13:40.695', '2021-01-04 15:13:40.695');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2ef16613-e30b-4730-b726-d3c5efa7ab28', '邢家山社区卫生服务站', '9a66b162-5489-4add-ab5c-ae07716863c5',
+        '34.3402.340202.9a66b162-5489-4add-ab5c-ae07716863c5.2ef16613-e30b-4730-b726-d3c5efa7ab28', 'hospital.station',
+        '2021-01-04 15:13:39.808', '2021-01-04 15:13:39.808');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d8b55440-e5ba-4796-9333-c08a6a18f1bb', '王埂村卫生室', '1ce002b9-99db-4620-bd68-b37200bf89d5',
+        '34.3402.340202.1ce002b9-99db-4620-bd68-b37200bf89d5.d8b55440-e5ba-4796-9333-c08a6a18f1bb', 'hospital.station',
+        '2021-01-04 15:13:39.923', '2021-01-04 15:13:39.923');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b98b1bd9-63c8-422a-855e-0a39a27e7569', '峨桥镇农庄村俞村卫生站', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.b98b1bd9-63c8-422a-855e-0a39a27e7569', 'hospital.station',
+        '2021-01-04 15:13:40.696', '2021-01-04 15:13:40.696');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('0f535684-1149-438a-933a-3153c4764f3e', '王庆姐诊所', '011f46c7-0d49-4eb5-8011-e41c67f4ea0a',
+        '34.3402.340271.011f46c7-0d49-4eb5-8011-e41c67f4ea0a.0f535684-1149-438a-933a-3153c4764f3e', 'hospital.station',
+        '2021-01-04 15:13:40.565', '2021-01-04 15:13:40.565');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('bf33a76b-dbd1-41d0-b351-c0921d0392b8', '湾里街道华强社区卫生服务站', '2e7b7071-7252-4134-8180-7388fd3f7074',
+        '34.3402.340207.2e7b7071-7252-4134-8180-7388fd3f7074.bf33a76b-dbd1-41d0-b351-c0921d0392b8', 'hospital.station',
+        '2021-01-04 15:13:40.531', '2021-01-04 15:13:40.531');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('dcc6b5f4-cdee-4e50-ab49-4596229095fd', '荻港镇鹊江村卫生室', 'e1f4b409-5acc-40aa-b969-7e3581093396',
+        '34.3402.340222.e1f4b409-5acc-40aa-b969-7e3581093396.dcc6b5f4-cdee-4e50-ab49-4596229095fd', 'hospital.station',
+        '2021-01-04 15:13:41.705', '2021-01-04 15:13:41.705');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6c7a70a1-cfbe-4bb5-b847-68bfebbfb182', '清水街道竹秀卫生服务站', '61940548-1a15-45e1-b8b6-72d194c2590a',
+        '34.3402.340207.61940548-1a15-45e1-b8b6-72d194c2590a.6c7a70a1-cfbe-4bb5-b847-68bfebbfb182', 'hospital.station',
+        '2021-01-04 15:13:40.074', '2021-01-04 15:13:40.074');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2a9694fb-024e-4ec2-a082-0ed9336a4500', '峨桥镇桂港村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.2a9694fb-024e-4ec2-a082-0ed9336a4500', 'hospital.station',
+        '2021-01-04 15:13:40.693', '2021-01-04 15:13:40.693');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('be2d76f7-c869-4c74-ac31-114f74aa1d3a', '白茆镇水口社区卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.be2d76f7-c869-4c74-ac31-114f74aa1d3a', 'hospital.station',
+        '2021-01-04 15:13:40.133', '2021-01-04 15:13:40.133');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('97bdfea0-dfc8-4083-8225-00db233ba7e9', '文化路社区卫生服务站', '9a66b162-5489-4add-ab5c-ae07716863c5',
+        '34.3402.340202.9a66b162-5489-4add-ab5c-ae07716863c5.97bdfea0-dfc8-4083-8225-00db233ba7e9', 'hospital.station',
+        '2021-01-04 15:13:39.808', '2021-01-04 15:13:39.808');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ba9516c2-4694-4e01-ba10-59133c3abffc', '汀苑社区卫生服务站', 'beadff6a-0473-4403-9bb8-2d415540b54a',
+        '34.3402.340202.beadff6a-0473-4403-9bb8-2d415540b54a.ba9516c2-4694-4e01-ba10-59133c3abffc', 'hospital.station',
+        '2021-01-04 15:13:41.099', '2021-01-04 15:13:41.099');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1b7285a1-d57e-46fe-94ae-97f94354e84d', '新港镇克山村卫生室', 'd7b9eeff-1f6b-4c97-8887-e5336df17839',
+        '34.3402.340222.d7b9eeff-1f6b-4c97-8887-e5336df17839.1b7285a1-d57e-46fe-94ae-97f94354e84d', 'hospital.station',
+        '2021-01-04 15:13:41.792', '2021-01-04 15:13:41.792');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a6587700-3c05-4d90-9b30-e252f0e977bb', '火龙街道善瑞村卫生室', '8dfa5535-a7ca-4300-bd48-92f1b032404b',
+        '34.3402.340203.8dfa5535-a7ca-4300-bd48-92f1b032404b.a6587700-3c05-4d90-9b30-e252f0e977bb', 'hospital.station',
+        '2021-01-04 15:13:39.61', '2021-01-04 15:13:39.61');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('777501e0-8e92-4fa0-b1f0-a7f8aa590f07', '赤沙张塘村卫生室', '9200fc30-e7da-4941-bc8a-7eb726b2a1ed',
+        '34.3402.340222.9200fc30-e7da-4941-bc8a-7eb726b2a1ed.777501e0-8e92-4fa0-b1f0-a7f8aa590f07', 'hospital.station',
+        '2021-01-04 15:13:41.757', '2021-01-04 15:13:41.757');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1d612ad3-f53c-455b-8923-f97f355be9de', '白茆镇天然村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.1d612ad3-f53c-455b-8923-f97f355be9de', 'hospital.station',
+        '2021-01-04 15:13:40.134', '2021-01-04 15:13:40.134');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2449ec2b-710a-4ac7-bd4c-1f50138e3bf2', '沈巷镇黄庄村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.2449ec2b-710a-4ac7-bd4c-1f50138e3bf2', 'hospital.station',
+        '2021-01-04 15:13:40.259', '2021-01-04 15:13:40.259');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('41e517ef-b2ab-42d5-9587-4fdec77b682b', '繁阳镇云路社区居委会', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.41e517ef-b2ab-42d5-9587-4fdec77b682b', 'hospital.station',
+        '2021-01-04 15:13:41.563', '2021-01-04 15:13:41.563');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5b121651-c3ea-434b-b25a-d9d042c0f1f8', '繁阳镇繁海社区居委会', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.5b121651-c3ea-434b-b25a-d9d042c0f1f8', 'hospital.station',
+        '2021-01-04 15:13:41.565', '2021-01-04 15:13:41.565');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a024fe2a-9e9a-491b-85f0-9c48cd582387', '峨桥镇丰裕村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.a024fe2a-9e9a-491b-85f0-9c48cd582387', 'hospital.station',
+        '2021-01-04 15:13:40.696', '2021-01-04 15:13:40.696');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f9a7ee12-22f7-4c25-9f88-369e66f4b26e', '马坝库山村团队', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.f9a7ee12-22f7-4c25-9f88-369e66f4b26e', 'hospital.station',
+        '2021-01-04 15:13:41.567', '2021-01-04 15:13:41.567');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a4892c52-cb9e-4c4a-a54f-b2d6bd3540f8', '万春街道新苑社区卫生服务一站', '011f46c7-0d49-4eb5-8011-e41c67f4ea0a',
+        '34.3402.340271.011f46c7-0d49-4eb5-8011-e41c67f4ea0a.a4892c52-cb9e-4c4a-a54f-b2d6bd3540f8', 'hospital.station',
+        '2021-01-04 15:13:40.565', '2021-01-04 15:13:40.565');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9c18c2b9-de62-4865-a58c-8bf61b5746e8', '七更点社区卫生服务站', '9331b528-4e39-4c2e-9264-d6b7c7152edf',
+        '34.3402.340202.9331b528-4e39-4c2e-9264-d6b7c7152edf.9c18c2b9-de62-4865-a58c-8bf61b5746e8', 'hospital.station',
+        '2021-01-04 15:13:39.772', '2021-01-04 15:13:39.772');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d5dedc67-61d0-4050-a8f9-948a18379c9b', '二坝镇蛟矶卫生室', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.d5dedc67-61d0-4050-a8f9-948a18379c9b', 'hospital.station',
+        '2021-01-04 15:13:40.379', '2021-01-04 15:13:40.379');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('89d6375d-840f-4293-9557-c80e9365f99d', '官陡街道青锋社区服务站', '2e9ec91b-67e0-49ce-9d4e-88635450603b',
+        '34.3402.340207.2e9ec91b-67e0-49ce-9d4e-88635450603b.89d6375d-840f-4293-9557-c80e9365f99d', 'hospital.station',
+        '2021-01-04 15:13:41.053', '2021-01-04 15:13:41.053');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f041c6d0-1d27-421a-9c63-087b77e294c0', '官陡街道中江社区卫生服务站', '2e9ec91b-67e0-49ce-9d4e-88635450603b',
+        '34.3402.340207.2e9ec91b-67e0-49ce-9d4e-88635450603b.f041c6d0-1d27-421a-9c63-087b77e294c0', 'hospital.station',
+        '2021-01-04 15:13:41.053', '2021-01-04 15:13:41.053');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('533e1408-7097-4469-9037-09d49293beda', '澛港街道橡绿园卫生服务站', 'dbec1ce9-450a-4a61-9814-4ce2b37db4ea',
+        '34.3402.340203.dbec1ce9-450a-4a61-9814-4ce2b37db4ea.533e1408-7097-4469-9037-09d49293beda', 'hospital.station',
+        '2021-01-04 15:13:39.547', '2021-01-04 15:13:39.547');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('dc8ac28b-47cb-4a56-86eb-9448c9bcd2f9', '龙湖街道中沟村江西刘卫生室', '08dce031-90f2-498e-9efd-08e45480bf2c',
+        '34.3402.340208.08dce031-90f2-498e-9efd-08e45480bf2c.dc8ac28b-47cb-4a56-86eb-9448c9bcd2f9', 'hospital.station',
+        '2021-01-04 15:13:40.854', '2021-01-04 15:13:40.854');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('26da1e79-103c-4bb8-a1cd-87942c88a5e9', '峨桥镇东湾村泊湾卫生站', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.26da1e79-103c-4bb8-a1cd-87942c88a5e9', 'hospital.station',
+        '2021-01-04 15:13:40.695', '2021-01-04 15:13:40.695');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('20471605-d04c-4482-8a7f-86138e06af55', '二坝镇杨坝卫生室', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.20471605-d04c-4482-8a7f-86138e06af55', 'hospital.station',
+        '2021-01-04 15:13:40.376', '2021-01-04 15:13:40.376');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('fe4af99b-2762-4c08-b05d-88419fab26d0', '赤沙中分村卫生室', '9200fc30-e7da-4941-bc8a-7eb726b2a1ed',
+        '34.3402.340222.9200fc30-e7da-4941-bc8a-7eb726b2a1ed.fe4af99b-2762-4c08-b05d-88419fab26d0', 'hospital.station',
+        '2021-01-04 15:13:41.757', '2021-01-04 15:13:41.757');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('24f8268e-1809-4801-a2dc-a0f90ecb7be9', '沈巷镇孙庄村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.24f8268e-1809-4801-a2dc-a0f90ecb7be9', 'hospital.station',
+        '2021-01-04 15:13:40.259', '2021-01-04 15:13:40.259');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8741c7bc-7106-43a8-8daf-2e5a0389767c', '新港镇新东村卫生室', 'd7b9eeff-1f6b-4c97-8887-e5336df17839',
+        '34.3402.340222.d7b9eeff-1f6b-4c97-8887-e5336df17839.8741c7bc-7106-43a8-8daf-2e5a0389767c', 'hospital.station',
+        '2021-01-04 15:13:41.792', '2021-01-04 15:13:41.792');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d421ef4b-2d69-4804-8ded-471bf23173bc', '马坝缸窑村卫生室', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.d421ef4b-2d69-4804-8ded-471bf23173bc', 'hospital.station',
+        '2021-01-04 15:13:41.566', '2021-01-04 15:13:41.566');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('eebecde3-6329-4690-a0c6-16166a686fd3', '繁阳镇繁阳社区居委会', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.eebecde3-6329-4690-a0c6-16166a686fd3', 'hospital.station',
+        '2021-01-04 15:13:41.567', '2021-01-04 15:13:41.567');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('57be804e-66ec-4020-ab64-4783d70638ef', '峨桥镇虬保村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.57be804e-66ec-4020-ab64-4783d70638ef', 'hospital.station',
+        '2021-01-04 15:13:40.695', '2021-01-04 15:13:40.695');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ea6fa017-64ba-4eb5-91a4-93a86d745d2f', '新林新塘村卫生室', '515f834c-072e-42bd-9cde-f3cd219f1fb0',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0.ea6fa017-64ba-4eb5-91a4-93a86d745d2f', 'hospital.station',
+        '2021-01-04 15:13:41.41', '2021-01-04 15:13:41.41');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6a498fc1-4a52-4b39-a3a3-b129865946a5', '三山街道天桥村卫生室', '4c7774be-5a61-477e-9fe2-cdb9cdf876fa',
+        '34.3402.340208.4c7774be-5a61-477e-9fe2-cdb9cdf876fa.6a498fc1-4a52-4b39-a3a3-b129865946a5', 'hospital.station',
+        '2021-01-04 15:13:40.988', '2022-01-13 13:35:01.461491');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a87d4fc1-04d6-42be-bbcc-9341b36f9c8e', '白茆镇三垅村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.a87d4fc1-04d6-42be-bbcc-9341b36f9c8e', 'hospital.station',
+        '2021-01-04 15:13:40.134', '2021-01-04 15:13:40.134');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('dee2ae4a-97bc-40c4-8836-b285c4d80b95', '峨桥镇丰裕村小军卫生站', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.dee2ae4a-97bc-40c4-8836-b285c4d80b95', 'hospital.station',
+        '2021-01-04 15:13:40.698', '2021-01-04 15:13:40.698');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('46f4cfe1-3bb8-4e81-9f22-130ba981c1bf', '繁阳镇阳冲村卫生室', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.46f4cfe1-3bb8-4e81-9f22-130ba981c1bf', 'hospital.station',
+        '2021-01-04 15:13:41.563', '2021-01-04 15:13:41.563');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('46f8fe28-41aa-407b-acc9-28fb3c56ee6c', '荻港镇庆大村卫生室', 'e1f4b409-5acc-40aa-b969-7e3581093396',
+        '34.3402.340222.e1f4b409-5acc-40aa-b969-7e3581093396.46f8fe28-41aa-407b-acc9-28fb3c56ee6c', 'hospital.station',
+        '2021-01-04 15:13:41.705', '2021-01-04 15:13:41.705');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('3f4a62fa-7d3e-4cd7-a6fd-e9060b70bcdb', '红梅社区卫生服务站', '07fd8a63-fd85-4bd0-9372-ec4310edd6a9',
+        '34.3402.340202.07fd8a63-fd85-4bd0-9372-ec4310edd6a9.3f4a62fa-7d3e-4cd7-a6fd-e9060b70bcdb', 'hospital.station',
+        '2021-01-04 15:13:39.873', '2021-01-04 15:13:39.873');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9a2a67d2-1fc5-4f44-88f6-f9579719c141', '平铺镇马仁村卫生室', '515f834c-072e-42bd-9cde-f3cd219f1fb0',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0.9a2a67d2-1fc5-4f44-88f6-f9579719c141', 'hospital.station',
+        '2021-01-04 15:13:41.41', '2021-01-04 15:13:41.41');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d3058fd4-182f-4168-97b9-eb8188198da6', '芦南潘冲村卫生室', 'e1f4b409-5acc-40aa-b969-7e3581093396',
+        '34.3402.340222.e1f4b409-5acc-40aa-b969-7e3581093396.d3058fd4-182f-4168-97b9-eb8188198da6', 'hospital.station',
+        '2021-01-04 15:13:41.706', '2021-01-04 15:13:41.706');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7d7f0f03-c7f5-4495-ac51-6875bdc5249c', '峨桥镇岳山村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.7d7f0f03-c7f5-4495-ac51-6875bdc5249c', 'hospital.station',
+        '2021-01-04 15:13:40.694', '2021-01-04 15:13:40.694');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('3cd2564d-2e5b-4244-95da-69e7f9851963', '沈巷镇灯塔村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.3cd2564d-2e5b-4244-95da-69e7f9851963', 'hospital.station',
+        '2021-01-04 15:13:40.26', '2021-01-04 15:13:40.26');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('06bf670d-45a8-4eaa-866c-be4b0c3ebfaa', '峨桥镇农庄村大桥卫生站', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.06bf670d-45a8-4eaa-866c-be4b0c3ebfaa', 'hospital.station',
+        '2021-01-04 15:13:40.694', '2021-01-04 15:13:40.694');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('550f5db4-2056-49c1-968d-9116a4fb0af9', '二坝镇天河卫生室', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.550f5db4-2056-49c1-968d-9116a4fb0af9', 'hospital.station',
+        '2021-01-04 15:13:40.376', '2021-01-04 15:13:40.376');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e2937cfe-c4c2-48fc-82cd-0f3ac1df2e40', '龙山街道红星社区卫生服务站', '9a107463-4624-4403-9c01-ccd184c09541',
+        '34.3402.340271.9a107463-4624-4403-9c01-ccd184c09541.e2937cfe-c4c2-48fc-82cd-0f3ac1df2e40', 'hospital.station',
+        '2021-01-04 15:13:40.616', '2021-01-04 15:13:40.616');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b1a57946-7e42-43c3-be35-84eef8a10a4f', '二坝镇永宁卫生室', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.b1a57946-7e42-43c3-be35-84eef8a10a4f', 'hospital.station',
+        '2021-01-04 15:13:40.379', '2021-01-04 15:13:40.379');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e12a2cba-1ee8-4885-bd9f-c5876f13cf63', '峨桥镇响水涧村东山卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.e12a2cba-1ee8-4885-bd9f-c5876f13cf63', 'hospital.station',
+        '2021-01-04 15:13:40.698', '2021-01-04 15:13:40.698');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4cc7972e-5116-4f6e-b24d-dee1edf42501', '平铺镇龙岗村卫生室', '515f834c-072e-42bd-9cde-f3cd219f1fb0',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0.4cc7972e-5116-4f6e-b24d-dee1edf42501', 'hospital.station',
+        '2021-01-04 15:13:41.41', '2021-01-04 15:13:41.41');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f5cc3db1-463f-4111-a792-913706e4014c', '峨桥镇新淮村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.f5cc3db1-463f-4111-a792-913706e4014c', 'hospital.station',
+        '2021-01-04 15:13:40.698', '2021-01-04 15:13:40.698');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5dbcdfc6-92ac-4ddb-9196-39435e3bd9fb', '白马街道新义村卫生室', 'bf55c402-e1d6-417a-afe3-49e578acb85a',
+        '34.3402.340203.bf55c402-e1d6-417a-afe3-49e578acb85a.5dbcdfc6-92ac-4ddb-9196-39435e3bd9fb', 'hospital.station',
+        '2021-01-04 15:13:39.495', '2021-01-04 15:13:39.495');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('730281e5-4d1c-41d5-ab17-8ee1dacf4cc5', '高安街道裕民村卫生室', '18486fe5-4125-41c8-808c-5838f7536aff',
+        '34.3402.340208.18486fe5-4125-41c8-808c-5838f7536aff.730281e5-4d1c-41d5-ab17-8ee1dacf4cc5', 'hospital.station',
+        '2021-01-04 15:13:40.903', '2021-01-04 15:13:40.903');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7d4255c0-70f9-48ee-8ddc-7c9b4e18b4a1', '二坝镇中路卫生室', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.7d4255c0-70f9-48ee-8ddc-7c9b4e18b4a1', 'hospital.station',
+        '2021-01-04 15:13:40.378', '2021-01-04 15:13:40.378');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7fe7594e-b958-41ab-9120-4aa76c5fb4dc', '万春街道新苑社区卫生服务二站', '011f46c7-0d49-4eb5-8011-e41c67f4ea0a',
+        '34.3402.340271.011f46c7-0d49-4eb5-8011-e41c67f4ea0a.7fe7594e-b958-41ab-9120-4aa76c5fb4dc', 'hospital.station',
+        '2021-01-04 15:13:40.565', '2021-01-04 15:13:40.565');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('73781191-cb31-43ab-8d92-70fdf6721460', '龙山街道新里城社区卫生服务站', '9a107463-4624-4403-9c01-ccd184c09541',
+        '34.3402.340271.9a107463-4624-4403-9c01-ccd184c09541.73781191-cb31-43ab-8d92-70fdf6721460', 'hospital.station',
+        '2021-01-04 15:13:40.615', '2021-01-04 15:13:40.615');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2147e2bb-ed86-4b70-94b7-444c33db3836', '孙村镇长垅村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.2147e2bb-ed86-4b70-94b7-444c33db3836', 'hospital.station',
+        '2021-01-04 15:13:41.321', '2021-01-04 15:13:41.321');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ecd87422-021c-457f-92b4-fb55e55892c0', '孙村镇龙华村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.ecd87422-021c-457f-92b4-fb55e55892c0', 'hospital.station',
+        '2021-01-04 15:13:41.322', '2021-01-04 15:13:41.322');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7b8050b8-2751-41a6-a45c-674c44c88b7f', '峨桥镇响水涧村龟山卫生站', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.7b8050b8-2751-41a6-a45c-674c44c88b7f', 'hospital.station',
+        '2021-01-04 15:13:40.695', '2021-01-04 15:13:40.695');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5bd18516-6227-4a32-97c7-f2fd84edc8fa', '龙湖街道彭村卫生室', '08dce031-90f2-498e-9efd-08e45480bf2c',
+        '34.3402.340208.08dce031-90f2-498e-9efd-08e45480bf2c.5bd18516-6227-4a32-97c7-f2fd84edc8fa', 'hospital.station',
+        '2021-01-04 15:13:40.854', '2021-01-04 15:13:40.854');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('418c5921-2f80-4c02-a5c0-37f6fc4c0f3d', '孙村镇大冲村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.418c5921-2f80-4c02-a5c0-37f6fc4c0f3d', 'hospital.station',
+        '2021-01-04 15:13:41.321', '2021-01-04 15:13:41.321');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a17be7d1-c4f9-48b3-b306-ac428e792537', '湾里街道银湖社区卫生服务站', '2e7b7071-7252-4134-8180-7388fd3f7074',
+        '34.3402.340207.2e7b7071-7252-4134-8180-7388fd3f7074.a17be7d1-c4f9-48b3-b306-ac428e792537', 'hospital.station',
+        '2021-01-04 15:13:40.531', '2021-01-04 15:13:40.531');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1002a4b1-2664-4a5f-82b5-03cdc4935eb4', '二坝镇康湾卫生室', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.1002a4b1-2664-4a5f-82b5-03cdc4935eb4', 'hospital.station',
+        '2021-01-04 15:13:40.376', '2021-01-04 15:13:40.376');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ae61df71-23a1-43f2-97cf-33b2e656f916', '汤沟镇黄马村卫生室', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.ae61df71-23a1-43f2-97cf-33b2e656f916', 'hospital.station',
+        '2021-01-04 15:13:40.466', '2021-01-04 15:13:40.466');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1609acf6-3d82-440a-924d-de295d5edfb2', '弋矶山社区卫生服务中心', '340202',
+        '34.3402.340202.1609acf6-3d82-440a-924d-de295d5edfb2', 'centre.center', '2021-01-04 15:13:39.987',
+        '2021-01-04 15:13:39.987');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8d94fc12-6a59-421c-a7a0-74112a4da26c', '鸠江区沈巷镇中心卫生院', '340207',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c', 'centre.home', '2021-01-04 15:13:40.236',
+        '2021-01-04 15:13:40.236');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2e7b7071-7252-4134-8180-7388fd3f7074', '鸠江区湾里街道社区卫生服务中心', '340207',
+        '34.3402.340207.2e7b7071-7252-4134-8180-7388fd3f7074', 'centre.center', '2021-01-04 15:13:40.518',
+        '2021-01-04 15:13:40.518');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f454e0a4-9b87-4a10-8c83-80d53f773716', '沈巷镇南埂村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.f454e0a4-9b87-4a10-8c83-80d53f773716', 'hospital.station',
+        '2021-01-04 15:13:40.261', '2021-01-04 15:13:40.261');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a104146b-e76f-4050-9782-fd7727bd1fd6', '荻港镇杨湾村卫生室', 'e1f4b409-5acc-40aa-b969-7e3581093396',
+        '34.3402.340222.e1f4b409-5acc-40aa-b969-7e3581093396.a104146b-e76f-4050-9782-fd7727bd1fd6', 'hospital.station',
+        '2021-01-04 15:13:41.705', '2021-01-04 15:13:41.705');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e1a7217b-2a3a-411e-853b-25c2d2cb4a03', '汤沟镇光华村卫生室', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.e1a7217b-2a3a-411e-853b-25c2d2cb4a03', 'hospital.station',
+        '2021-01-04 15:13:40.467', '2021-01-04 15:13:40.467');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6527c4e3-6bfd-497c-8115-2e0b791f249c', '西洋里社区卫生服务站', '9a66b162-5489-4add-ab5c-ae07716863c5',
+        '34.3402.340202.9a66b162-5489-4add-ab5c-ae07716863c5.6527c4e3-6bfd-497c-8115-2e0b791f249c', 'hospital.station',
+        '2021-01-04 15:13:39.808', '2021-01-04 15:13:39.808');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('581399c2-d9df-46fa-9c5f-8bf392b54d4b', '黄浒汪洋村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.581399c2-d9df-46fa-9c5f-8bf392b54d4b', 'hospital.station',
+        '2021-01-04 15:13:41.321', '2021-01-04 15:13:41.321');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e8539285-5d50-4505-9aa4-f0ba75ce5259', '白茆镇套北村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.e8539285-5d50-4505-9aa4-f0ba75ce5259', 'hospital.station',
+        '2021-01-04 15:13:40.135', '2021-01-04 15:13:40.135');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('567250ce-a1cb-4384-8db4-e1ff9954ff05', '二坝镇雍南社区卫生室', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.567250ce-a1cb-4384-8db4-e1ff9954ff05', 'hospital.station',
+        '2021-01-04 15:13:40.377', '2021-01-04 15:13:40.377');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8f4ab0d5-8f59-4438-92dc-0660d53dbe7b', '湾里街道石城社区卫生服务站', '2e7b7071-7252-4134-8180-7388fd3f7074',
+        '34.3402.340207.2e7b7071-7252-4134-8180-7388fd3f7074.8f4ab0d5-8f59-4438-92dc-0660d53dbe7b', 'hospital.station',
+        '2021-01-04 15:13:40.531', '2021-01-04 15:13:40.531');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e9b1f813-7ce5-4325-bfd9-6308cb2b888c', '沈巷镇八角村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.e9b1f813-7ce5-4325-bfd9-6308cb2b888c', 'hospital.station',
+        '2021-01-04 15:13:40.261', '2021-01-04 15:13:40.261');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('81a6a6e5-a9e4-4a4d-95f0-0ede7d472387', '黄浒顺风村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.81a6a6e5-a9e4-4a4d-95f0-0ede7d472387', 'hospital.station',
+        '2021-01-04 15:13:41.321', '2021-01-04 15:13:41.321');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('13d143ac-7ae1-4777-904e-28f865b7e61c', '三山街道上游村老冲卫生站', '4c7774be-5a61-477e-9fe2-cdb9cdf876fa',
+        '34.3402.340208.4c7774be-5a61-477e-9fe2-cdb9cdf876fa.13d143ac-7ae1-4777-904e-28f865b7e61c', 'hospital.station',
+        '2021-01-04 15:13:40.988', '2021-01-04 15:13:40.988');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e03d7e56-701d-4681-a843-beeb9058f3bd', '汤沟镇汤沟社区卫生室', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.e03d7e56-701d-4681-a843-beeb9058f3bd', 'hospital.station',
+        '2021-01-04 15:13:40.466', '2021-01-04 15:13:40.466');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7e864952-6ed5-443c-8848-120296713a0e', '龙湖街道潘村卫生室', '08dce031-90f2-498e-9efd-08e45480bf2c',
+        '34.3402.340208.08dce031-90f2-498e-9efd-08e45480bf2c.7e864952-6ed5-443c-8848-120296713a0e', 'hospital.station',
+        '2021-01-04 15:13:40.854', '2021-01-04 15:13:40.854');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e5d1f4c2-99f0-41b6-98d2-6604f994fa4d', '荻港镇桃冲村卫生室', 'e1f4b409-5acc-40aa-b969-7e3581093396',
+        '34.3402.340222.e1f4b409-5acc-40aa-b969-7e3581093396.e5d1f4c2-99f0-41b6-98d2-6604f994fa4d', 'hospital.station',
+        '2021-01-04 15:13:41.705', '2021-01-04 15:13:41.705');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9659e92b-dd92-4ffb-bee5-f63f6d50ddf5', '沈巷镇新坝村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.9659e92b-dd92-4ffb-bee5-f63f6d50ddf5', 'hospital.station',
+        '2021-01-04 15:13:40.261', '2021-01-04 15:13:40.261');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('896934e6-a6b5-4bc8-a1fa-d401d8e637f9', '孙村镇水口村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.896934e6-a6b5-4bc8-a1fa-d401d8e637f9', 'hospital.station',
+        '2021-01-04 15:13:41.322', '2021-01-04 15:13:41.322');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d614a688-693b-4f25-a33f-8774138cb28f', '平铺镇五华村卫生室', '515f834c-072e-42bd-9cde-f3cd219f1fb0',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0.d614a688-693b-4f25-a33f-8774138cb28f', 'hospital.station',
+        '2021-01-04 15:13:41.41', '2021-01-04 15:13:41.41');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5f0c0823-4ced-4ec4-9e0a-3679c7481ba9', '二坝镇二坝社区卫生室', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.5f0c0823-4ced-4ec4-9e0a-3679c7481ba9', 'hospital.station',
+        '2021-01-04 15:13:40.378', '2021-01-04 15:13:40.378');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('581ca19d-f3bc-4542-954e-a9b57cc04d0f', '沈巷镇民安村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.581ca19d-f3bc-4542-954e-a9b57cc04d0f', 'hospital.station',
+        '2021-01-04 15:13:40.26', '2021-01-04 15:13:40.26');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('744e2bfe-7083-4c02-9a76-46217934b854', '横山横东村卫生室', '8d8281c1-fd77-41f8-a498-99900863212c',
+        '34.3402.340222.8d8281c1-fd77-41f8-a498-99900863212c.744e2bfe-7083-4c02-9a76-46217934b854', 'hospital.station',
+        '2021-01-04 15:13:41.529', '2021-01-04 15:13:41.529');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('788aced1-a7dc-45a7-ace9-e5bf5c62683e', '新林茶冲村卫生室', '515f834c-072e-42bd-9cde-f3cd219f1fb0',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0.788aced1-a7dc-45a7-ace9-e5bf5c62683e', 'hospital.station',
+        '2021-01-04 15:13:41.41', '2021-01-04 15:13:41.41');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b972c329-be4d-4216-ac20-f7b55e97e019', '白马街道新大垾村卫生室', 'bf55c402-e1d6-417a-afe3-49e578acb85a',
+        '34.3402.340203.bf55c402-e1d6-417a-afe3-49e578acb85a.b972c329-be4d-4216-ac20-f7b55e97e019', 'hospital.station',
+        '2021-01-04 15:13:39.496', '2021-01-04 15:13:39.496');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9735c6dd-5e1a-48bb-901b-40e81ec1f3b9', '繁阳镇龙亭社区居委会', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.9735c6dd-5e1a-48bb-901b-40e81ec1f3b9', 'hospital.station',
+        '2021-01-04 15:13:41.565', '2021-01-04 15:13:41.565');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6456dfb4-26fe-46a4-ab2c-8966352a0a89', '峨桥镇山湖村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.6456dfb4-26fe-46a4-ab2c-8966352a0a89', 'hospital.station',
+        '2021-01-04 15:13:40.695', '2021-01-04 15:13:40.695');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('574696c8-fb61-4386-a7a6-679a4e6e4802', '汤沟镇马圩村卫生室', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.574696c8-fb61-4386-a7a6-679a4e6e4802', 'hospital.station',
+        '2021-01-04 15:13:40.465', '2021-01-04 15:13:40.465');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f49c22b6-3081-48b5-81be-744cd700ce33', '白马街道白马村卫生室', 'bf55c402-e1d6-417a-afe3-49e578acb85a',
+        '34.3402.340203.bf55c402-e1d6-417a-afe3-49e578acb85a.f49c22b6-3081-48b5-81be-744cd700ce33', 'hospital.station',
+        '2021-01-04 15:13:39.496', '2021-01-04 15:13:39.496');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('28175062-868c-4921-b073-01689700accf', '旗杆村卫生室', '1ce002b9-99db-4620-bd68-b37200bf89d5',
+        '34.3402.340202.1ce002b9-99db-4620-bd68-b37200bf89d5.28175062-868c-4921-b073-01689700accf', 'hospital.station',
+        '2021-01-04 15:13:39.923', '2021-01-04 15:13:39.923');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e1f30306-b236-420c-93d3-6fe665f6e6af', '孙村镇金岭村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.e1f30306-b236-420c-93d3-6fe665f6e6af', 'hospital.station',
+        '2021-01-04 15:13:41.322', '2021-01-04 15:13:41.322');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('adfc1476-ec3e-4a7d-9c06-cbb6fda81f4d', '峨桥镇响水涧村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.adfc1476-ec3e-4a7d-9c06-cbb6fda81f4d', 'hospital.station',
+        '2021-01-04 15:13:40.696', '2021-01-04 15:13:40.696');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('87d0d048-f848-4557-abad-c1c23195c6fe', '沈巷镇安丰村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.87d0d048-f848-4557-abad-c1c23195c6fe', 'hospital.station',
+        '2021-01-04 15:13:40.261', '2021-01-04 15:13:40.261');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6833645f-f2c4-448f-a3f1-6d4c8feb901e', '金马门社区卫生服务站', '7f6a2a66-aa81-49f7-b687-8d9f1bfe20d3',
+        '34.3402.340202.7f6a2a66-aa81-49f7-b687-8d9f1bfe20d3.6833645f-f2c4-448f-a3f1-6d4c8feb901e', 'hospital.station',
+        '2021-01-04 15:13:39.846', '2021-01-04 15:13:39.846');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1abb5fd5-b72e-4401-bd67-d2c542d35dd6', '藕香园社区卫生服务站', '07fd8a63-fd85-4bd0-9372-ec4310edd6a9',
+        '34.3402.340202.07fd8a63-fd85-4bd0-9372-ec4310edd6a9.1abb5fd5-b72e-4401-bd67-d2c542d35dd6', 'hospital.station',
+        '2021-01-04 15:13:39.872', '2021-01-04 15:13:39.872');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('275a6052-f105-4bf0-b09b-0688fc9cc497', '湾里街道合南社区卫生服务站', '2e7b7071-7252-4134-8180-7388fd3f7074',
+        '34.3402.340207.2e7b7071-7252-4134-8180-7388fd3f7074.275a6052-f105-4bf0-b09b-0688fc9cc497', 'hospital.station',
+        '2021-01-04 15:13:40.531', '2021-01-04 15:13:40.531');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b9d6998d-01c3-4579-8eee-1e6d18931ed0', '白茆镇群利村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.b9d6998d-01c3-4579-8eee-1e6d18931ed0', 'hospital.station',
+        '2021-01-04 15:13:40.135', '2021-01-04 15:13:40.135');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('88a3d9ef-97f7-4046-9cfb-d4f2dff1f2db', '芦南新河村卫生室', 'e1f4b409-5acc-40aa-b969-7e3581093396',
+        '34.3402.340222.e1f4b409-5acc-40aa-b969-7e3581093396.88a3d9ef-97f7-4046-9cfb-d4f2dff1f2db', 'hospital.station',
+        '2021-01-04 15:13:41.705', '2021-01-04 15:13:41.705');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('80981fe9-50c3-45b4-b97f-421a4629eb3c', '峨桥镇浮山村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.80981fe9-50c3-45b4-b97f-421a4629eb3c', 'hospital.station',
+        '2021-01-04 15:13:40.695', '2021-01-04 15:13:40.695');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('14b34e25-078d-4a23-a8e5-769ffc0de1c9', '白茆镇三官殿社区卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.14b34e25-078d-4a23-a8e5-769ffc0de1c9', 'hospital.station',
+        '2021-01-04 15:13:40.133', '2021-01-04 15:13:40.133');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8644e859-09f8-4b0e-b90e-8662dda3f7d7', '繁阳镇春谷社区居委会', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.8644e859-09f8-4b0e-b90e-8662dda3f7d7', 'hospital.station',
+        '2021-01-04 15:13:41.565', '2021-01-04 15:13:41.565');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5700d430-a1f4-4948-bbbb-088fdc1e304e', '汤沟镇前进村卫生室', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.5700d430-a1f4-4948-bbbb-088fdc1e304e', 'hospital.station',
+        '2021-01-04 15:13:40.465', '2021-01-04 15:13:40.465');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d0692ef0-6bd2-442f-91c9-c4836ac2fe16', '三山街道孙滩村卫生室', '4c7774be-5a61-477e-9fe2-cdb9cdf876fa',
+        '34.3402.340208.4c7774be-5a61-477e-9fe2-cdb9cdf876fa.d0692ef0-6bd2-442f-91c9-c4836ac2fe16', 'hospital.station',
+        '2021-01-04 15:13:40.989', '2021-01-04 15:13:40.989');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('74fc2768-01ef-43bd-8eea-09caa5a132d0', '澛港街道九龙村卫生室', 'dbec1ce9-450a-4a61-9814-4ce2b37db4ea',
+        '34.3402.340203.dbec1ce9-450a-4a61-9814-4ce2b37db4ea.74fc2768-01ef-43bd-8eea-09caa5a132d0', 'hospital.station',
+        '2021-01-04 15:13:39.548', '2021-01-04 15:13:39.548');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('15f4fab5-7e14-4ed6-bff8-73a29886f232', '孙村镇枫墩村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.15f4fab5-7e14-4ed6-bff8-73a29886f232', 'hospital.station',
+        '2021-01-04 15:13:41.321', '2021-01-04 15:13:41.321');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('786b1549-35cb-4026-b0e2-5a6b15b57d7e', '峨桥镇响水涧村门村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.786b1549-35cb-4026-b0e2-5a6b15b57d7e', 'hospital.station',
+        '2021-01-04 15:13:40.698', '2021-01-04 15:13:40.698');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('35e6ac3f-9f9f-4bf1-a86b-415d7bdcce7f', '四褐山街道四山社区服务站', 'a60b15c4-a423-4244-9c35-4e1bc158fd29',
+        '34.3402.340207.a60b15c4-a423-4244-9c35-4e1bc158fd29.35e6ac3f-9f9f-4bf1-a86b-415d7bdcce7f', 'hospital.station',
+        '2021-01-04 15:13:40.04', '2021-01-04 15:13:40.04');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('837cd0cf-2e94-49ff-8fcf-b092d8580adc', '沈巷镇迎江村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.837cd0cf-2e94-49ff-8fcf-b092d8580adc', 'hospital.station',
+        '2021-01-04 15:13:40.26', '2021-01-04 15:13:40.26');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('24748819-c714-4d66-af55-266f1cece9f4', '龙山街道龙山社区卫生服务站', '9a107463-4624-4403-9c01-ccd184c09541',
+        '34.3402.340271.9a107463-4624-4403-9c01-ccd184c09541.24748819-c714-4d66-af55-266f1cece9f4', 'hospital.station',
+        '2021-01-04 15:13:40.615', '2021-01-04 15:13:40.615');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e86ccbe4-5b18-422e-a1a7-c848d6798b67', '行春村卫生室', '1ce002b9-99db-4620-bd68-b37200bf89d5',
+        '34.3402.340202.1ce002b9-99db-4620-bd68-b37200bf89d5.e86ccbe4-5b18-422e-a1a7-c848d6798b67', 'hospital.station',
+        '2021-01-04 15:13:39.924', '2021-01-04 15:13:39.924');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('50c098ec-769b-4c6e-8983-e5dcf13043fb', '白茆镇二垅村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.50c098ec-769b-4c6e-8983-e5dcf13043fb', 'hospital.station',
+        '2021-01-04 15:13:40.134', '2021-01-04 15:13:40.134');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('76cd899e-a1b2-4534-9720-da130f15f0cf', '万春街道新民社区卫生服务站第二团队',
+        '011f46c7-0d49-4eb5-8011-e41c67f4ea0a',
+        '34.3402.340271.011f46c7-0d49-4eb5-8011-e41c67f4ea0a.76cd899e-a1b2-4534-9720-da130f15f0cf', 'hospital.station',
+        '2021-01-04 15:13:40.565', '2021-01-04 15:13:40.565');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('cf2a7dd2-88c3-49d2-83b8-f81d83f9a467', '孙村镇长寺村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.cf2a7dd2-88c3-49d2-83b8-f81d83f9a467', 'hospital.station',
+        '2021-01-04 15:13:41.322', '2021-01-04 15:13:41.322');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ad6a5e43-4be8-4b25-832e-7c4b621c3707', '新林山河村卫生室', '515f834c-072e-42bd-9cde-f3cd219f1fb0',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0.ad6a5e43-4be8-4b25-832e-7c4b621c3707', 'hospital.station',
+        '2021-01-04 15:13:41.41', '2021-01-04 15:13:41.41');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e51c7e5b-e901-4c04-8be1-db1459e6142b', '火龙街道良福村卫生室', '8dfa5535-a7ca-4300-bd48-92f1b032404b',
+        '34.3402.340203.8dfa5535-a7ca-4300-bd48-92f1b032404b.e51c7e5b-e901-4c04-8be1-db1459e6142b', 'hospital.station',
+        '2021-01-04 15:13:39.61', '2021-01-04 15:13:39.61');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c9b09b0d-ba91-4f16-be50-2e9bce1c4cf3', '龙山街道大圣社区卫生服务站', '9a107463-4624-4403-9c01-ccd184c09541',
+        '34.3402.340271.9a107463-4624-4403-9c01-ccd184c09541.c9b09b0d-ba91-4f16-be50-2e9bce1c4cf3', 'hospital.station',
+        '2021-01-04 15:13:40.616', '2021-01-04 15:13:40.616');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b1b31db4-ed08-4ed7-a44b-ded130b81888', '繁阳镇铁门村卫生室', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.b1b31db4-ed08-4ed7-a44b-ded130b81888', 'hospital.station',
+        '2021-01-04 15:13:41.566', '2021-01-04 15:13:41.566');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e931f7f5-4433-418a-a5ce-b9cea5556a1d', '马坝大阳村卫生室', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.e931f7f5-4433-418a-a5ce-b9cea5556a1d', 'hospital.station',
+        '2021-01-04 15:13:41.567', '2021-01-04 15:13:41.567');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('35cf2063-d9df-40c0-aefa-16a5b7b609f5', '峨桥镇东湾村卫生站', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.35cf2063-d9df-40c0-aefa-16a5b7b609f5', 'hospital.station',
+        '2021-01-04 15:13:40.695', '2021-01-04 15:13:40.695');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('340222', '繁昌区', '3402', '34.3402.340222', 'district', '2020-05-26 14:05:24.877', '2020-10-24 13:03:15.118');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('986c1ea2-e4d7-40ab-ae4e-b522334cfc61', '姚沟镇卫生院', '340225',
+        '34.3402.340225.986c1ea2-e4d7-40ab-ae4e-b522334cfc61', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.248665');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4c3e5d62-a64b-40cc-8c58-85601b002fe1', '古城社区卫生服务站', '9a66b162-5489-4add-ab5c-ae07716863c5',
+        '34.3402.340202.9a66b162-5489-4add-ab5c-ae07716863c5.4c3e5d62-a64b-40cc-8c58-85601b002fe1', 'hospital.station',
+        '2021-01-04 15:13:39.808', '2021-01-04 15:13:39.808');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8a3e6031-7a14-487b-ac8e-d8b285959b42', '白茆镇旭光村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.8a3e6031-7a14-487b-ac8e-d8b285959b42', 'hospital.station',
+        '2021-01-04 15:13:40.134', '2021-01-04 15:13:40.134');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c8b6ab7c-2683-4ef2-beb5-7e2fa4e9ed05', '峨山镇柏树村卫生室', 'c98be9c5-23c1-405c-b102-e4641214b9e9',
+        '34.3402.340222.c98be9c5-23c1-405c-b102-e4641214b9e9.c8b6ab7c-2683-4ef2-beb5-7e2fa4e9ed05', 'hospital.station',
+        '2021-01-04 15:13:41.477', '2021-01-04 15:13:41.477');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9353e68e-a66a-4283-9e15-197639bbf2c6', '峨山镇千军村卫生室', 'c98be9c5-23c1-405c-b102-e4641214b9e9',
+        '34.3402.340222.c98be9c5-23c1-405c-b102-e4641214b9e9.9353e68e-a66a-4283-9e15-197639bbf2c6', 'hospital.station',
+        '2021-01-04 15:13:41.477', '2021-01-04 15:13:41.477');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d93af9b5-7856-4edb-b8ff-59bf18791b09', '官陡街道星辰社区服务站', '2e9ec91b-67e0-49ce-9d4e-88635450603b',
+        '34.3402.340207.2e9ec91b-67e0-49ce-9d4e-88635450603b.d93af9b5-7856-4edb-b8ff-59bf18791b09', 'hospital.station',
+        '2021-01-04 15:13:41.053', '2021-01-04 15:13:41.053');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6435b2b7-894a-4c71-9ae8-76a9da8b0eae', '沈巷镇五显社区卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.6435b2b7-894a-4c71-9ae8-76a9da8b0eae', 'hospital.station',
+        '2021-01-04 15:13:40.26', '2021-01-04 15:13:40.26');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('96ef2092-a866-44db-8df3-a4c5e35a5d6c', '孙村镇犁山村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.96ef2092-a866-44db-8df3-a4c5e35a5d6c', 'hospital.station',
+        '2021-01-04 15:13:41.322', '2021-01-04 15:13:41.322');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('0f14009b-2acc-4df7-b39b-f270cac1dbb9', '三山街道三山村月桥卫生室', '4c7774be-5a61-477e-9fe2-cdb9cdf876fa',
+        '34.3402.340208.4c7774be-5a61-477e-9fe2-cdb9cdf876fa.0f14009b-2acc-4df7-b39b-f270cac1dbb9', 'hospital.station',
+        '2021-01-04 15:13:40.988', '2021-01-04 15:13:40.988');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a6f7aa42-d86e-4a3f-83fd-ed95a5edc779', '孙村镇九连村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.a6f7aa42-d86e-4a3f-83fd-ed95a5edc779', 'hospital.station',
+        '2021-01-04 15:13:41.322', '2021-01-04 15:13:41.322');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4700b103-3912-4c7e-9906-2d0b24353554', '沈巷镇裕溪社区卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.4700b103-3912-4c7e-9906-2d0b24353554', 'hospital.station',
+        '2021-01-04 15:13:40.26', '2021-01-04 15:13:40.26');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('96420ce6-88b3-4339-a663-38301885443c', '汤沟镇板桥村卫生室', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.96420ce6-88b3-4339-a663-38301885443c', 'hospital.station',
+        '2021-01-04 15:13:40.466', '2021-01-04 15:13:40.466');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('604b6daf-f64c-4887-b3fb-481059928153', '花园社区卫生服务站', '1609acf6-3d82-440a-924d-de295d5edfb2',
+        '34.3402.340202.1609acf6-3d82-440a-924d-de295d5edfb2.604b6daf-f64c-4887-b3fb-481059928153', 'hospital.station',
+        '2021-01-04 15:13:40.001', '2021-01-04 15:13:40.001');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c98d5785-26a9-429e-bfae-72569a46436c', '澛港街道学府社区服务站', 'dbec1ce9-450a-4a61-9814-4ce2b37db4ea',
+        '34.3402.340203.dbec1ce9-450a-4a61-9814-4ce2b37db4ea.c98d5785-26a9-429e-bfae-72569a46436c', 'hospital.station',
+        '2021-01-04 15:13:39.547', '2021-01-04 15:13:39.547');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c970a990-97a8-42c0-9479-05e1a5756511', '白茆镇仔洲村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.c970a990-97a8-42c0-9479-05e1a5756511', 'hospital.station',
+        '2021-01-04 15:13:40.135', '2021-01-04 15:13:40.135');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('eae3f02e-9f37-4e8a-bae1-3c69ef521cd5', '弋江区马塘街道社区卫生服务中心',
+        '7dc8edb1-3d60-4e4d-a4a0-b7ce90bdf2c7',
+        '34.3402.340203.7dc8edb1-3d60-4e4d-a4a0-b7ce90bdf2c7.eae3f02e-9f37-4e8a-bae1-3c69ef521cd5', 'hospital.center',
+        '2021-01-04 15:13:39.443', '2021-01-04 15:13:39.443');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('df6365a4-5e87-42fc-a9e1-73cad5b083c4', '弋江区澛港街道社区卫生服务中心',
+        'dbec1ce9-450a-4a61-9814-4ce2b37db4ea',
+        '34.3402.340203.dbec1ce9-450a-4a61-9814-4ce2b37db4ea.df6365a4-5e87-42fc-a9e1-73cad5b083c4', 'hospital.center',
+        '2021-01-04 15:13:39.534', '2021-01-04 15:13:39.534');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ab38456c-2484-4158-adba-7f96e2cad6cf', '张家山社区卫生服务中心', '9a66b162-5489-4add-ab5c-ae07716863c5',
+        '34.3402.340202.9a66b162-5489-4add-ab5c-ae07716863c5.ab38456c-2484-4158-adba-7f96e2cad6cf', 'hospital.center',
+        '2021-01-04 15:13:39.791', '2021-01-04 15:13:39.791');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4c83fb2c-0989-436b-b72e-9dc5697ef03c', '天门山社区卫生服务中心', '07fd8a63-fd85-4bd0-9372-ec4310edd6a9',
+        '34.3402.340202.07fd8a63-fd85-4bd0-9372-ec4310edd6a9.4c83fb2c-0989-436b-b72e-9dc5697ef03c', 'hospital.center',
+        '2021-01-04 15:13:39.861', '2021-01-04 15:13:39.861');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1eac1d1b-ab8e-4422-ae0c-2ab14cb6b416', '弋矶山社区卫生服务中心', '1609acf6-3d82-440a-924d-de295d5edfb2',
+        '34.3402.340202.1609acf6-3d82-440a-924d-de295d5edfb2.1eac1d1b-ab8e-4422-ae0c-2ab14cb6b416', 'hospital.center',
+        '2021-01-04 15:13:39.992', '2021-01-04 15:13:39.992');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c8827ba6-32b5-45b7-b45d-a13bd64b3cee', '鸠江区清水街道社区卫生服务中心',
+        '61940548-1a15-45e1-b8b6-72d194c2590a',
+        '34.3402.340207.61940548-1a15-45e1-b8b6-72d194c2590a.c8827ba6-32b5-45b7-b45d-a13bd64b3cee', 'hospital.center',
+        '2021-01-04 15:13:40.064', '2021-01-04 15:13:40.064');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1595c812-58c5-4221-8f69-afb08ff3e870', '鸠江区二坝卫生院', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.1595c812-58c5-4221-8f69-afb08ff3e870', 'hospital.center',
+        '2021-01-04 15:13:40.354', '2021-01-04 15:13:40.354');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5c30297b-2486-432d-b1ed-1f6eef18c4db', '万春街道社区卫生服务中心', '011f46c7-0d49-4eb5-8011-e41c67f4ea0a',
+        '34.3402.340271.011f46c7-0d49-4eb5-8011-e41c67f4ea0a.5c30297b-2486-432d-b1ed-1f6eef18c4db', 'hospital.center',
+        '2021-01-04 15:13:40.556', '2021-01-04 15:13:40.556');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9a02fea8-11f2-4455-a821-97b1f1b6fb97', '三山区峨桥镇中心卫生院', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.9a02fea8-11f2-4455-a821-97b1f1b6fb97', 'hospital.center',
+        '2021-01-04 15:13:40.672', '2021-01-04 15:13:40.672');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c3a079d2-4b3a-4213-980a-00271b768b6c', '三山区碧桂园社区卫生服务中心', '6e4db108-0833-4f4a-8c03-c996fdfa94bd',
+        '34.3402.340208.6e4db108-0833-4f4a-8c03-c996fdfa94bd.c3a079d2-4b3a-4213-980a-00271b768b6c', 'hospital.center',
+        '2021-01-04 15:13:40.882', '2021-01-04 15:13:40.882');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2e1b848e-0df6-4bdf-a608-d85feec819d7', '三山区三山街道社区卫生服务中心',
+        '4c7774be-5a61-477e-9fe2-cdb9cdf876fa',
+        '34.3402.340208.4c7774be-5a61-477e-9fe2-cdb9cdf876fa.2e1b848e-0df6-4bdf-a608-d85feec819d7', 'hospital.center',
+        '2021-01-04 15:13:40.977', '2021-01-04 15:13:40.977');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('3405a2af-ec8e-4dde-a708-1df14a5b14f5', '孙村镇中心卫生院', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.3405a2af-ec8e-4dde-a708-1df14a5b14f5', 'hospital.center',
+        '2021-01-04 15:13:41.308', '2021-01-04 15:13:41.308');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('76bb3413-73a1-4d6a-9666-dc42b3b69980', '孙村镇中心卫生院赤沙分院', '9200fc30-e7da-4941-bc8a-7eb726b2a1ed',
+        '34.3402.340222.9200fc30-e7da-4941-bc8a-7eb726b2a1ed.76bb3413-73a1-4d6a-9666-dc42b3b69980', 'hospital.center',
+        '2021-01-04 15:13:41.749', '2021-01-04 15:13:41.749');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1ca94eb7-3f09-4042-96ee-d66c022128f7', '赤沙八分村卫生室', '9200fc30-e7da-4941-bc8a-7eb726b2a1ed',
+        '34.3402.340222.9200fc30-e7da-4941-bc8a-7eb726b2a1ed.1ca94eb7-3f09-4042-96ee-d66c022128f7', 'hospital.station',
+        '2021-01-04 15:13:41.757', '2021-01-04 15:13:41.757');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('0bac523f-76ae-4c78-bdf5-31088a0ca33e', '峨桥镇浮山村新屋卫生站', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.0bac523f-76ae-4c78-bdf5-31088a0ca33e', 'hospital.station',
+        '2021-01-04 15:13:40.694', '2021-01-04 15:13:40.694');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('90f73e15-1323-441c-ba45-76d7367fa573', '横山卫生院', '8d8281c1-fd77-41f8-a498-99900863212c',
+        '34.3402.340222.8d8281c1-fd77-41f8-a498-99900863212c.90f73e15-1323-441c-ba45-76d7367fa573', 'hospital.center',
+        '2021-01-04 15:13:41.52', '2021-01-04 15:13:41.52');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ccbbf114-d16b-4de8-baa6-34184b38ec51', '十里墩镇卫生院', '340225',
+        '34.3402.340225.ccbbf114-d16b-4de8-baa6-34184b38ec51', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.280242');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('fec5782f-8cbe-4916-ac89-bfcb26e67a04', '清水街道联盟卫生服务站', '61940548-1a15-45e1-b8b6-72d194c2590a',
+        '34.3402.340207.61940548-1a15-45e1-b8b6-72d194c2590a.fec5782f-8cbe-4916-ac89-bfcb26e67a04', 'hospital.station',
+        '2021-01-04 15:13:40.075', '2021-01-04 15:13:40.075');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('05436662-d57b-433f-8d10-41d4e53af53e', '沈巷镇雍镇社区卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.05436662-d57b-433f-8d10-41d4e53af53e', 'hospital.station',
+        '2021-01-04 15:13:40.262', '2021-01-04 15:13:40.262');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('0fb30fd5-1410-42f2-bfc9-bb6867088712', '汤沟镇三汊河社区卫生室', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.0fb30fd5-1410-42f2-bfc9-bb6867088712', 'hospital.station',
+        '2021-01-04 15:13:40.464', '2021-01-04 15:13:40.464');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9f53ee35-5a25-427f-8430-2e9970c6b557', '龙山街道BOBO城社区卫生服务站', '9a107463-4624-4403-9c01-ccd184c09541',
+        '34.3402.340271.9a107463-4624-4403-9c01-ccd184c09541.9f53ee35-5a25-427f-8430-2e9970c6b557', 'hospital.station',
+        '2021-01-04 15:13:40.615', '2021-01-04 15:13:40.615');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b811ec71-b622-4cbf-80be-61f429f6927c', '汤沟镇楼梯村卫生室', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.b811ec71-b622-4cbf-80be-61f429f6927c', 'hospital.station',
+        '2021-01-04 15:13:40.466', '2021-01-04 15:13:40.466');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('57955c6e-2b2d-482d-b320-fb06a13b3ecf', '新港镇克里村卫生室', 'd7b9eeff-1f6b-4c97-8887-e5336df17839',
+        '34.3402.340222.d7b9eeff-1f6b-4c97-8887-e5336df17839.57955c6e-2b2d-482d-b320-fb06a13b3ecf', 'hospital.station',
+        '2021-01-04 15:13:41.792', '2021-01-04 15:13:41.792');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b2316271-a292-46b5-9bce-a45fea6a62f6', '官陡街道城东社区卫生服务站', '2e9ec91b-67e0-49ce-9d4e-88635450603b',
+        '34.3402.340207.2e9ec91b-67e0-49ce-9d4e-88635450603b.b2316271-a292-46b5-9bce-a45fea6a62f6', 'hospital.station',
+        '2021-01-04 15:13:41.053', '2021-01-04 15:13:41.053');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('dfc68c70-8f34-43c9-80f1-a2123e1ab9c7', '方家村卫生室', '1ce002b9-99db-4620-bd68-b37200bf89d5',
+        '34.3402.340202.1ce002b9-99db-4620-bd68-b37200bf89d5.dfc68c70-8f34-43c9-80f1-a2123e1ab9c7', 'hospital.station',
+        '2021-01-04 15:13:39.924', '2021-01-04 15:13:39.924');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4768abe7-239c-4031-b85a-c4a5477be2d4', '湾里街道凤鸣湖社区卫生服务站', '2e7b7071-7252-4134-8180-7388fd3f7074',
+        '34.3402.340207.2e7b7071-7252-4134-8180-7388fd3f7074.4768abe7-239c-4031-b85a-c4a5477be2d4', 'hospital.station',
+        '2021-01-04 15:13:40.531', '2021-01-04 15:13:40.531');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4e35215e-d762-40bc-bd9f-89708a2d8443', '三山街道三山村卫生站', '4c7774be-5a61-477e-9fe2-cdb9cdf876fa',
+        '34.3402.340208.4c7774be-5a61-477e-9fe2-cdb9cdf876fa.4e35215e-d762-40bc-bd9f-89708a2d8443', 'hospital.station',
+        '2021-01-04 15:13:40.988', '2021-01-04 15:13:40.988');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d13736db-1c1f-4a1c-b059-ed4acc98560f', '清水街道军滩社区服务站', '61940548-1a15-45e1-b8b6-72d194c2590a',
+        '34.3402.340207.61940548-1a15-45e1-b8b6-72d194c2590a.d13736db-1c1f-4a1c-b059-ed4acc98560f', 'hospital.station',
+        '2021-01-04 15:13:40.074', '2021-01-04 15:13:40.074');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('35db5a53-04aa-42b8-992a-aa710c24bf1e', '火龙街道围山村卫生室', '8dfa5535-a7ca-4300-bd48-92f1b032404b',
+        '34.3402.340203.8dfa5535-a7ca-4300-bd48-92f1b032404b.35db5a53-04aa-42b8-992a-aa710c24bf1e', 'hospital.station',
+        '2021-01-04 15:13:39.609', '2021-01-04 15:13:39.609');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e7c10b0c-06c0-4edb-b4bb-c504d53844cb', '白茆镇浃南村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.e7c10b0c-06c0-4edb-b4bb-c504d53844cb', 'hospital.station',
+        '2021-01-04 15:13:40.135', '2021-01-04 15:13:40.135');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b47fe2e2-ce23-4cdb-9c06-898e5d4f9f24', '繁阳镇戴店村卫生室', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.b47fe2e2-ce23-4cdb-9c06-898e5d4f9f24', 'hospital.station',
+        '2021-01-04 15:13:41.566', '2021-01-04 15:13:41.566');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('aa1d6f63-5834-42c8-a119-01230b2361ca', '白茆镇永胜村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.aa1d6f63-5834-42c8-a119-01230b2361ca', 'hospital.station',
+        '2021-01-04 15:13:40.135', '2021-01-04 15:13:40.135');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9fb0af5e-641c-4274-93a5-3f8fbb3282b6', '峨桥镇茶亭村正大卫生站', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.9fb0af5e-641c-4274-93a5-3f8fbb3282b6', 'hospital.station',
+        '2021-01-04 15:13:40.695', '2021-01-04 15:13:40.695');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c77cbc8d-045c-4da6-b26a-d4acdc61630f', '高安街道泥埠村卫生室', '18486fe5-4125-41c8-808c-5838f7536aff',
+        '34.3402.340208.18486fe5-4125-41c8-808c-5838f7536aff.c77cbc8d-045c-4da6-b26a-d4acdc61630f', 'hospital.station',
+        '2021-01-04 15:13:40.903', '2021-01-04 15:13:40.903');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('868d1f30-886c-43d6-8395-de134bf63d70', '黄浒感定村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.868d1f30-886c-43d6-8395-de134bf63d70', 'hospital.station',
+        '2021-01-04 15:13:41.321', '2021-01-04 15:13:41.321');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('15717e43-eecb-4d6b-bef0-e00798c3a44c', '繁阳镇城北社区居委会', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.15717e43-eecb-4d6b-bef0-e00798c3a44c', 'hospital.station',
+        '2021-01-04 15:13:41.563', '2021-01-04 15:13:41.563');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('40552121-bd08-49ce-9661-22b0999fe61f', '沈巷镇沈巷社区卫生服务站', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.40552121-bd08-49ce-9661-22b0999fe61f', 'hospital.station',
+        '2021-01-04 15:13:40.26', '2021-01-04 15:13:40.26');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('06dd5192-f2f9-4791-bc55-0af1ca6226e5', '吉和街道申元街社区卫生服务站', '9331b528-4e39-4c2e-9264-d6b7c7152edf',
+        '34.3402.340202.9331b528-4e39-4c2e-9264-d6b7c7152edf.06dd5192-f2f9-4791-bc55-0af1ca6226e5', 'hospital.station',
+        '2021-01-04 15:13:39.772', '2021-01-04 15:13:39.772');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('65ac59b4-699a-4650-ae80-9f2f892e81d2', '官陡街道南阳社区服务站', '2e9ec91b-67e0-49ce-9d4e-88635450603b',
+        '34.3402.340207.2e9ec91b-67e0-49ce-9d4e-88635450603b.65ac59b4-699a-4650-ae80-9f2f892e81d2', 'hospital.station',
+        '2021-01-04 15:13:41.053', '2021-01-04 15:13:41.053');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('832edfa9-a223-4e79-8673-62236ffbed7f', '马厂村卫生室', '1ce002b9-99db-4620-bd68-b37200bf89d5',
+        '34.3402.340202.1ce002b9-99db-4620-bd68-b37200bf89d5.832edfa9-a223-4e79-8673-62236ffbed7f', 'hospital.station',
+        '2021-01-04 15:13:39.923', '2021-01-04 15:13:39.923');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('41972fdf-d67d-4742-b541-7e0c28d86767', '白马街道义兴村卫生室', 'bf55c402-e1d6-417a-afe3-49e578acb85a',
+        '34.3402.340203.bf55c402-e1d6-417a-afe3-49e578acb85a.41972fdf-d67d-4742-b541-7e0c28d86767', 'hospital.station',
+        '2021-01-04 15:13:39.495', '2021-01-04 15:13:39.495');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('366ba2fb-99c2-413c-b0da-c05a77f9c345', '教场东村社区卫生服务站', '7f6a2a66-aa81-49f7-b687-8d9f1bfe20d3',
+        '34.3402.340202.7f6a2a66-aa81-49f7-b687-8d9f1bfe20d3.366ba2fb-99c2-413c-b0da-c05a77f9c345', 'hospital.station',
+        '2021-01-04 15:13:39.846', '2021-01-04 15:13:39.846');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('34e2af19-6e6b-406c-aa17-758697c8d500', '繁阳镇新化社区居委会', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.34e2af19-6e6b-406c-aa17-758697c8d500', 'hospital.station',
+        '2021-01-04 15:13:41.563', '2021-01-04 15:13:41.563');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6d90ba67-6773-4a29-9a72-a38c59735ab1', '龙湖街道鲁港村卫生室', '08dce031-90f2-498e-9efd-08e45480bf2c',
+        '34.3402.340208.08dce031-90f2-498e-9efd-08e45480bf2c.6d90ba67-6773-4a29-9a72-a38c59735ab1', 'hospital.station',
+        '2021-01-04 15:13:40.854', '2021-01-04 15:13:40.854');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('00e22e83-b25e-4071-b62b-600d4a74f597', '龙湖街道高岗埠村卫生室', '08dce031-90f2-498e-9efd-08e45480bf2c',
+        '34.3402.340208.08dce031-90f2-498e-9efd-08e45480bf2c.00e22e83-b25e-4071-b62b-600d4a74f597', 'hospital.station',
+        '2021-01-04 15:13:40.854', '2021-01-04 15:13:40.854');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('fbcc0bdc-a116-4588-94a8-84f4a8d7bc23', '清水街道万春社区卫生服务站', '61940548-1a15-45e1-b8b6-72d194c2590a',
+        '34.3402.340207.61940548-1a15-45e1-b8b6-72d194c2590a.fbcc0bdc-a116-4588-94a8-84f4a8d7bc23', 'hospital.station',
+        '2021-01-04 15:13:40.074', '2021-01-04 15:13:40.074');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('21b1f28f-241e-4dbd-876d-7c59b58bd9f1', '二坝镇农场社区卫生室', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.21b1f28f-241e-4dbd-876d-7c59b58bd9f1', 'hospital.station',
+        '2021-01-04 15:13:40.38', '2021-01-04 15:13:40.38');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('3c37dc87-f5e0-480d-a915-c15ecb700997', '龙山街道上闸社区卫生服务站', '9a107463-4624-4403-9c01-ccd184c09541',
+        '34.3402.340271.9a107463-4624-4403-9c01-ccd184c09541.3c37dc87-f5e0-480d-a915-c15ecb700997', 'hospital.station',
+        '2021-01-04 15:13:40.615', '2021-01-04 15:13:40.615');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e9862aac-c7f2-4e84-9271-06b82dddfdbe', '马塘街道元山村卫生室', '7dc8edb1-3d60-4e4d-a4a0-b7ce90bdf2c7',
+        '34.3402.340203.7dc8edb1-3d60-4e4d-a4a0-b7ce90bdf2c7.e9862aac-c7f2-4e84-9271-06b82dddfdbe', 'hospital.station',
+        '2021-01-04 15:13:39.455', '2021-01-04 15:13:39.455');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d96714c0-ae19-4573-883b-4180547f3914', '小官山社区卫生服务站', '1609acf6-3d82-440a-924d-de295d5edfb2',
+        '34.3402.340202.1609acf6-3d82-440a-924d-de295d5edfb2.d96714c0-ae19-4573-883b-4180547f3914', 'hospital.station',
+        '2021-01-04 15:13:40.002', '2021-01-04 15:13:40.002');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6e4be147-bd0c-4d61-8818-0755e466dae5', '新港镇高安分院', 'd7b9eeff-1f6b-4c97-8887-e5336df17839',
+        '34.3402.340222.d7b9eeff-1f6b-4c97-8887-e5336df17839.6e4be147-bd0c-4d61-8818-0755e466dae5', 'hospital.station',
+        '2021-01-04 15:13:41.792', '2021-01-04 15:13:41.792');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('00506d12-6e75-42bc-b922-9b88dffc74b5', '繁阳镇华阳村卫生室', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.00506d12-6e75-42bc-b922-9b88dffc74b5', 'hospital.station',
+        '2021-01-04 15:13:41.567', '2021-01-04 15:13:41.567');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8cb58170-4d5d-42c6-827a-a9d335a90a04', '龙湖街道西湖新城卫生室', '08dce031-90f2-498e-9efd-08e45480bf2c',
+        '34.3402.340208.08dce031-90f2-498e-9efd-08e45480bf2c.8cb58170-4d5d-42c6-827a-a9d335a90a04', 'hospital.station',
+        '2021-01-04 15:13:40.854', '2021-01-04 15:13:40.854');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('fbf703f3-4cf2-4631-b520-80b7c9226ebe', '沈巷镇螺百社区卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.fbf703f3-4cf2-4631-b520-80b7c9226ebe', 'hospital.station',
+        '2021-01-04 15:13:40.262', '2021-01-04 15:13:40.262');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('af89c25a-8e57-4501-9646-85e5d319fca7', '马坝马厂村卫生室', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.af89c25a-8e57-4501-9646-85e5d319fca7', 'hospital.station',
+        '2021-01-04 15:13:41.565', '2021-01-04 15:13:41.565');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('63d53798-ddf3-4a3e-b801-530a6747b98a', '车站社区卫生服务站', 'beadff6a-0473-4403-9bb8-2d415540b54a',
+        '34.3402.340202.beadff6a-0473-4403-9bb8-2d415540b54a.63d53798-ddf3-4a3e-b801-530a6747b98a', 'hospital.station',
+        '2021-01-04 15:13:41.099', '2021-01-04 15:13:41.099');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('bc4a04f5-779e-4098-bdb8-1fc3f912eaed', '繁阳镇新建社区居委会', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.bc4a04f5-779e-4098-bdb8-1fc3f912eaed', 'hospital.station',
+        '2021-01-04 15:13:41.566', '2021-01-04 15:13:41.566');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('3c2716a9-275c-46c0-a520-e4a770888885', '繁阳镇范马村卫生室', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.3c2716a9-275c-46c0-a520-e4a770888885', 'hospital.station',
+        '2021-01-04 15:13:41.563', '2021-01-04 15:13:41.563');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8ce285b0-6b66-4fd7-8df1-662a94deb619', '沈巷镇大蒋村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.8ce285b0-6b66-4fd7-8df1-662a94deb619', 'hospital.station',
+        '2021-01-04 15:13:40.261', '2021-01-04 15:13:40.261');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f7b8e81c-b992-4469-9fca-41be76e4eac2', '高安街道高安村卫生室', '18486fe5-4125-41c8-808c-5838f7536aff',
+        '34.3402.340208.18486fe5-4125-41c8-808c-5838f7536aff.f7b8e81c-b992-4469-9fca-41be76e4eac2', 'hospital.station',
+        '2021-01-04 15:13:40.903', '2021-01-04 15:13:40.903');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a51fd0c8-279c-4ad7-8d63-7dd76abecaa9', '峨桥镇浮山村泊口卫生站', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.a51fd0c8-279c-4ad7-8d63-7dd76abecaa9', 'hospital.station',
+        '2021-01-04 15:13:40.696', '2021-01-04 15:13:40.696');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('dc51b97a-3e39-4cf5-a4f6-0a60c853db00', '白茆镇五号村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.dc51b97a-3e39-4cf5-a4f6-0a60c853db00', 'hospital.station',
+        '2021-01-04 15:13:40.135', '2021-01-04 15:13:40.135');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('99c78b12-b4b8-43d0-a520-fac536b79945', '峨山镇湾店村卫生室', 'c98be9c5-23c1-405c-b102-e4641214b9e9',
+        '34.3402.340222.c98be9c5-23c1-405c-b102-e4641214b9e9.99c78b12-b4b8-43d0-a520-fac536b79945', 'hospital.station',
+        '2021-01-04 15:13:41.477', '2021-01-04 15:13:41.477');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c4c220be-6a9b-4af6-9987-aabedc77b2e7', '汤沟镇三元村卫生室', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.c4c220be-6a9b-4af6-9987-aabedc77b2e7', 'hospital.station',
+        '2021-01-04 15:13:40.466', '2021-01-04 15:13:40.466');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d4a657f7-151b-43ff-9c0e-034772d5077f', '新林蔡铺村卫生室', '515f834c-072e-42bd-9cde-f3cd219f1fb0',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0.d4a657f7-151b-43ff-9c0e-034772d5077f', 'hospital.station',
+        '2021-01-04 15:13:41.41', '2021-01-04 15:13:41.41');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b0ca94d4-0785-44be-a7b8-ce3c42243fee', '三山街道新庄村磨山卫生站', '4c7774be-5a61-477e-9fe2-cdb9cdf876fa',
+        '34.3402.340208.4c7774be-5a61-477e-9fe2-cdb9cdf876fa.b0ca94d4-0785-44be-a7b8-ce3c42243fee', 'hospital.station',
+        '2021-01-04 15:13:40.988', '2021-01-04 15:13:40.988');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8c01ea79-9666-4076-86fd-8d9056eb81e9', '清水街道万春卫生服务一站', '61940548-1a15-45e1-b8b6-72d194c2590a',
+        '34.3402.340207.61940548-1a15-45e1-b8b6-72d194c2590a.8c01ea79-9666-4076-86fd-8d9056eb81e9', 'hospital.station',
+        '2021-01-04 15:13:40.074', '2021-01-04 15:13:40.074');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('47ae0cca-db36-4435-9570-251bc2cf47aa', '二坝镇水楼卫生室', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.47ae0cca-db36-4435-9570-251bc2cf47aa', 'hospital.station',
+        '2021-01-04 15:13:40.376', '2021-01-04 15:13:40.376');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('02ddaf31-e690-49d6-a49b-74502936f48e', '横山新合村卫生室', '8d8281c1-fd77-41f8-a498-99900863212c',
+        '34.3402.340222.8d8281c1-fd77-41f8-a498-99900863212c.02ddaf31-e690-49d6-a49b-74502936f48e', 'hospital.station',
+        '2021-01-04 15:13:41.529', '2021-01-04 15:13:41.529');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f2be489f-b1e6-4ca1-be10-677cdf32c3cc', '五星村卫生室', '1ce002b9-99db-4620-bd68-b37200bf89d5',
+        '34.3402.340202.1ce002b9-99db-4620-bd68-b37200bf89d5.f2be489f-b1e6-4ca1-be10-677cdf32c3cc', 'hospital.station',
+        '2021-01-04 15:13:39.924', '2021-01-04 15:13:39.924');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('83ad593a-6286-400d-b14d-78a6b6c7925d', '澛港街道龙华村卫生室', 'dbec1ce9-450a-4a61-9814-4ce2b37db4ea',
+        '34.3402.340203.dbec1ce9-450a-4a61-9814-4ce2b37db4ea.83ad593a-6286-400d-b14d-78a6b6c7925d', 'hospital.station',
+        '2021-01-04 15:13:39.547', '2021-01-04 15:13:39.547');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7c027eec-0215-459a-b01a-d0886f2ecae9', '汤沟镇红旗村卫生室', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.7c027eec-0215-459a-b01a-d0886f2ecae9', 'hospital.station',
+        '2021-01-04 15:13:40.465', '2021-01-04 15:13:40.465');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b50bdad6-74af-41c2-b29c-343957ce75f0', '沈巷镇沈南村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.b50bdad6-74af-41c2-b29c-343957ce75f0', 'hospital.station',
+        '2021-01-04 15:13:40.261', '2021-01-04 15:13:40.261');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f47d23b4-6b24-487e-aa6f-55e79d558256', '孙村镇梅冲村卫生室', 'a00e0b5c-9dc2-4620-962e-08a4c8f194da',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da.f47d23b4-6b24-487e-aa6f-55e79d558256', 'hospital.station',
+        '2021-01-04 15:13:41.322', '2021-01-04 15:13:41.322');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1eee64af-7aab-4c38-b421-f79c8d35ef2b', '澛港街道中央城卫生服务站', 'dbec1ce9-450a-4a61-9814-4ce2b37db4ea',
+        '34.3402.340203.dbec1ce9-450a-4a61-9814-4ce2b37db4ea.1eee64af-7aab-4c38-b421-f79c8d35ef2b', 'hospital.station',
+        '2021-01-04 15:13:39.546', '2021-01-04 15:13:39.546');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7ce9d3d2-a0f4-4ce5-a5ea-9300bd3a9a4a', '横山三元村卫生室', '8d8281c1-fd77-41f8-a498-99900863212c',
+        '34.3402.340222.8d8281c1-fd77-41f8-a498-99900863212c.7ce9d3d2-a0f4-4ce5-a5ea-9300bd3a9a4a', 'hospital.station',
+        '2021-01-04 15:13:41.529', '2021-01-04 15:13:41.529');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('49e43afa-875b-4274-8606-154518a9a490', '香格里拉社区卫生服务站', '07fd8a63-fd85-4bd0-9372-ec4310edd6a9',
+        '34.3402.340202.07fd8a63-fd85-4bd0-9372-ec4310edd6a9.49e43afa-875b-4274-8606-154518a9a490', 'hospital.station',
+        '2021-01-04 15:13:39.873', '2021-01-04 15:13:39.873');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('76b69c9a-6f54-45ec-8187-6c25d27cffce', '峨山镇童坝村卫生室', 'c98be9c5-23c1-405c-b102-e4641214b9e9',
+        '34.3402.340222.c98be9c5-23c1-405c-b102-e4641214b9e9.76b69c9a-6f54-45ec-8187-6c25d27cffce', 'hospital.station',
+        '2021-01-04 15:13:41.477', '2021-01-04 15:13:41.477');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('45ef204f-200b-40c6-b773-320415b65c3d', '峨山镇凤形村卫生室', 'c98be9c5-23c1-405c-b102-e4641214b9e9',
+        '34.3402.340222.c98be9c5-23c1-405c-b102-e4641214b9e9.45ef204f-200b-40c6-b773-320415b65c3d', 'hospital.station',
+        '2021-01-04 15:13:41.477', '2021-01-04 15:13:41.477');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('501f86ad-8f6a-4eeb-9961-ddf74ce32459', '化鱼山社区卫生服务站', '07fd8a63-fd85-4bd0-9372-ec4310edd6a9',
+        '34.3402.340202.07fd8a63-fd85-4bd0-9372-ec4310edd6a9.501f86ad-8f6a-4eeb-9961-ddf74ce32459', 'hospital.station',
+        '2021-01-04 15:13:39.873', '2021-01-04 15:13:39.873');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('03297f2d-e4fd-4eda-bb3b-121702a3c63f', '峨桥镇梅山村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.03297f2d-e4fd-4eda-bb3b-121702a3c63f', 'hospital.station',
+        '2021-01-04 15:13:40.693', '2021-01-04 15:13:40.693');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1f1657cd-e95b-4944-9d73-762b3ab2e0a6', '沈巷镇保圩村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.1f1657cd-e95b-4944-9d73-762b3ab2e0a6', 'hospital.station',
+        '2021-01-04 15:13:40.259', '2021-01-04 15:13:40.259');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e77aae37-9d63-4b49-83cd-952e259fa3ec', '赤沙汪冲村卫生室', '9200fc30-e7da-4941-bc8a-7eb726b2a1ed',
+        '34.3402.340222.9200fc30-e7da-4941-bc8a-7eb726b2a1ed.e77aae37-9d63-4b49-83cd-952e259fa3ec', 'hospital.station',
+        '2021-01-04 15:13:41.757', '2021-01-04 15:13:41.757');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('865175c6-8c92-4724-934b-0041bf8585b1', '白茆镇南垅村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.865175c6-8c92-4724-934b-0041bf8585b1', 'hospital.station',
+        '2021-01-04 15:13:40.134', '2021-01-04 15:13:40.134');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4b344a5e-da0f-4681-ae33-8e3a3d2748f2', '汤沟镇冠军村卫生室', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.4b344a5e-da0f-4681-ae33-8e3a3d2748f2', 'hospital.station',
+        '2021-01-04 15:13:40.465', '2021-01-04 15:13:40.465');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('19dd9226-fa4c-4b99-b013-04b28d69c7d9', '繁阳镇城南社区居委会', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.19dd9226-fa4c-4b99-b013-04b28d69c7d9', 'hospital.station',
+        '2021-01-04 15:13:41.563', '2021-01-04 15:13:41.563');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('0ceb1e1c-255c-431c-bfaf-8be8cc6457ed', '峨山镇凤形村卫生室2', 'c98be9c5-23c1-405c-b102-e4641214b9e9',
+        '34.3402.340222.c98be9c5-23c1-405c-b102-e4641214b9e9.0ceb1e1c-255c-431c-bfaf-8be8cc6457ed', 'hospital.station',
+        '2021-01-04 15:13:41.477', '2021-01-04 15:13:41.477');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('041b3ddf-6322-443c-b619-0d6546936e91', '二坝镇卫生院分院', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.041b3ddf-6322-443c-b619-0d6546936e91', 'hospital.station',
+        '2021-01-04 15:13:40.38', '2021-01-04 15:13:40.38');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5ed25298-b48f-4cca-bd71-c6499a99e414', '淳良里社区卫生服务站', '9a66b162-5489-4add-ab5c-ae07716863c5',
+        '34.3402.340202.9a66b162-5489-4add-ab5c-ae07716863c5.5ed25298-b48f-4cca-bd71-c6499a99e414', 'hospital.station',
+        '2021-01-04 15:13:39.808', '2021-01-04 15:13:39.808');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('af3c5249-524c-4b52-9038-5edab9eb0b79', '三山街道长坝村卫生室', '4c7774be-5a61-477e-9fe2-cdb9cdf876fa',
+        '34.3402.340208.4c7774be-5a61-477e-9fe2-cdb9cdf876fa.af3c5249-524c-4b52-9038-5edab9eb0b79', 'hospital.station',
+        '2021-01-04 15:13:40.988', '2021-01-04 15:13:40.988');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b2113636-d2eb-481d-b32a-eea9ec631793', '峨桥镇浮山村徐屋卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.b2113636-d2eb-481d-b32a-eea9ec631793', 'hospital.station',
+        '2021-01-04 15:13:40.696', '2021-01-04 15:13:40.696');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d1d6155f-9c2a-49f4-8609-3edfd9b4fe26', '官陡街道观岚社区服务站', '2e9ec91b-67e0-49ce-9d4e-88635450603b',
+        '34.3402.340207.2e9ec91b-67e0-49ce-9d4e-88635450603b.d1d6155f-9c2a-49f4-8609-3edfd9b4fe26', 'hospital.station',
+        '2021-01-04 15:13:41.053', '2021-01-04 15:13:41.053');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('01b620f4-354a-4ee3-b2ad-c3968c43d304', '体育场社区卫生服务站', '9331b528-4e39-4c2e-9264-d6b7c7152edf',
+        '34.3402.340202.9331b528-4e39-4c2e-9264-d6b7c7152edf.01b620f4-354a-4ee3-b2ad-c3968c43d304', 'hospital.station',
+        '2021-01-04 15:13:39.772', '2021-01-04 15:13:39.772');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('3bf0fcda-cf3c-4fb8-a1d4-5a81b55fcc44', '沈巷镇双坝村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.3bf0fcda-cf3c-4fb8-a1d4-5a81b55fcc44', 'hospital.station',
+        '2021-01-04 15:13:40.26', '2021-01-04 15:13:40.26');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e459fc56-2d32-4549-9f5c-67ce8f94f1bb', '周家山社区卫生服务站', '1609acf6-3d82-440a-924d-de295d5edfb2',
+        '34.3402.340202.1609acf6-3d82-440a-924d-de295d5edfb2.e459fc56-2d32-4549-9f5c-67ce8f94f1bb', 'hospital.station',
+        '2021-01-04 15:13:40.002', '2021-01-04 15:13:40.002');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f25120ce-c111-40df-ac1e-f4c5c16e321d', '峨桥镇峨桥村章军卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.f25120ce-c111-40df-ac1e-f4c5c16e321d', 'hospital.station',
+        '2021-01-04 15:13:40.694', '2021-01-04 15:13:40.694');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ebe34f48-3a2c-4836-b5f7-773e5c2d78d2', '腰埂村卫生室', '1ce002b9-99db-4620-bd68-b37200bf89d5',
+        '34.3402.340202.1ce002b9-99db-4620-bd68-b37200bf89d5.ebe34f48-3a2c-4836-b5f7-773e5c2d78d2', 'hospital.station',
+        '2021-01-04 15:13:39.924', '2021-01-04 15:13:39.924');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2f41aaf9-7067-4c5b-9bdd-f87f537a416d', '峨桥镇峨桥村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.2f41aaf9-7067-4c5b-9bdd-f87f537a416d', 'hospital.station',
+        '2021-01-04 15:13:40.694', '2021-01-04 15:13:40.694');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8a6417fd-4c9e-4f70-92db-e147f3fd67f4', '清水街道万春卫生服务二站', '61940548-1a15-45e1-b8b6-72d194c2590a',
+        '34.3402.340207.61940548-1a15-45e1-b8b6-72d194c2590a.8a6417fd-4c9e-4f70-92db-e147f3fd67f4', 'hospital.station',
+        '2021-01-04 15:13:40.075', '2021-01-04 15:13:40.075');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8a3052e5-479a-4486-8e0a-b8cdde6b32bd', '新林郭仁村卫生室', '515f834c-072e-42bd-9cde-f3cd219f1fb0',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0.8a3052e5-479a-4486-8e0a-b8cdde6b32bd', 'hospital.station',
+        '2021-01-04 15:13:41.41', '2021-01-04 15:13:41.41');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e8ad355b-76b7-4590-a7ed-043036384817', '沈巷镇丰圩村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.e8ad355b-76b7-4590-a7ed-043036384817', 'hospital.station',
+        '2021-01-04 15:13:40.261', '2021-01-04 15:13:40.261');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1b7693a9-a0ee-4141-bd81-19be932d9e60', '白茆镇新树村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.1b7693a9-a0ee-4141-bd81-19be932d9e60', 'hospital.station',
+        '2021-01-04 15:13:40.134', '2021-01-04 15:13:40.134');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e328cbfe-a24c-4b43-b274-944bde46b9b7', '马塘街道松元村卫生室', '7dc8edb1-3d60-4e4d-a4a0-b7ce90bdf2c7',
+        '34.3402.340203.7dc8edb1-3d60-4e4d-a4a0-b7ce90bdf2c7.e328cbfe-a24c-4b43-b274-944bde46b9b7', 'hospital.station',
+        '2021-01-04 15:13:39.455', '2021-01-04 15:13:39.455');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5297babd-f801-428a-aa43-baf5b30d6599', '火龙街道四联社区卫生室', '8dfa5535-a7ca-4300-bd48-92f1b032404b',
+        '34.3402.340203.8dfa5535-a7ca-4300-bd48-92f1b032404b.5297babd-f801-428a-aa43-baf5b30d6599', 'hospital.station',
+        '2021-01-04 15:13:39.609', '2021-01-04 15:13:39.609');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f04d333d-f286-4521-97c7-6bd7cff452ac', '白茆镇六洲村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.f04d333d-f286-4521-97c7-6bd7cff452ac', 'hospital.station',
+        '2021-01-04 15:13:40.135', '2021-01-04 15:13:40.135');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f34e3f09-f3ca-42d1-9a7c-1ba93d3d25a2', '峨桥镇茗稥社区服务站', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.f34e3f09-f3ca-42d1-9a7c-1ba93d3d25a2', 'hospital.station',
+        '2021-01-04 15:13:40.694', '2021-01-04 15:13:40.694');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d8cfdd0c-fc95-4093-b21f-4a0a9288eb8a', '利民村卫生室', '1ce002b9-99db-4620-bd68-b37200bf89d5',
+        '34.3402.340202.1ce002b9-99db-4620-bd68-b37200bf89d5.d8cfdd0c-fc95-4093-b21f-4a0a9288eb8a', 'hospital.station',
+        '2021-01-04 15:13:39.923', '2021-01-04 15:13:39.923');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('413a85ea-0749-4a66-97f7-b0bbccfdd593', '鸠江区裕溪口街道社区卫生服务中心', '340207',
+        '34.3402.340207.413a85ea-0749-4a66-97f7-b0bbccfdd593', 'centre.center', '2021-01-04 15:13:40.651',
+        '2021-01-04 15:13:40.651');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('18486fe5-4125-41c8-808c-5838f7536aff', '三山区高安街道社区卫生服务中心', '340208',
+        '34.3402.340208.18486fe5-4125-41c8-808c-5838f7536aff', 'centre.center', '2021-01-04 15:13:40.889',
+        '2021-01-04 15:13:40.889');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4a179b24-1983-48cd-9e04-8a0c0115ed57', '白茆镇江坝社区卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.4a179b24-1983-48cd-9e04-8a0c0115ed57', 'hospital.station',
+        '2021-01-04 15:13:40.133', '2021-01-04 15:13:40.133');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('83a8fd8e-eb33-4a9c-bee4-52ed510bb6aa', '马塘街道洪桥社区卫生服务站', '7dc8edb1-3d60-4e4d-a4a0-b7ce90bdf2c7',
+        '34.3402.340203.7dc8edb1-3d60-4e4d-a4a0-b7ce90bdf2c7.83a8fd8e-eb33-4a9c-bee4-52ed510bb6aa', 'hospital.station',
+        '2021-01-04 15:13:39.454', '2021-01-04 15:13:39.454');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1bc016aa-4995-4fd2-af2a-a3dc888bc94e', '白马街道牌坊村卫生室', 'bf55c402-e1d6-417a-afe3-49e578acb85a',
+        '34.3402.340203.bf55c402-e1d6-417a-afe3-49e578acb85a.1bc016aa-4995-4fd2-af2a-a3dc888bc94e', 'hospital.station',
+        '2021-01-04 15:13:39.495', '2021-01-04 15:13:39.495');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('679e7a78-43bd-4049-839e-b3d5dd2bf497', '白马街道塔影村卫生室', 'bf55c402-e1d6-417a-afe3-49e578acb85a',
+        '34.3402.340203.bf55c402-e1d6-417a-afe3-49e578acb85a.679e7a78-43bd-4049-839e-b3d5dd2bf497', 'hospital.station',
+        '2021-01-04 15:13:39.495', '2021-01-04 15:13:39.495');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('bd67f150-7284-4d9e-b29a-63e22454d39d', '峨桥镇峨桥村葛埔卫生站', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.bd67f150-7284-4d9e-b29a-63e22454d39d', 'hospital.station',
+        '2021-01-04 15:13:40.694', '2021-01-04 15:13:40.694');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('61a85e7b-88a2-45f9-9b0b-5690f369da3c', '马坝茶山村卫生室（团队）', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.61a85e7b-88a2-45f9-9b0b-5690f369da3c', 'hospital.station',
+        '2021-01-04 15:13:41.567', '2021-01-04 15:13:41.567');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6e7315ba-4fef-4a72-9682-4d165a789974', '峨桥镇佘村卫生室', 'd314e03d-285a-492d-8cfb-36b2050cbfa4',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4.6e7315ba-4fef-4a72-9682-4d165a789974', 'hospital.station',
+        '2021-01-04 15:13:40.695', '2021-01-04 15:13:40.695');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4653b72d-66ca-48d0-9f69-f5904558399f', '保定街道沿湖村卫生室', '8de8223f-8fed-4c73-a8a6-beb0c2de477d',
+        '34.3402.340208.8de8223f-8fed-4c73-a8a6-beb0c2de477d.4653b72d-66ca-48d0-9f69-f5904558399f', 'hospital.station',
+        '2021-01-04 15:13:40.96', '2021-01-04 15:13:40.96');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9852951f-ea95-4b43-bd66-0fd249c2928a', '二坝镇长安社区卫生室', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.9852951f-ea95-4b43-bd66-0fd249c2928a', 'hospital.station',
+        '2021-01-04 15:13:40.379', '2021-01-04 15:13:40.379');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('732f040e-a25a-4de5-a092-3e5c6619555b', '汤沟镇曙光村卫生室', 'd6c6a69d-973e-4df3-9a44-262d4db50ec4',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4.732f040e-a25a-4de5-a092-3e5c6619555b', 'hospital.station',
+        '2021-01-04 15:13:40.465', '2021-01-04 15:13:40.465');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('fddc5042-6767-48de-8308-4693cd13378e', '二坝镇汾水卫生室', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.fddc5042-6767-48de-8308-4693cd13378e', 'hospital.station',
+        '2021-01-04 15:13:40.38', '2021-01-04 15:13:40.38');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ac82b73e-91da-4bff-af0a-7eaf56db817d', '平铺镇平铺村计划生育服务站', '515f834c-072e-42bd-9cde-f3cd219f1fb0',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0.ac82b73e-91da-4bff-af0a-7eaf56db817d', 'hospital.station',
+        '2021-01-04 15:13:41.41', '2021-01-04 15:13:41.41');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('feed07ce-e634-4190-a206-53e894d5f48a', '马坝缸窑村矶冲卫生室', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.feed07ce-e634-4190-a206-53e894d5f48a', 'hospital.station',
+        '2021-01-04 15:13:41.567', '2021-01-04 15:13:41.567');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('64f04e68-20e0-44f5-9447-7e262f29445d', '龙山街道东梁社区卫生服务站', '9a107463-4624-4403-9c01-ccd184c09541',
+        '34.3402.340271.9a107463-4624-4403-9c01-ccd184c09541.64f04e68-20e0-44f5-9447-7e262f29445d', 'hospital.station',
+        '2021-01-04 15:13:40.615', '2021-01-04 15:13:40.615');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a93acdfc-a404-431d-94a4-dfe7f67f7db3', '合心村卫生室', '1ce002b9-99db-4620-bd68-b37200bf89d5',
+        '34.3402.340202.1ce002b9-99db-4620-bd68-b37200bf89d5.a93acdfc-a404-431d-94a4-dfe7f67f7db3', 'hospital.station',
+        '2021-01-04 15:13:39.923', '2021-01-04 15:13:39.923');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('82a8936c-cec5-49ca-b421-7d2f7a586f1f', '火龙街道新联村卫生室', '8dfa5535-a7ca-4300-bd48-92f1b032404b',
+        '34.3402.340203.8dfa5535-a7ca-4300-bd48-92f1b032404b.82a8936c-cec5-49ca-b421-7d2f7a586f1f', 'hospital.station',
+        '2021-01-04 15:13:39.609', '2021-01-04 15:13:39.609');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('35fac661-0e65-405d-82ea-547c35ee6a31', '澛港街道汇成名郡卫生服务站', 'dbec1ce9-450a-4a61-9814-4ce2b37db4ea',
+        '34.3402.340203.dbec1ce9-450a-4a61-9814-4ce2b37db4ea.35fac661-0e65-405d-82ea-547c35ee6a31', 'hospital.station',
+        '2021-01-04 15:13:39.547', '2021-01-04 15:13:39.547');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('91f8bae1-ce48-4fb5-8d0c-c8826874f7e5', '白马街道新山村卫生室', 'bf55c402-e1d6-417a-afe3-49e578acb85a',
+        '34.3402.340203.bf55c402-e1d6-417a-afe3-49e578acb85a.91f8bae1-ce48-4fb5-8d0c-c8826874f7e5', 'hospital.station',
+        '2021-01-04 15:13:39.496', '2021-01-04 15:13:39.496');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('0d056030-b604-461a-8a39-36f5fbf333a8', '白茆镇东流村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.0d056030-b604-461a-8a39-36f5fbf333a8', 'hospital.station',
+        '2021-01-04 15:13:40.133', '2021-01-04 15:13:40.133');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ccba0307-a719-46a9-a430-6ff50c89e5a2', '芦南笔架村卫生室', 'e1f4b409-5acc-40aa-b969-7e3581093396',
+        '34.3402.340222.e1f4b409-5acc-40aa-b969-7e3581093396.ccba0307-a719-46a9-a430-6ff50c89e5a2', 'hospital.station',
+        '2021-01-04 15:13:41.705', '2021-01-04 15:13:41.705');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('fe1858cd-491e-4158-9eba-d6841428230e', '万春街道春水湾服务站', '011f46c7-0d49-4eb5-8011-e41c67f4ea0a',
+        '34.3402.340271.011f46c7-0d49-4eb5-8011-e41c67f4ea0a.fe1858cd-491e-4158-9eba-d6841428230e', 'hospital.station',
+        '2021-01-04 15:13:40.565', '2021-01-04 15:13:40.565');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1fc7b8ca-a157-4096-9958-cd4417cd84e1', '繁阳镇马坝社区卫生服务站', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.1fc7b8ca-a157-4096-9958-cd4417cd84e1', 'hospital.station',
+        '2021-01-04 15:13:41.563', '2021-01-04 15:13:41.563');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('efbdeb65-22fd-4ace-9367-f0aa625201af', '官陡街道赤铸山社区卫生服务站', '2e9ec91b-67e0-49ce-9d4e-88635450603b',
+        '34.3402.340207.2e9ec91b-67e0-49ce-9d4e-88635450603b.efbdeb65-22fd-4ace-9367-f0aa625201af', 'hospital.station',
+        '2021-01-04 15:13:41.053', '2021-01-04 15:13:41.053');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('606f93d8-618e-4fb5-b5bf-37a03e65d16b', '峨山镇沈弄村卫生室', 'c98be9c5-23c1-405c-b102-e4641214b9e9',
+        '34.3402.340222.c98be9c5-23c1-405c-b102-e4641214b9e9.606f93d8-618e-4fb5-b5bf-37a03e65d16b', 'hospital.station',
+        '2021-01-04 15:13:41.477', '2021-01-04 15:13:41.477');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2c86a7ef-a137-42c7-87d8-c4b281599591', '平铺镇新牌村卫生室', '515f834c-072e-42bd-9cde-f3cd219f1fb0',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0.2c86a7ef-a137-42c7-87d8-c4b281599591', 'hospital.station',
+        '2021-01-04 15:13:41.409', '2021-01-04 15:13:41.409');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f0aecb50-1a0c-42a4-952b-19e82dba1213', '芜宁路社区卫生服务站', '07fd8a63-fd85-4bd0-9372-ec4310edd6a9',
+        '34.3402.340202.07fd8a63-fd85-4bd0-9372-ec4310edd6a9.f0aecb50-1a0c-42a4-952b-19e82dba1213', 'hospital.station',
+        '2021-01-04 15:13:39.873', '2021-01-04 15:13:39.873');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('bad59534-b667-426c-8b54-ce463236ef97', '二坝镇提树卫生室', '7618b8fa-e295-46ae-9954-11422485f92e',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e.bad59534-b667-426c-8b54-ce463236ef97', 'hospital.station',
+        '2021-01-04 15:13:40.379', '2021-01-04 15:13:40.379');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('dacda171-dfa9-4312-871d-2fce164e1b93', '裕溪口街道新裕路社区卫生服务站',
+        '413a85ea-0749-4a66-97f7-b0bbccfdd593',
+        '34.3402.340207.413a85ea-0749-4a66-97f7-b0bbccfdd593.dacda171-dfa9-4312-871d-2fce164e1b93', 'hospital.station',
+        '2021-01-04 15:13:40.663', '2021-01-04 15:13:40.663');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9d1937a8-1928-4464-85e7-e681881ca1e0', '白茆镇大江村卫生室', '8598c461-54f9-44bf-98de-4a8740a7d69e',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e.9d1937a8-1928-4464-85e7-e681881ca1e0', 'hospital.station',
+        '2021-01-04 15:13:40.134', '2021-01-04 15:13:40.134');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('37c06835-d072-48f8-9ec5-263247535cd5', '保定街道老垅村卫生室', '8de8223f-8fed-4c73-a8a6-beb0c2de477d',
+        '34.3402.340208.8de8223f-8fed-4c73-a8a6-beb0c2de477d.37c06835-d072-48f8-9ec5-263247535cd5', 'hospital.station',
+        '2021-01-04 15:13:40.959', '2021-01-04 15:13:40.959');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2bad8175-876d-4e93-8f81-e9eb026537d2', '峨山镇东岛村卫生室', 'c98be9c5-23c1-405c-b102-e4641214b9e9',
+        '34.3402.340222.c98be9c5-23c1-405c-b102-e4641214b9e9.2bad8175-876d-4e93-8f81-e9eb026537d2', 'hospital.station',
+        '2021-01-04 15:13:41.477', '2021-01-04 15:13:41.477');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('61684024-b141-4250-8dbe-edb24bcdc35f', '广福社区卫生服务站', '07fd8a63-fd85-4bd0-9372-ec4310edd6a9',
+        '34.3402.340202.07fd8a63-fd85-4bd0-9372-ec4310edd6a9.61684024-b141-4250-8dbe-edb24bcdc35f', 'hospital.station',
+        '2021-01-04 15:13:39.873', '2021-01-04 15:13:39.873');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7f1aecdd-bf56-4d4e-9dfb-1caeb14f0f11', '繁阳镇新光社区居委会', '42286b3f-7604-4e13-b7b4-dcf7f77e3fb7',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7.7f1aecdd-bf56-4d4e-9dfb-1caeb14f0f11', 'hospital.station',
+        '2021-01-04 15:13:41.565', '2021-01-04 15:13:41.565');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a7e64e62-f45a-4606-a8e5-6406f4a8f272', '沈巷镇双河村卫生室', '8d94fc12-6a59-421c-a7a0-74112a4da26c',
+        '34.3402.340207.8d94fc12-6a59-421c-a7a0-74112a4da26c.a7e64e62-f45a-4606-a8e5-6406f4a8f272', 'hospital.station',
+        '2021-01-04 15:13:40.261', '2021-01-04 15:13:40.261');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7e7443e3-70f3-4f35-b9b8-1be818a48a6c', '龙湖街道杨村卫生室', '08dce031-90f2-498e-9efd-08e45480bf2c',
+        '34.3402.340208.08dce031-90f2-498e-9efd-08e45480bf2c.7e7443e3-70f3-4f35-b9b8-1be818a48a6c', 'hospital.station',
+        '2021-08-27 16:55:19.846739', '2021-08-27 16:55:19.846739');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2eb53abb-e37f-4b4a-829d-b9465597dc6d', '安徽中医药高等专科学校', '340203',
+        '34.3402.340203.2eb53abb-e37f-4b4a-829d-b9465597dc6d', 'hospital.school', '2021-12-16 11:15:03.578656',
+        '2021-12-16 11:15:03.578656');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f59965a0-b268-477a-83b5-be0e2d22c8a6', '芜湖师范学校', '340203',
+        '34.3402.340203.f59965a0-b268-477a-83b5-be0e2d22c8a6', 'hospital.school', '2021-12-16 11:15:03.578656',
+        '2021-12-16 11:15:03.578656');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d2bc6d3d-cb7f-485e-9b28-aef1a6b850a4', '安徽师范大学', '340203',
+        '34.3402.340203.d2bc6d3d-cb7f-485e-9b28-aef1a6b850a4', 'hospital.school', '2021-12-16 11:15:03.578656',
+        '2021-12-16 11:15:03.578656');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8d07ef45-54d7-4ac9-b918-65f09495b60a', '芜湖职业技术学院', '340203',
+        '34.3402.340203.8d07ef45-54d7-4ac9-b918-65f09495b60a', 'hospital.school', '2021-12-16 11:15:03.578656',
+        '2021-12-16 11:15:03.578656');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4a24f378-29c9-406d-aac3-17501cb0333e', '皖南医学院', '340203',
+        '34.3402.340203.4a24f378-29c9-406d-aac3-17501cb0333e', 'hospital.school', '2021-12-16 11:15:03.578656',
+        '2021-12-16 11:15:03.578656');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5f54fca2-e9eb-40d6-ad7c-1b0ae2da0f73', '安徽商贸职业技术学院', '340203',
+        '34.3402.340203.5f54fca2-e9eb-40d6-ad7c-1b0ae2da0f73', 'hospital.school', '2021-12-16 11:15:03.578656',
+        '2021-12-16 11:15:03.578656');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('804532c3-488f-4c16-90ee-677828190513', '安徽机电职业技术学院', '340203',
+        '34.3402.340203.804532c3-488f-4c16-90ee-677828190513', 'hospital.school', '2021-12-16 11:15:03.578656',
+        '2021-12-16 11:15:03.578656');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('15f45154-37ca-421c-beb9-90acd17b820d', '安徽师范大学皖江学院', '340203',
+        '34.3402.340203.15f45154-37ca-421c-beb9-90acd17b820d', 'hospital.school', '2021-12-16 11:15:03.578656',
+        '2021-12-16 11:15:03.578656');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b1501921-a3b6-409f-8d11-888aaebe4f71', '弋江区南瑞街道社区卫生服务中心',
+        'd2f0afba-f6ed-45d7-a5a4-8237051f99ea',
+        '34.3402.340203.d2f0afba-f6ed-45d7-a5a4-8237051f99ea.b1501921-a3b6-409f-8d11-888aaebe4f71', 'hospital.center',
+        '2021-01-04 15:13:39.368', '2021-01-04 15:13:39.368');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ae70c2bd-a851-45be-ab8c-603cf3915015', '南瑞街道李巷社区卫生服务站', '417e7c38-c444-4633-a014-3a43cdfa0d27',
+        '34.3402.340203.417e7c38-c444-4633-a014-3a43cdfa0d27.ae70c2bd-a851-45be-ab8c-603cf3915015', 'hospital.station',
+        '2021-01-04 15:13:39.423', '2021-01-04 15:13:39.423');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2b08e0e3-7149-458c-8d6c-d620ef1c4463', '南瑞街道奥园社区卫生服务站', '417e7c38-c444-4633-a014-3a43cdfa0d27',
+        '34.3402.340203.417e7c38-c444-4633-a014-3a43cdfa0d27.2b08e0e3-7149-458c-8d6c-d620ef1c4463', 'hospital.station',
+        '2021-01-04 15:13:39.423', '2021-01-04 15:13:39.423');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1e9e9973-f053-4c1a-86c2-3959ea1ffcca', '中南街道滨江社区卫生服务站', '1736d511-f1ee-4d98-826e-c963f7b0d7cd',
+        '34.3402.340203.1736d511-f1ee-4d98-826e-c963f7b0d7cd.1e9e9973-f053-4c1a-86c2-3959ea1ffcca', 'hospital.station',
+        '2021-01-04 15:13:39.335', '2021-01-04 15:13:39.335');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f40fec4b-83dd-4526-8981-a7f434894dd6', '中南街道都宝社区卫生服务站', '1736d511-f1ee-4d98-826e-c963f7b0d7cd',
+        '34.3402.340203.1736d511-f1ee-4d98-826e-c963f7b0d7cd.f40fec4b-83dd-4526-8981-a7f434894dd6', 'hospital.station',
+        '2021-01-04 15:13:39.336', '2021-01-04 15:13:39.336');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4b4a70b8-96a7-4064-a5c4-e068410ea604', '中南街道潮音街社区卫生服务站', '1736d511-f1ee-4d98-826e-c963f7b0d7cd',
+        '34.3402.340203.1736d511-f1ee-4d98-826e-c963f7b0d7cd.4b4a70b8-96a7-4064-a5c4-e068410ea604', 'hospital.station',
+        '2021-01-04 15:13:39.336', '2021-01-04 15:13:39.336');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c6d24c53-851e-4f6e-acd9-0fff964cc21e', '南瑞街道荷夏园社区卫生服务站', 'd2f0afba-f6ed-45d7-a5a4-8237051f99ea',
+        '34.3402.340203.d2f0afba-f6ed-45d7-a5a4-8237051f99ea.c6d24c53-851e-4f6e-acd9-0fff964cc21e', 'hospital.station',
+        '2021-01-04 15:13:39.385', '2021-01-04 15:13:39.385');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b4f4a62c-7187-48eb-b48b-6ef5b2029907', '南瑞街道沐春园社区卫生服务站', 'd2f0afba-f6ed-45d7-a5a4-8237051f99ea',
+        '34.3402.340203.d2f0afba-f6ed-45d7-a5a4-8237051f99ea.b4f4a62c-7187-48eb-b48b-6ef5b2029907', 'hospital.station',
+        '2021-01-04 15:13:39.385', '2021-01-04 15:13:39.385');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1790a884-f743-4af9-86b3-e0ebf59d5e6a', '南瑞街道江城国际社区卫生服务站',
+        'd2f0afba-f6ed-45d7-a5a4-8237051f99ea',
+        '34.3402.340203.d2f0afba-f6ed-45d7-a5a4-8237051f99ea.1790a884-f743-4af9-86b3-e0ebf59d5e6a', 'hospital.station',
+        '2021-01-04 15:13:39.386', '2021-01-04 15:13:39.386');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5925f642-284f-4bdd-9755-8f68e7cd7eb8', '中南街道三潭社区卫生服务站', '1736d511-f1ee-4d98-826e-c963f7b0d7cd',
+        '34.3402.340203.1736d511-f1ee-4d98-826e-c963f7b0d7cd.5925f642-284f-4bdd-9755-8f68e7cd7eb8', 'hospital.station',
+        '2021-01-04 15:13:39.336', '2021-01-04 15:13:39.336');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2b7849c9-423c-409d-bcdd-d47e6184bc02', '南瑞街道南街社区卫生服务站', '417e7c38-c444-4633-a014-3a43cdfa0d27',
+        '34.3402.340203.417e7c38-c444-4633-a014-3a43cdfa0d27.2b7849c9-423c-409d-bcdd-d47e6184bc02', 'hospital.station',
+        '2021-01-04 15:13:39.423', '2021-01-04 15:13:39.423');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2e9ec91b-67e0-49ce-9d4e-88635450603b', '鸠江区官陡街道社区卫生服务中心', '340207',
+        '34.3402.340207.2e9ec91b-67e0-49ce-9d4e-88635450603b', 'centre.center', '2021-01-04 15:13:41.035',
+        '2021-01-04 15:13:41.035');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9200fc30-e7da-4941-bc8a-7eb726b2a1ed', '孙村镇中心卫生院赤沙分院', '340222',
+        '34.3402.340222.9200fc30-e7da-4941-bc8a-7eb726b2a1ed', 'centre.home', '2021-01-04 15:13:41.744',
+        '2021-01-04 15:13:41.744');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d2f0afba-f6ed-45d7-a5a4-8237051f99ea', '弋江区南瑞街道社区卫生服务中心', '340203',
+        '34.3402.340203.d2f0afba-f6ed-45d7-a5a4-8237051f99ea', 'centre.center', '2021-01-04 15:13:39.362',
+        '2021-01-04 15:13:39.362');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f928925d-1bc4-4afe-9c77-f29eb65f7e05', '弋江镇中心卫生院', '1c6c2d35-43ca-49da-8630-df93deb57628',
+        '34.3402.340223.1c6c2d35-43ca-49da-8630-df93deb57628.f928925d-1bc4-4afe-9c77-f29eb65f7e05', 'hospital.center',
+        '2023-03-23 11:18:56.524345', '2023-04-17 11:29:38.872965');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('fe501fbb-144c-4f77-802a-51bb42dafc2e', '襄安镇中心卫生院', 'ecbcb32b-9700-449d-8a22-b36a2ae23810',
+        '34.3402.340225.ecbcb32b-9700-449d-8a22-b36a2ae23810.fe501fbb-144c-4f77-802a-51bb42dafc2e', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:38.875203');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('fe9b7441-ee69-4c25-8ab8-b54d301854d6', '陶辛镇卫生院', '62ac3b50-aa8f-4039-b7c7-a7f69e8bac01',
+        '34.3402.340221.62ac3b50-aa8f-4039-b7c7-a7f69e8bac01.fe9b7441-ee69-4c25-8ab8-b54d301854d6', 'hospital.center',
+        '2023-03-23 11:23:18.793729', '2023-04-17 11:29:38.877407');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9699b413-3fa1-420d-81bf-3cfb9978b904', '中南街道西利民社区卫生服务站', '1736d511-f1ee-4d98-826e-c963f7b0d7cd',
+        '34.3402.340203.1736d511-f1ee-4d98-826e-c963f7b0d7cd.9699b413-3fa1-420d-81bf-3cfb9978b904', 'hospital.station',
+        '2021-01-04 15:13:39.336', '2021-01-04 15:13:39.336');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2d312eea-ce96-4eac-8804-266de6252f95', '弋江区中南街道社区卫生服务中心',
+        '1736d511-f1ee-4d98-826e-c963f7b0d7cd',
+        '34.3402.340203.1736d511-f1ee-4d98-826e-c963f7b0d7cd.2d312eea-ce96-4eac-8804-266de6252f95', 'hospital.center',
+        '2021-01-04 15:13:39.323', '2021-01-04 15:13:39.323');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1736d511-f1ee-4d98-826e-c963f7b0d7cd', '弋江区中南街道社区卫生服务中心', '340203',
+        '34.3402.340203.1736d511-f1ee-4d98-826e-c963f7b0d7cd', 'centre.center', '2021-01-04 15:13:39.316',
+        '2021-01-04 15:13:39.316');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('010', '康宁运营中心', NULL, '010', 'hospital.station', '2022-03-16 11:52:03.446656',
+        '2022-03-16 11:52:03.446656');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('68557ca3-58be-455a-a881-90366a50d4fb', '官陡街道神东社区卫生服务站', '2e9ec91b-67e0-49ce-9d4e-88635450603b',
+        '34.3402.340207.2e9ec91b-67e0-49ce-9d4e-88635450603b.68557ca3-58be-455a-a881-90366a50d4fb', 'hospital.station',
+        '2022-07-28 10:38:50.096577', '2022-07-28 10:38:50.096577');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6cec2228-1749-4842-b5ab-c0f140fef10c', '官陡街道城东社区卫生服务二站', '2e9ec91b-67e0-49ce-9d4e-88635450603b',
+        '34.3402.340207.2e9ec91b-67e0-49ce-9d4e-88635450603b.6cec2228-1749-4842-b5ab-c0f140fef10c', 'hospital.station',
+        '2022-07-28 10:38:50.096577', '2022-07-28 10:38:50.096577');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e1183fd8-0808-410d-a607-847dd1bc4a8b', '官陡街道赤铸山社区卫生服务二站',
+        '2e9ec91b-67e0-49ce-9d4e-88635450603b',
+        '34.3402.340207.2e9ec91b-67e0-49ce-9d4e-88635450603b.e1183fd8-0808-410d-a607-847dd1bc4a8b', 'hospital.station',
+        '2022-07-28 10:38:50.096577', '2022-07-28 10:38:50.096577');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c435e900-8563-4b6a-add7-2c48a0f621e1', '官陡街道青锋社区卫生服务二站', '2e9ec91b-67e0-49ce-9d4e-88635450603b',
+        '34.3402.340207.2e9ec91b-67e0-49ce-9d4e-88635450603b.c435e900-8563-4b6a-add7-2c48a0f621e1', 'hospital.station',
+        '2022-07-28 10:38:50.096577', '2022-07-28 10:38:50.096577');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('3401', '合肥市', '34', '34.3401', 'city', '2022-10-09 16:19:14.445613', '2022-10-09 16:19:14.445613');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('340103', '庐阳区', '3401', '34.3401.340103', 'district', '2022-10-09 16:41:27.046495',
+        '2022-10-09 16:41:27.046495');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('969b1903-ab34-4c3c-b855-052753119ac7', '杏林社区卫生服务中心', '8c302353-a1f8-4106-a125-dbc966b0165a',
+        '34.3401.340103.8c302353-a1f8-4106-a125-dbc966b0165a.bc3b9127-d05c-4572-9239-4fc12048d2f2', 'hospital.center',
+        '2022-10-09 16:57:41.425353', '2022-10-09 16:57:41.425353');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9a66b162-5489-4add-ab5c-ae07716863c5', '张家山社区卫生服务中心', '340202',
+        '34.3402.340202.9a66b162-5489-4add-ab5c-ae07716863c5', 'centre.center', '2021-01-04 15:13:39.785',
+        '2021-01-04 15:13:39.785');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7f6a2a66-aa81-49f7-b687-8d9f1bfe20d3', '镜湖新城社区卫生服务中心', '340202',
+        '34.3402.340202.7f6a2a66-aa81-49f7-b687-8d9f1bfe20d3', 'centre.center', '2021-01-04 15:13:39.833',
+        '2021-01-04 15:13:39.833');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1ce002b9-99db-4620-bd68-b37200bf89d5', '方村街道社区卫生服务中心', '340202',
+        '34.3402.340202.1ce002b9-99db-4620-bd68-b37200bf89d5', 'centre.center', '2021-01-04 15:13:39.906',
+        '2021-01-04 15:13:39.906');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('467f5db8-ac6a-43b6-a325-5089abf5b4c3', '荆山社区卫生服务中心', '340202',
+        '34.3402.340202.467f5db8-ac6a-43b6-a325-5089abf5b4c3', 'centre.center', '2021-01-04 15:13:39.975',
+        '2021-01-04 15:13:39.975');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a60b15c4-a423-4244-9c35-4e1bc158fd29', '鸠江区四褐山街道社区卫生服务中心', '340207',
+        '34.3402.340207.a60b15c4-a423-4244-9c35-4e1bc158fd29', 'centre.center', '2021-01-04 15:13:40.024',
+        '2021-01-04 15:13:40.024');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('61940548-1a15-45e1-b8b6-72d194c2590a', '鸠江区清水街道社区卫生服务中心', '340207',
+        '34.3402.340207.61940548-1a15-45e1-b8b6-72d194c2590a', 'centre.center', '2021-01-04 15:13:40.058',
+        '2021-01-04 15:13:40.058');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8598c461-54f9-44bf-98de-4a8740a7d69e', '鸠江区白茆镇中心卫生院', '340207',
+        '34.3402.340207.8598c461-54f9-44bf-98de-4a8740a7d69e', 'centre.home', '2021-01-04 15:13:40.104',
+        '2021-01-04 15:13:40.104');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7618b8fa-e295-46ae-9954-11422485f92e', '鸠江区二坝卫生院', '340207',
+        '34.3402.340207.7618b8fa-e295-46ae-9954-11422485f92e', 'centre.home', '2021-01-04 15:13:40.347',
+        '2021-01-04 15:13:40.347');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d6c6a69d-973e-4df3-9a44-262d4db50ec4', '鸠江区汤沟镇中心卫生院', '340207',
+        '34.3402.340207.d6c6a69d-973e-4df3-9a44-262d4db50ec4', 'centre.home', '2021-01-04 15:13:40.446',
+        '2021-01-04 15:13:40.446');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('011f46c7-0d49-4eb5-8011-e41c67f4ea0a', '万春街道社区卫生服务中心', '340271',
+        '34.3402.340271.011f46c7-0d49-4eb5-8011-e41c67f4ea0a', 'centre.center', '2021-01-04 15:13:40.551',
+        '2021-01-04 15:13:40.551');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9a107463-4624-4403-9c01-ccd184c09541', '龙山街道社区卫生服务中心', '340271',
+        '34.3402.340271.9a107463-4624-4403-9c01-ccd184c09541', 'centre.center', '2021-01-04 15:13:40.593',
+        '2021-01-04 15:13:40.593');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d314e03d-285a-492d-8cfb-36b2050cbfa4', '三山区峨桥镇中心卫生院', '340208',
+        '34.3402.340208.d314e03d-285a-492d-8cfb-36b2050cbfa4', 'centre.home', '2021-01-04 15:13:40.668',
+        '2021-01-04 15:13:40.668');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('08dce031-90f2-498e-9efd-08e45480bf2c', '三山区龙湖街道社区卫生服务中心', '340208',
+        '34.3402.340208.08dce031-90f2-498e-9efd-08e45480bf2c', 'centre.center', '2021-01-04 15:13:40.841',
+        '2021-01-04 15:13:40.841');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6e4db108-0833-4f4a-8c03-c996fdfa94bd', '三山区碧桂园社区卫生服务中心', '340208',
+        '34.3402.340208.6e4db108-0833-4f4a-8c03-c996fdfa94bd', 'centre.center', '2021-01-04 15:13:40.877',
+        '2021-01-04 15:13:40.877');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8de8223f-8fed-4c73-a8a6-beb0c2de477d', '三山区保定街道社区卫生服务中心', '340208',
+        '34.3402.340208.8de8223f-8fed-4c73-a8a6-beb0c2de477d', 'centre.center', '2021-01-04 15:13:40.942',
+        '2021-01-04 15:13:40.942');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4c7774be-5a61-477e-9fe2-cdb9cdf876fa', '三山区三山街道社区卫生服务中心', '340208',
+        '34.3402.340208.4c7774be-5a61-477e-9fe2-cdb9cdf876fa', 'centre.center', '2021-01-04 15:13:40.972',
+        '2021-01-04 15:13:40.972');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a00e0b5c-9dc2-4620-962e-08a4c8f194da', '孙村镇中心卫生院', '340222',
+        '34.3402.340222.a00e0b5c-9dc2-4620-962e-08a4c8f194da', 'centre.home', '2021-01-04 15:13:41.297',
+        '2021-01-04 15:13:41.297');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('515f834c-072e-42bd-9cde-f3cd219f1fb0', '平铺镇中心卫生院', '340222',
+        '34.3402.340222.515f834c-072e-42bd-9cde-f3cd219f1fb0', 'centre.home', '2021-01-04 15:13:41.388',
+        '2021-01-04 15:13:41.388');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c98be9c5-23c1-405c-b102-e4641214b9e9', '峨山镇卫生院', '340222',
+        '34.3402.340222.c98be9c5-23c1-405c-b102-e4641214b9e9', 'centre.home', '2021-01-04 15:13:41.462',
+        '2021-01-04 15:13:41.462');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('42286b3f-7604-4e13-b7b4-dcf7f77e3fb7', '繁阳社区卫生服务中心', '340222',
+        '34.3402.340222.42286b3f-7604-4e13-b7b4-dcf7f77e3fb7', 'centre.center', '2021-01-04 15:13:41.545',
+        '2021-01-04 15:13:41.545');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e1f4b409-5acc-40aa-b969-7e3581093396', '荻港镇中心卫生院', '340222',
+        '34.3402.340222.e1f4b409-5acc-40aa-b969-7e3581093396', 'centre.home', '2021-01-04 15:13:41.69',
+        '2021-01-04 15:13:41.69');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d7b9eeff-1f6b-4c97-8887-e5336df17839', '新港镇卫生院', '340222',
+        '34.3402.340222.d7b9eeff-1f6b-4c97-8887-e5336df17839', 'centre.home', '2021-01-04 15:13:41.779',
+        '2021-01-04 15:13:41.779');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('417e7c38-c444-4633-a014-3a43cdfa0d27', '弋江区南瑞街道社区卫生服务中心铁桥分部', '340203',
+        '34.3402.340203.417e7c38-c444-4633-a014-3a43cdfa0d27', 'centre.center', '2021-01-04 15:13:39.404',
+        '2021-01-04 15:13:39.404');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7dc8edb1-3d60-4e4d-a4a0-b7ce90bdf2c7', '弋江区马塘街道社区卫生服务中心', '340203',
+        '34.3402.340203.7dc8edb1-3d60-4e4d-a4a0-b7ce90bdf2c7', 'centre.center', '2021-01-04 15:13:39.437',
+        '2021-01-04 15:13:39.437');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8dfa5535-a7ca-4300-bd48-92f1b032404b', '弋江区火龙街道社区卫生服务中心', '340203',
+        '34.3402.340203.8dfa5535-a7ca-4300-bd48-92f1b032404b', 'centre.center', '2021-01-04 15:13:39.59',
+        '2021-01-04 15:13:39.59');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('07fd8a63-fd85-4bd0-9372-ec4310edd6a9', '天门山社区卫生服务中心', '340202',
+        '34.3402.340202.07fd8a63-fd85-4bd0-9372-ec4310edd6a9', 'centre.center', '2021-01-04 15:13:39.856',
+        '2021-01-04 15:13:39.856');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8c302353-a1f8-4106-a125-dbc966b0165a', '杏林社区卫生服务中心', '340103',
+        '34.3401.340103.8c302353-a1f8-4106-a125-dbc966b0165a', 'centre.center', '2022-10-09 16:57:39.76477',
+        '2022-10-09 16:57:39.76477');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('016e74f2-54de-4538-bfee-565d7ea3c2fd', '六郎镇卫生院', '395deaa6-b088-4b44-8a87-783417546a4e',
+        '34.3402.340221.395deaa6-b088-4b44-8a87-783417546a4e.016e74f2-54de-4538-bfee-565d7ea3c2fd', 'hospital.center',
+        '2023-03-23 11:23:18.793729', '2023-04-17 11:29:37.127059');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1e96aa5f-82a4-4bb6-940a-f0ac7a8bbf7e', '无城镇卫生院', 'b048a400-e8d8-4ed1-8b3f-d19d03f0f0ae',
+        '34.3402.340225.b048a400-e8d8-4ed1-8b3f-d19d03f0f0ae.1e96aa5f-82a4-4bb6-940a-f0ac7a8bbf7e', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.15774');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2267a51f-5a7b-46b9-a72c-9c345282b15b', '籍山镇中心卫生院葛林分院', '88ef25e9-6bcd-44ed-b6d9-7d0afcf5fdb7',
+        '34.3402.340223.88ef25e9-6bcd-44ed-b6d9-7d0afcf5fdb7.2267a51f-5a7b-46b9-a72c-9c345282b15b', 'hospital.center',
+        '2023-03-23 11:18:56.524345', '2023-04-17 11:29:37.159818');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2940583d-b460-4681-bfe7-98d39f10b633', '刘渡镇卫生院', '3b912fe2-4584-4d09-9059-c0c52440e37d',
+        '34.3402.340225.3b912fe2-4584-4d09-9059-c0c52440e37d.2940583d-b460-4681-bfe7-98d39f10b633', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.1641');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2a353618-0cc3-4224-84c4-ed9e100d87da', '泥汊镇卫生院', '092518c7-c4e1-4494-8a67-3ac318b12297',
+        '34.3402.340225.092518c7-c4e1-4494-8a67-3ac318b12297.2a353618-0cc3-4224-84c4-ed9e100d87da', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.166424');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2d7c17f5-0389-481a-8ba0-af2cb9fac9bd', '红庙镇卫生院', '4a02aa85-b758-455c-b27c-ec5c658f4dc1',
+        '34.3402.340225.4a02aa85-b758-455c-b27c-ec5c658f4dc1.2d7c17f5-0389-481a-8ba0-af2cb9fac9bd', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.170702');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2f5bc389-b008-40a7-a06b-6c70cbcc260d', '籍山镇中心卫生院', '5c65928d-8f8d-4c91-830d-1e8a94e1dd89',
+        '34.3402.340223.5c65928d-8f8d-4c91-830d-1e8a94e1dd89.2f5bc389-b008-40a7-a06b-6c70cbcc260d', 'hospital.center',
+        '2023-03-23 11:18:56.524345', '2023-04-17 11:29:37.175208');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('347e8f24-b33d-4753-8cc3-1331bad2d6c0', '高沟镇中心卫生院', '9d91b48b-8b2a-4ca2-a98f-6280a9af1d77',
+        '34.3402.340225.9d91b48b-8b2a-4ca2-a98f-6280a9af1d77.347e8f24-b33d-4753-8cc3-1331bad2d6c0', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.177387');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('41a8be12-857a-47aa-a96f-724dfd46835a', '湾沚镇卫生院', '6de1a556-4dfb-4917-9748-72f62e1fc52c',
+        '34.3402.340221.6de1a556-4dfb-4917-9748-72f62e1fc52c.41a8be12-857a-47aa-a96f-724dfd46835a', 'hospital.center',
+        '2023-03-23 11:23:18.793729', '2023-04-17 11:29:37.188902');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('43443d72-ba81-425e-aaae-d5e697e9a0fe', '烟墩镇中心卫生院', 'b507993b-0e42-4be0-bc2e-0d74d6962ca1',
+        '34.3402.340223.b507993b-0e42-4be0-bc2e-0d74d6962ca1.43443d72-ba81-425e-aaae-d5e697e9a0fe', 'hospital.center',
+        '2023-03-23 11:18:56.524345', '2023-04-17 11:29:37.191027');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4713368b-6786-4ba3-9950-c7ffb623aa6c', '许镇镇中心卫生院奎湖分院', '188a66a4-6a4f-4b0b-839c-04d186cff4c7',
+        '34.3402.340223.188a66a4-6a4f-4b0b-839c-04d186cff4c7.4713368b-6786-4ba3-9950-c7ffb623aa6c', 'hospital.center',
+        '2023-03-23 11:18:56.524345', '2023-04-17 11:29:37.193157');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4b8eba92-1c83-4652-9a6b-d67036ff5f85', '洪巷镇卫生院', '608c49ff-117b-4d58-9f69-0e022757aba9',
+        '34.3402.340225.608c49ff-117b-4d58-9f69-0e022757aba9.4b8eba92-1c83-4652-9a6b-d67036ff5f85', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.197783');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('506c61e2-d179-4df1-905b-b9d5147c07bf', '许镇镇中心卫生院', '9842f2d9-04c1-40cd-8aa0-4da1e8a34750',
+        '34.3402.340223.9842f2d9-04c1-40cd-8aa0-4da1e8a34750.506c61e2-d179-4df1-905b-b9d5147c07bf', 'hospital.center',
+        '2023-03-23 11:18:56.524345', '2023-04-17 11:29:37.19981');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('50a76f8e-5d62-4ab5-88b8-db2928d09e90', '籍山镇中心卫生院五里分院', '130c38ea-5142-4274-8240-9e3e4f5fc310',
+        '34.3402.340223.130c38ea-5142-4274-8240-9e3e4f5fc310.50a76f8e-5d62-4ab5-88b8-db2928d09e90', 'hospital.center',
+        '2023-03-23 11:18:56.524345', '2023-04-17 11:29:37.201785');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('52470335-9088-49f2-a654-666b877af504', '何湾镇中心卫生院', '8bea14f7-918c-4c2e-8df5-06b6e73b0a2a',
+        '34.3402.340223.8bea14f7-918c-4c2e-8df5-06b6e73b0a2a.52470335-9088-49f2-a654-666b877af504', 'hospital.center',
+        '2023-03-23 11:18:56.524345', '2023-04-17 11:29:37.20376');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('55c3d70f-46c7-403e-b3e5-1da83fb91882', '开城镇中心卫生院', '0279a81f-6c0b-4aa6-b2a0-e28490127524',
+        '34.3402.340225.0279a81f-6c0b-4aa6-b2a0-e28490127524.55c3d70f-46c7-403e-b3e5-1da83fb91882', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.205804');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('0279a81f-6c0b-4aa6-b2a0-e28490127524', '开城镇中心卫生院', '340225',
+        '34.3402.340225.0279a81f-6c0b-4aa6-b2a0-e28490127524', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.130457');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('08a01739-3ffb-4c6d-b165-689a3780b0e4', '福渡镇卫生院', '340225',
+        '34.3402.340225.08a01739-3ffb-4c6d-b165-689a3780b0e4', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.133244');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('092518c7-c4e1-4494-8a67-3ac318b12297', '泥汊镇卫生院', '340225',
+        '34.3402.340225.092518c7-c4e1-4494-8a67-3ac318b12297', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.138949');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('12e081bd-436b-4794-a3b5-91df87226760', '三里镇中心卫生院', '340223',
+        '34.3402.340223.12e081bd-436b-4794-a3b5-91df87226760', 'centre.home', '2023-03-23 11:18:56.524345',
+        '2023-04-17 11:29:37.141362');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('12e4d2b8-5cda-486b-adb6-43f61d44a2b4', '籍山镇社区卫生服务中心', '340223',
+        '34.3402.340223.12e4d2b8-5cda-486b-adb6-43f61d44a2b4', 'centre.center', '2023-03-23 11:18:25.431356',
+        '2023-04-17 11:29:37.143495');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('130c38ea-5142-4274-8240-9e3e4f5fc310', '籍山镇中心卫生院五里分院', '340223',
+        '34.3402.340223.130c38ea-5142-4274-8240-9e3e4f5fc310', 'centre.home', '2023-03-23 11:18:56.524345',
+        '2023-04-17 11:29:37.146163');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('188a66a4-6a4f-4b0b-839c-04d186cff4c7', '许镇镇中心卫生院奎湖分院', '340223',
+        '34.3402.340223.188a66a4-6a4f-4b0b-839c-04d186cff4c7', 'centre.home', '2023-03-23 11:18:56.524345',
+        '2023-04-17 11:29:37.148839');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1a0cf763-2d28-4ab6-8ee3-70348660ccc9', '泉塘镇卫生院', '340225',
+        '34.3402.340225.1a0cf763-2d28-4ab6-8ee3-70348660ccc9', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.151246');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1c6c2d35-43ca-49da-8630-df93deb57628', '弋江镇中心卫生院', '340223',
+        '34.3402.340223.1c6c2d35-43ca-49da-8630-df93deb57628', 'centre.home', '2023-03-23 11:18:56.524345',
+        '2023-04-17 11:29:37.153438');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('1c8dfe21-65d2-4140-88a7-3f17d79d674a', '蜀山镇中心卫生院', '340225',
+        '34.3402.340225.1c8dfe21-65d2-4140-88a7-3f17d79d674a', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.155565');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('26ceef6b-5872-44e7-8ed9-566334522255', '赫店镇卫生院', '340225',
+        '34.3402.340225.26ceef6b-5872-44e7-8ed9-566334522255', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.161702');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2c5eba8f-f2ce-4d55-9447-56b02a032891', '陡沟镇中心卫生院', '340225',
+        '34.3402.340225.2c5eba8f-f2ce-4d55-9447-56b02a032891', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.168516');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('2e941142-8da7-4f1c-b838-5ddddbc9ec4f', '石涧镇中心卫生院', '340225',
+        '34.3402.340225.2e941142-8da7-4f1c-b838-5ddddbc9ec4f', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.172826');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('372b3fcb-a501-4ce0-8416-b3b56930e306', '昆山镇卫生院', '340225',
+        '34.3402.340225.372b3fcb-a501-4ce0-8416-b3b56930e306', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.179795');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('38f499f7-9305-4f57-8767-a3678936d5ed', '工山镇中心卫生院', '340223',
+        '34.3402.340223.38f499f7-9305-4f57-8767-a3678936d5ed', 'centre.home', '2023-03-23 11:18:56.524345',
+        '2023-04-17 11:29:37.182011');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('395deaa6-b088-4b44-8a87-783417546a4e', '六郎镇卫生院', '340221',
+        '34.3402.340221.395deaa6-b088-4b44-8a87-783417546a4e', 'centre.home', '2023-03-23 11:23:18.793729',
+        '2023-04-17 11:29:37.184927');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('3b912fe2-4584-4d09-9059-c0c52440e37d', '刘渡镇卫生院', '340225',
+        '34.3402.340225.3b912fe2-4584-4d09-9059-c0c52440e37d', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.186976');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('4a02aa85-b758-455c-b27c-ec5c658f4dc1', '红庙镇卫生院', '340225',
+        '34.3402.340225.4a02aa85-b758-455c-b27c-ec5c658f4dc1', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.195233');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5c65928d-8f8d-4c91-830d-1e8a94e1dd89', '籍山镇中心卫生院', '340223',
+        '34.3402.340223.5c65928d-8f8d-4c91-830d-1e8a94e1dd89', 'centre.home', '2023-03-23 11:18:56.524345',
+        '2023-04-17 11:29:37.208196');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('608c49ff-117b-4d58-9f69-0e022757aba9', '洪巷镇卫生院', '340225',
+        '34.3402.340225.608c49ff-117b-4d58-9f69-0e022757aba9', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.212054');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('62ac3b50-aa8f-4039-b7c7-a7f69e8bac01', '陶辛镇卫生院', '340221',
+        '34.3402.340221.62ac3b50-aa8f-4039-b7c7-a7f69e8bac01', 'centre.home', '2023-03-23 11:23:18.793729',
+        '2023-04-17 11:29:37.21453');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6de1a556-4dfb-4917-9748-72f62e1fc52c', '湾沚镇卫生院', '340221',
+        '34.3402.340221.6de1a556-4dfb-4917-9748-72f62e1fc52c', 'centre.home', '2023-03-23 11:23:18.793729',
+        '2023-04-17 11:29:37.22223');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('75177671-f2e4-431c-aa6d-9f5a7719c1ea', '弋江镇中心卫生院奚滩分院', '340223',
+        '34.3402.340223.75177671-f2e4-431c-aa6d-9f5a7719c1ea', 'centre.home', '2023-03-23 11:18:56.524345',
+        '2023-04-17 11:29:37.229003');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('88ef25e9-6bcd-44ed-b6d9-7d0afcf5fdb7', '籍山镇中心卫生院葛林分院', '340223',
+        '34.3402.340223.88ef25e9-6bcd-44ed-b6d9-7d0afcf5fdb7', 'centre.home', '2023-03-23 11:18:56.524345',
+        '2023-04-17 11:29:37.235472');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8bea14f7-918c-4c2e-8df5-06b6e73b0a2a', '何湾镇中心卫生院', '340223',
+        '34.3402.340223.8bea14f7-918c-4c2e-8df5-06b6e73b0a2a', 'centre.home', '2023-03-23 11:18:56.524345',
+        '2023-04-17 11:29:37.237594');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('96f0362d-614b-4d92-89f5-dcbc938240c9', '牛埠镇中心卫生院', '340225',
+        '34.3402.340225.96f0362d-614b-4d92-89f5-dcbc938240c9', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.244559');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9842f2d9-04c1-40cd-8aa0-4da1e8a34750', '许镇镇中心卫生院', '340223',
+        '34.3402.340223.9842f2d9-04c1-40cd-8aa0-4da1e8a34750', 'centre.home', '2023-03-23 11:18:56.524345',
+        '2023-04-17 11:29:37.246575');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9d91b48b-8b2a-4ca2-a98f-6280a9af1d77', '高沟镇中心卫生院', '340225',
+        '34.3402.340225.9d91b48b-8b2a-4ca2-a98f-6280a9af1d77', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.25069');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('9f788c9e-f16f-4b02-96c1-9c0600122d64', '家发镇中心卫生院', '340223',
+        '34.3402.340223.9f788c9e-f16f-4b02-96c1-9c0600122d64', 'centre.home', '2023-03-23 11:18:56.524345',
+        '2023-04-17 11:29:37.253067');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a8df26e7-bcbd-463e-b351-c02be3c40cf5', '严桥镇中心卫生院', '340225',
+        '34.3402.340225.a8df26e7-bcbd-463e-b351-c02be3c40cf5', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.260372');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('af3938e2-0d6f-40c1-83f2-578e31585c64', '弋江镇中心卫生院蒲桥分院', '340223',
+        '34.3402.340223.af3938e2-0d6f-40c1-83f2-578e31585c64', 'centre.home', '2023-03-23 11:18:56.524345',
+        '2023-04-17 11:29:37.262378');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c194e1b3-f1f4-4a5a-84be-5d80b9d5b8f4', '弋江镇中心卫生院蒲桥分院', 'af3938e2-0d6f-40c1-83f2-578e31585c64',
+        '34.3402.340223.af3938e2-0d6f-40c1-83f2-578e31585c64.c194e1b3-f1f4-4a5a-84be-5d80b9d5b8f4', 'hospital.center',
+        '2023-03-23 11:18:56.524345', '2023-04-17 11:29:37.274069');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c3f0e66b-84cc-4ca1-bdd9-a6711c3b82ca', '严桥镇中心卫生院', 'a8df26e7-bcbd-463e-b351-c02be3c40cf5',
+        '34.3402.340225.a8df26e7-bcbd-463e-b351-c02be3c40cf5.c3f0e66b-84cc-4ca1-bdd9-a6711c3b82ca', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.27622');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c96899cb-520a-4773-934c-c9c57a7f36f4', '十里墩镇卫生院', 'ccbbf114-d16b-4de8-baa6-34184b38ec51',
+        '34.3402.340225.ccbbf114-d16b-4de8-baa6-34184b38ec51.c96899cb-520a-4773-934c-c9c57a7f36f4', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.278255');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('beadff6a-0473-4403-9bb8-2d415540b54a', '镜湖新城社区卫生服务中心赭麓分部', '340202',
+        '34.3402.340202.beadff6a-0473-4403-9bb8-2d415540b54a', 'centre.center', '2021-01-04 15:13:41.087',
+        '2021-01-04 15:13:41.087');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8d8281c1-fd77-41f8-a498-99900863212c', '横山卫生院', '340222',
+        '34.3402.340222.8d8281c1-fd77-41f8-a498-99900863212c', 'centre.home', '2021-01-04 15:13:41.515',
+        '2021-01-04 15:13:41.515');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6b748154-4394-413f-b52c-a613f2b815d3', '官陡街道仁和社区卫生服务站', '2e9ec91b-67e0-49ce-9d4e-88635450603b',
+        '34.3402.340207.2e9ec91b-67e0-49ce-9d4e-88635450603b.6b748154-4394-413f-b52c-a613f2b815d3', 'hospital.station',
+        '2023-04-06 11:30:09.350302', '2023-04-06 11:30:09.350302');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b048a400-e8d8-4ed1-8b3f-d19d03f0f0ae', '无城镇卫生院', '340225',
+        '34.3402.340225.b048a400-e8d8-4ed1-8b3f-d19d03f0f0ae', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:37.264487');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('b507993b-0e42-4be0-bc2e-0d74d6962ca1', '烟墩镇中心卫生院', '340223',
+        '34.3402.340223.b507993b-0e42-4be0-bc2e-0d74d6962ca1', 'centre.home', '2023-03-23 11:18:56.524345',
+        '2023-04-17 11:29:37.266684');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('bb005142-a493-4e1d-9ccf-1b4e2fdaff7a', '无城社区卫生服务中心', '340225',
+        '34.3402.340225.bb005142-a493-4e1d-9ccf-1b4e2fdaff7a', 'centre.center', '2023-03-23 11:14:06.178768',
+        '2023-04-17 11:29:37.26909');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('c0c0005c-e7ff-4149-8098-df3d15eee4e3', '花桥镇卫生院', '340221',
+        '34.3402.340221.c0c0005c-e7ff-4149-8098-df3d15eee4e3', 'centre.home', '2023-03-23 11:23:18.793729',
+        '2023-04-17 11:29:37.271576');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e3bec70b-cba3-4dce-a075-632ae920fb16', '红杨镇卫生院', '340221',
+        '34.3402.340221.e3bec70b-cba3-4dce-a075-632ae920fb16', 'centre.home', '2023-03-23 11:23:18.793729',
+        '2023-04-17 11:29:38.854659');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ecbcb32b-9700-449d-8a22-b36a2ae23810', '襄安镇中心卫生院', '340225',
+        '34.3402.340225.ecbcb32b-9700-449d-8a22-b36a2ae23810', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:38.86291');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('eed12053-4230-4355-9d07-0ca8ccc86564', '许镇镇中心卫生院太丰分院', '340223',
+        '34.3402.340223.eed12053-4230-4355-9d07-0ca8ccc86564', 'centre.home', '2023-03-23 11:18:56.524345',
+        '2023-04-17 11:29:38.868222');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('f4fe73aa-4788-4907-bb7f-610832deb966', '鹤毛镇卫生院', '340225',
+        '34.3402.340225.f4fe73aa-4788-4907-bb7f-610832deb966', 'centre.home', '2023-03-23 11:15:28.105884',
+        '2023-04-17 11:29:38.870707');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('08c01818-bb35-4024-8c91-238ea4d25423', '鹤毛镇卫生院', 'f4fe73aa-4788-4907-bb7f-610832deb966',
+        '34.3402.340225.f4fe73aa-4788-4907-bb7f-610832deb966.08c01818-bb35-4024-8c91-238ea4d25423', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.136314');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('5fbdc32f-f842-4e0f-80d9-dbc861967ed4', '赫店镇卫生院', '26ceef6b-5872-44e7-8ed9-566334522255',
+        '34.3402.340225.26ceef6b-5872-44e7-8ed9-566334522255.5fbdc32f-f842-4e0f-80d9-dbc861967ed4', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.210267');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('67b010aa-d8cb-4586-96fb-fb274cdae13e', '陡沟镇中心卫生院', '2c5eba8f-f2ce-4d55-9447-56b02a032891',
+        '34.3402.340225.2c5eba8f-f2ce-4d55-9447-56b02a032891.67b010aa-d8cb-4586-96fb-fb274cdae13e', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.217018');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('6b732c22-73f2-4f75-b994-ac16405b7c42', '许镇镇中心卫生院太丰分院', 'eed12053-4230-4355-9d07-0ca8ccc86564',
+        '34.3402.340223.eed12053-4230-4355-9d07-0ca8ccc86564.6b732c22-73f2-4f75-b994-ac16405b7c42', 'hospital.center',
+        '2023-03-23 11:18:56.524345', '2023-04-17 11:29:37.219658');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('703abd9d-af6b-40ba-bff1-6644f858941b', '弋江镇中心卫生院奚滩分院', '75177671-f2e4-431c-aa6d-9f5a7719c1ea',
+        '34.3402.340223.75177671-f2e4-431c-aa6d-9f5a7719c1ea.703abd9d-af6b-40ba-bff1-6644f858941b', 'hospital.center',
+        '2023-03-23 11:18:56.524345', '2023-04-17 11:29:37.224775');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('70e29738-3f04-4090-8068-acd21ae6c7ec', '家发镇中心卫生院', '9f788c9e-f16f-4b02-96c1-9c0600122d64',
+        '34.3402.340223.9f788c9e-f16f-4b02-96c1-9c0600122d64.70e29738-3f04-4090-8068-acd21ae6c7ec', 'hospital.center',
+        '2023-03-23 11:18:56.524345', '2023-04-17 11:29:37.226806');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7899f73e-5663-4fc1-b39f-6cb1913f1d0b', '红杨镇卫生院', 'e3bec70b-cba3-4dce-a075-632ae920fb16',
+        '34.3402.340221.e3bec70b-cba3-4dce-a075-632ae920fb16.7899f73e-5663-4fc1-b39f-6cb1913f1d0b', 'hospital.center',
+        '2023-03-23 11:23:18.793729', '2023-04-17 11:29:37.231182');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('7c769b47-ef41-468d-a5c4-da059bc4cbf6', '三里镇中心卫生院', '12e081bd-436b-4794-a3b5-91df87226760',
+        '34.3402.340223.12e081bd-436b-4794-a3b5-91df87226760.7c769b47-ef41-468d-a5c4-da059bc4cbf6', 'hospital.center',
+        '2023-03-23 11:18:56.524345', '2023-04-17 11:29:37.233352');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('8f3a8705-53ec-4bda-bee8-04491d25f81d', '石涧镇中心卫生院', '2e941142-8da7-4f1c-b838-5ddddbc9ec4f',
+        '34.3402.340225.2e941142-8da7-4f1c-b838-5ddddbc9ec4f.8f3a8705-53ec-4bda-bee8-04491d25f81d', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.239948');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('95d1d6ab-0a7d-402a-ae7e-98c08b78bc91', '牛埠镇中心卫生院', '96f0362d-614b-4d92-89f5-dcbc938240c9',
+        '34.3402.340225.96f0362d-614b-4d92-89f5-dcbc938240c9.95d1d6ab-0a7d-402a-ae7e-98c08b78bc91', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.242434');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a666a4fe-0aef-4054-9365-2d837bfd4c35', '姚沟镇卫生院', '986c1ea2-e4d7-40ab-ae4e-b522334cfc61',
+        '34.3402.340225.986c1ea2-e4d7-40ab-ae4e-b522334cfc61.a666a4fe-0aef-4054-9365-2d837bfd4c35', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.255556');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('a7776c5c-dc08-4173-9ebd-bcbbd5b308c7', '无城社区卫生服务中心', 'bb005142-a493-4e1d-9ccf-1b4e2fdaff7a',
+        '34.3402.340225.bb005142-a493-4e1d-9ccf-1b4e2fdaff7a.a7776c5c-dc08-4173-9ebd-bcbbd5b308c7', 'hospital.center',
+        '2023-03-23 11:14:06.178768', '2023-04-17 11:29:37.257971');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('cf31d8d1-c60d-4edd-b6f8-b9a56cc33d7d', '工山镇中心卫生院', '38f499f7-9305-4f57-8767-a3678936d5ed',
+        '34.3402.340223.38f499f7-9305-4f57-8767-a3678936d5ed.cf31d8d1-c60d-4edd-b6f8-b9a56cc33d7d', 'hospital.center',
+        '2023-03-23 11:18:56.524345', '2023-04-17 11:29:37.282679');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('d810bf48-33fa-40fe-990d-ac7ff7bead22', '蜀山镇中心卫生院', '1c8dfe21-65d2-4140-88a7-3f17d79d674a',
+        '34.3402.340225.1c8dfe21-65d2-4140-88a7-3f17d79d674a.d810bf48-33fa-40fe-990d-ac7ff7bead22', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.285082');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('dceac6ba-56a0-44f7-b8d7-a02efc85b388', '福渡镇卫生院', '08a01739-3ffb-4c6d-b165-689a3780b0e4',
+        '34.3402.340225.08a01739-3ffb-4c6d-b165-689a3780b0e4.dceac6ba-56a0-44f7-b8d7-a02efc85b388', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:37.287238');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e17e8fc8-adc3-4e8e-91f6-30f37c32afd4', '花桥镇卫生院', 'c0c0005c-e7ff-4149-8098-df3d15eee4e3',
+        '34.3402.340221.c0c0005c-e7ff-4149-8098-df3d15eee4e3.e17e8fc8-adc3-4e8e-91f6-30f37c32afd4', 'hospital.center',
+        '2023-03-23 11:23:18.793729', '2023-04-17 11:29:38.851842');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('e5c565eb-995e-4fed-8c24-fe18c3f1ba54', '籍山镇社区卫生服务中心', '12e4d2b8-5cda-486b-adb6-43f61d44a2b4',
+        '34.3402.340223.12e4d2b8-5cda-486b-adb6-43f61d44a2b4.e5c565eb-995e-4fed-8c24-fe18c3f1ba54', 'hospital.center',
+        '2023-03-23 11:18:25.431356', '2023-04-17 11:29:38.857253');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ebcbefa3-df6e-43bd-9843-0e782fa66ae8', '泉塘镇卫生院', '1a0cf763-2d28-4ab6-8ee3-70348660ccc9',
+        '34.3402.340225.1a0cf763-2d28-4ab6-8ee3-70348660ccc9.ebcbefa3-df6e-43bd-9843-0e782fa66ae8', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:38.860174');
+INSERT INTO area (code, name, parent, path, label, created_at, updated_at)
+VALUES ('ee6e1c1e-caaa-410d-aa3f-ee913a723d00', '昆山镇卫生院', '372b3fcb-a501-4ce0-8416-b3b56930e306',
+        '34.3402.340225.372b3fcb-a501-4ce0-8416-b3b56930e306.ee6e1c1e-caaa-410d-aa3f-ee913a723d00', 'hospital.center',
+        '2023-03-23 11:15:28.105884', '2023-04-17 11:29:38.865396');
+
