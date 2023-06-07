@@ -6,7 +6,8 @@ import com.dream.school.vo.AreaVO
 val AREA_LIST = listOf<AreaVO>(
     AreaVO(
         code = "34",
-        name = "安徽省"
+        name = "安徽省",
+        parent = null
     ),
     AreaVO(
         code = "3402",
@@ -21,7 +22,7 @@ val AREA_LIST = listOf<AreaVO>(
     AreaVO(
         code = "340202",
         name = "镜湖区",
-        parent = "34"
+        parent = "3402"
     ),
     AreaVO(
         code = "340203",
