@@ -1,0 +1,4 @@
+# SqlEx 配置文件
+
+# 根包
+package: school.migrations
