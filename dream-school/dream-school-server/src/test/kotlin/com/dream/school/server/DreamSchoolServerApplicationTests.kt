@@ -8,6 +8,7 @@ class DreamSchoolServerApplicationTests {
 
     @Test
     fun contextLoads() {
+        println("哼哈")
     }
 
 }
