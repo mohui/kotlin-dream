@@ -5,6 +5,7 @@ import com.dream.school.constant.CURRENT_DATETIME
 import com.dream.school.constant.CURRENT_YEAR_START_DATE
 import com.dream.school.constant.GRADE
 import com.dream.school.service.DatetimeService
+import com.dream.school.service.ExportService
 import com.dream.school.service.SchoolService
 import com.dream.school.vo.GradeVO
 import com.dream.school.vo.WeekEnum
@@ -15,7 +16,8 @@ import java.time.temporal.ChronoUnit
 @RestController("com.dream.school.api.SchoolController")
 class SchoolController(
     val datetimeService: DatetimeService,
-    val schoolService: SchoolService
+    val schoolService: SchoolService,
+    val exportService: ExportService
 ): SchoolApi {
     override fun gradeList(): List<GradeVO> {
         println(CURRENT_YEAR_START_DATE)
@@ -30,6 +32,7 @@ class SchoolController(
     }
 
     override fun grade(): Map<String, Map<String, String>> {
+        exportService.exceptTest()
         return GRADE
     }
 

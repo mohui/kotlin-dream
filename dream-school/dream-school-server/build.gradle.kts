@@ -34,6 +34,10 @@ dependencies {
     // sqlex
     implementation("me.danwi.sqlex:core:0.14.2")
     implementation("me.danwi.sqlex:core-kotlin:0.14.2")
+
+    // 导出
+    implementation("org.apache.poi:poi:5.1.0")
+    implementation("org.apache.poi:poi-ooxml:5.1.0")
 }
 
 tasks.withType<KotlinCompile> {
