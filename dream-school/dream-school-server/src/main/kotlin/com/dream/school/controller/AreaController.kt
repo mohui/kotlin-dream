@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 class AreaController(
     val areaService: AreaService
 ): AreaApi {
-    override fun list(): AreaVO {
-        val areaDTO = areaService.areaRecursion(AREA_DOT)
-        println("这是controller")
-        println(areaDTO)
-        return AREA
+    override fun list(): List<AreaVO> {
+        return areaService.areaTree()
     }
 }

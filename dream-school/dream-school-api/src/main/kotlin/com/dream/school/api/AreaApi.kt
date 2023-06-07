@@ -10,5 +10,5 @@ interface AreaApi {
         value = ["/area/list"],
         produces = ["application/json"]
     )
-    fun list(): AreaVO
+    fun list(): List<AreaVO>
 }

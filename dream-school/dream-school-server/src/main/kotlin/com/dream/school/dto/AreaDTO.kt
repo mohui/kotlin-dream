@@ -6,6 +6,7 @@ data class AreaDTO(
      */
     var code: String,
     var name: String,
+    var parent: String? = null,
     var path: String? = null,
     var level: String? = null,
     var childCount: Int? = null,
