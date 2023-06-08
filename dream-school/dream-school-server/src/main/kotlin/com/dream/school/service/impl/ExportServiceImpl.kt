@@ -57,6 +57,46 @@ class ExportServiceImpl: ExportService {
     }
 
     override fun upload() {
-        TODO("Not yet implemented")
+        val imageFile = File("/Users/wanghehui/Desktop/桌面文件/图片/ying.jpg ") // 替换为实际图片文件的路径
+
+        val url = URL("http://example.com/upload") // 替换为实际的上传 URL
+
+        val connection = url.openConnection() as HttpURLConnection
+        connection.requestMethod = "POST"
+        connection.doOutput = true
+
+        val boundary = "*****" // 定义分隔符
+
+        connection.setRequestProperty("Content-Type", "multipart/form-data; boundary=$boundary")
+
+        val outputStream = DataOutputStream(connection.outputStream)
+
+        outputStream.writeBytes("--$boundary\r\n")
+        outputStream.writeBytes("Content-Disposition: form-data; name=\"image\"; filename=\"${imageFile.name}\"\r\n")
+        outputStream.writeBytes("Content-Type: image/jpeg\r\n")
+        outputStream.writeBytes("\r\n")
+
+        val imageInputStream = FileInputStream(imageFile)
+        val buffer = ByteArray(4096)
+        var bytesRead: Int
+        while (imageInputStream.read(buffer).also { bytesRead = it } != -1) {
+            outputStream.write(buffer, 0, bytesRead)
+        }
+
+        outputStream.writeBytes("\r\n")
+        outputStream.writeBytes("--$boundary--\r\n")
+        outputStream.flush()
+        outputStream.close()
+
+        val responseCode = connection.responseCode
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            // 上传成功
+            println("图片上传成功")
+        } else {
+            // 上传失败
+            println("图片上传失败，错误码: $responseCode")
+        }
+
+        connection.disconnect()
     }
 }
