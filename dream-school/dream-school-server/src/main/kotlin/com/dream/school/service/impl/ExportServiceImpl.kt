@@ -57,7 +57,7 @@ class ExportServiceImpl: ExportService {
     }
 
     override fun upload() {
-        val imageFile = File("/Users/wanghehui/Desktop/桌面文件/图片/ying.jpg ") // 替换为实际图片文件的路径
+        val imageFile = File("/Users/wanghehui/Desktop/桌面文件/图片/ying.jpg") // 替换为实际图片文件的路径
 
         val url = URL("http://example.com/upload") // 替换为实际的上传 URL
 
