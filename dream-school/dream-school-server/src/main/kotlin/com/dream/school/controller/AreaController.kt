@@ -41,6 +41,13 @@ class AreaController(
         return exportService.handleFileUpload(file)
     }
 
+    /**
+     * 上传文件,输出buffer
+     */
+    override fun uploadImageBuffer(file: MultipartFile): ResponseEntity<ByteArray> {
+        return exportService.uploadImage(file)
+    }
+
 
     /**
      * 递归转换dot为vo

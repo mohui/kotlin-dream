@@ -10,10 +10,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 import org.springframework.util.StringUtils
 import org.springframework.web.multipart.MultipartFile
-import java.io.DataOutputStream
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
+import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL
 import java.nio.file.Files
@@ -182,5 +179,36 @@ class ExportServiceImpl: ExportService {
     }
     private fun getFileExtension(filename: String): String {
         return StringUtils.getFilenameExtension(filename) ?: ""
+    }
+
+
+    override fun uploadImage(image: MultipartFile): ResponseEntity<ByteArray> {
+        try {
+            val outputStream = ByteArrayOutputStream()
+            outputStream.write(image.bytes)
+            val buffer = outputStream.toByteArray()
+            return ResponseEntity.ok(buffer)
+        } catch (e: IOException) {
+            e.printStackTrace()
+            return ResponseEntity.status(500).build()
+        }
+    }
+
+
+    /**
+     * 输出URL
+     */
+    fun uploadFile(file: MultipartFile): ResponseEntity<String> {
+        val fileName = StringUtils.cleanPath(file.originalFilename ?: "")
+
+        try {
+            val destFile = File("上传目录的绝对路径", fileName)
+            file.transferTo(destFile)
+            val fileUrl = destFile.toURI().toString()
+            return ResponseEntity.ok(fileUrl)
+        } catch (e: IOException) {
+            e.printStackTrace()
+            return ResponseEntity.status(500).build()
+        }
     }
 }

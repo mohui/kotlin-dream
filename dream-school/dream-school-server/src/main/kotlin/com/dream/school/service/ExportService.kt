@@ -17,4 +17,6 @@ interface ExportService {
     fun upload()
 
     fun handleFileUpload(file: MultipartFile): ResponseEntity<String>
+
+    fun uploadImage(image: MultipartFile): ResponseEntity<ByteArray>
 }

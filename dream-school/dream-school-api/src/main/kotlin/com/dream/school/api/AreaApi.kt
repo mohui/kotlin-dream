@@ -45,6 +45,9 @@ interface AreaApi {
     )
     fun uploadPicture()
 
+    /**
+     * 上传文件,保存到本地
+     */
     @RequestMapping(
         method = [RequestMethod.POST],
         value = ["/area/handleFileUpload"],
@@ -52,4 +55,13 @@ interface AreaApi {
     )
     fun handleFileUpload(@RequestParam("file") file: MultipartFile): ResponseEntity<String>
 
+    /**
+     * 上传文件输出buffer
+     */
+    @RequestMapping(
+        method = [RequestMethod.POST],
+        value = ["/area/uploadImageBuffer"],
+        produces = ["application/json"]
+    )
+    fun uploadImageBuffer(@RequestParam("file") file: MultipartFile): ResponseEntity<ByteArray>
 }
