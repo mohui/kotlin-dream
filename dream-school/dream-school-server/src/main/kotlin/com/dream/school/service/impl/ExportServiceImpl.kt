@@ -161,6 +161,12 @@ class ExportServiceImpl: ExportService {
             return ResponseEntity.badRequest().body("未上传文件")
         }
 
+        // 获取文件后缀
+        val hou = file.originalFilename?.let {
+            getFileExtension(it)
+        }?: return ResponseEntity.badRequest().body("未上传文件")
+
+
         val fileName = StringUtils.cleanPath(file.originalFilename!!)
         val uploadDir = "/Users/wanghehui/projects/xzmProjects/kotlin-dream/dream-school/dream-school-server/src/upload" // 指定上传文件的目录
 
@@ -172,5 +178,8 @@ class ExportServiceImpl: ExportService {
         } catch (e: Exception) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("无法上传文件")
         }
+    }
+    private fun getFileExtension(filename: String): String {
+        return StringUtils.getFilenameExtension(filename) ?: ""
     }
 }
