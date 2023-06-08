@@ -23,6 +23,16 @@ interface AreaApi {
     fun exportExcel()
 
     /**
+     * 导入Excel
+     */
+    @RequestMapping(
+        method = [RequestMethod.POST],
+        value = ["/area/importExcel"],
+        produces = ["application/json"]
+    )
+    fun importExcel()
+
+    /**
      * 上传图片
      */
     @RequestMapping(

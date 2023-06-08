@@ -1,6 +1,7 @@
 package com.dream.school.service.impl
 
 import com.dream.school.constant.AREA_LIST
+import com.dream.school.dto.AreaDTO
 import com.dream.school.service.ExportService
 import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
@@ -41,7 +42,7 @@ class ExportServiceImpl: ExportService {
         }
 
         // 指定导出的相对路径
-        val relativePath = "地区列表.xlsx"
+        val relativePath = "/Users/wanghehui/projects/xzmProjects/kotlin-dream/area_list.xlsx"
         // 获取项目根目录的绝对路径(用不到)
         val projectDir = System.getProperty("user.dir")
         // 构建导出文件的绝对路径(用不到)
@@ -56,10 +57,54 @@ class ExportServiceImpl: ExportService {
         println("Excel 导出完成！")
     }
 
+    /**
+     * 导入Excel
+     */
+    override fun importExcel() {
+        val filePath = "area_list.xlsx" // Excel 文件路径
+
+        val fileInputStream = FileInputStream(filePath)
+        val workbook = XSSFWorkbook(fileInputStream)
+
+        val sheet = workbook.getSheetAt(0) // 获取第一个工作表
+
+        val areaList = mutableListOf<AreaDTO>()
+
+        // 从第二行开始遍历数据行
+        for (rowIndex in 1..sheet.lastRowNum) {
+            val row = sheet.getRow(rowIndex)
+
+            val idCell = row.getCell(0)
+            val nameCell = row.getCell(1)
+            val parentIdCell = row.getCell(2)
+
+            val id = idCell.stringCellValue
+            val name = nameCell.stringCellValue
+            val parentId = parentIdCell.stringCellValue
+            // 如果是数字
+            // val num = parentIdCell.numericCellValue.toString()
+
+            val area = AreaDTO(code = id, name = name, parent = parentId)
+            areaList.add(area)
+        }
+
+        // 打印导入的地区列表
+        areaList.forEach { area ->
+            println("地区ID: ${area.code}, 地区名称: ${area.name}, 上级地区ID: ${area.parent}")
+        }
+
+        // 关闭文件输入流和工作簿
+        fileInputStream.close()
+        workbook.close()
+    }
+
+    /**
+     * 图片上传
+     */
     override fun upload() {
         val imageFile = File("/Users/wanghehui/Desktop/桌面文件/图片/ying.jpg") // 替换为实际图片文件的路径
 
-        val url = URL("http://example.com/upload") // 替换为实际的上传 URL
+        val url = URL("http://127.0.0.1:8080/upload") // 替换为实际的上传 URL
 
         val connection = url.openConnection() as HttpURLConnection
         connection.requestMethod = "POST"

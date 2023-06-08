@@ -6,5 +6,10 @@ package com.dream.school.service
 interface ExportService {
     fun exceptTest()
 
+    /**
+     * 导入Excel
+     */
+    fun importExcel()
+
     fun upload()
 }

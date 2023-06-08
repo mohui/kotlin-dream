@@ -21,6 +21,13 @@ class AreaController(
         exportService.exceptTest()
     }
 
+    /**
+     * 导入Excel
+     */
+    override fun importExcel() {
+        exportService.importExcel()
+    }
+
     override fun uploadPicture() {
         exportService.upload()
     }
