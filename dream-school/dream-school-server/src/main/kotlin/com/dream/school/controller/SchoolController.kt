@@ -16,8 +16,7 @@ import java.time.temporal.ChronoUnit
 @RestController("com.dream.school.api.SchoolController")
 class SchoolController(
     val datetimeService: DatetimeService,
-    val schoolService: SchoolService,
-    val exportService: ExportService
+    val schoolService: SchoolService
 ): SchoolApi {
     override fun gradeList(): List<GradeVO> {
         println(CURRENT_YEAR_START_DATE)
@@ -32,7 +31,6 @@ class SchoolController(
     }
 
     override fun grade(): Map<String, Map<String, String>> {
-        exportService.exceptTest()
         return GRADE
     }
 

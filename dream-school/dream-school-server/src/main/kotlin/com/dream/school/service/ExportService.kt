@@ -5,4 +5,6 @@ package com.dream.school.service
  */
 interface ExportService {
     fun exceptTest()
+
+    fun upload()
 }

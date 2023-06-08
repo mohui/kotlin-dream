@@ -11,4 +11,24 @@ interface AreaApi {
         produces = ["application/json"]
     )
     fun list(): List<AreaVO>
+
+    /**
+     * 导出Excel
+     */
+    @RequestMapping(
+        method = [RequestMethod.POST],
+        value = ["/area/exportExcel"],
+        produces = ["application/json"]
+    )
+    fun exportExcel()
+
+    /**
+     * 上传图片
+     */
+    @RequestMapping(
+        method = [RequestMethod.POST],
+        value = ["/area/uploadPicture"],
+        produces = ["application/json"]
+    )
+    fun uploadPicture()
 }

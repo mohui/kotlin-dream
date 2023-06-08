@@ -3,7 +3,7 @@ package com.dream.school.constant
 import com.dream.school.dto.AreaDTO
 import com.dream.school.vo.AreaVO
 
-val AREA_LIST = listOf<AreaVO>(
+val AREA_LIST = listOf(
     AreaVO(
         code = "34",
         name = "安徽省",
