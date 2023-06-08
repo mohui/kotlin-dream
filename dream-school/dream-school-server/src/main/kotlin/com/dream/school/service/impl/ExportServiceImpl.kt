@@ -19,6 +19,7 @@ import java.net.URL
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
+import java.time.LocalDateTime
 
 @Service
 class ExportServiceImpl: ExportService {
@@ -157,17 +158,17 @@ class ExportServiceImpl: ExportService {
      */
     override fun handleFileUpload(file: MultipartFile): ResponseEntity<String> {
         if (file.isEmpty) {
-            return ResponseEntity.badRequest().body("No file uploaded")
+            return ResponseEntity.badRequest().body("未上传文件")
         }
 
         val fileName = StringUtils.cleanPath(file.originalFilename!!)
-        val uploadDir = "/Users/wanghehui/projects/xzmProjects/kotlin-dream/dream-school/dream-school-server/src" // 指定上传文件的目录
+        val uploadDir = "/Users/wanghehui/projects/xzmProjects/kotlin-dream/dream-school/dream-school-server/src/upload" // 指定上传文件的目录
 
         try {
-            val path: Path = Paths.get(uploadDir).resolve(fileName)
+            val path: Path = Paths.get(uploadDir).resolve("${LocalDateTime.now()}$fileName")
             Files.copy(file.inputStream, path)
 
-            return ResponseEntity.ok().body("File uploaded successfully")
+            return ResponseEntity.ok().body("文件上传成功")
         } catch (e: Exception) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("无法上传文件")
         }
