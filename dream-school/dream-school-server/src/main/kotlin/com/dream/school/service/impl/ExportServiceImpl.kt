@@ -49,15 +49,16 @@ class ExportServiceImpl: ExportService {
             dataRow.createCell(2).setCellValue(area.parent)
         }
 
-        // 指定导出的相对路径
-        val relativePath = "/Users/wanghehui/projects/xzmProjects/kotlin-dream/area_list.xlsx"
         // 获取项目根目录的绝对路径(用不到)
         val projectDir = System.getProperty("user.dir")
-        // 构建导出文件的绝对路径(用不到)
+        // 生成文件的名称
+        val relativePath = "/area_list.xlsx"
+
+        // 构建导出文件的绝对路径
         val filePath = File(projectDir, relativePath).absolutePath
 
         // 导出 Excel 文件
-        val fileOut = FileOutputStream(File(relativePath))
+        val fileOut = FileOutputStream(File(filePath))
         workbook.write(fileOut)
         fileOut.close()
 
