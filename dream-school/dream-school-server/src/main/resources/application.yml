@@ -6,3 +6,7 @@ spring:
     url: jdbc:mysql://localhost:3306/dream_school?connectionTimeZone=SERVER&characterEncoding=utf8
     username: root
     password: 1234qwer
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
