@@ -1,8 +1,11 @@
 package com.dream.school.api
 
 import com.dream.school.vo.AreaVO
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.multipart.MultipartFile
 
 interface AreaApi {
     @RequestMapping(
@@ -41,4 +44,12 @@ interface AreaApi {
         produces = ["application/json"]
     )
     fun uploadPicture()
+
+    @RequestMapping(
+        method = [RequestMethod.POST],
+        value = ["/area/handleFileUpload"],
+        produces = ["application/json"]
+    )
+    fun handleFileUpload(@RequestParam("file") file: MultipartFile): ResponseEntity<String>
+
 }

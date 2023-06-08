@@ -5,13 +5,20 @@ import com.dream.school.dto.AreaDTO
 import com.dream.school.service.ExportService
 import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
+import org.springframework.util.StringUtils
+import org.springframework.web.multipart.MultipartFile
 import java.io.DataOutputStream
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.Paths
 
 @Service
 class ExportServiceImpl: ExportService {
@@ -104,7 +111,7 @@ class ExportServiceImpl: ExportService {
     override fun upload() {
         val imageFile = File("/Users/wanghehui/Desktop/桌面文件/图片/ying.jpg") // 替换为实际图片文件的路径
 
-        val url = URL("http://127.0.0.1:8080/upload") // 替换为实际的上传 URL
+        val url = URL("http://127.0.0.1:8080/") // 替换为实际的上传 URL
 
         val connection = url.openConnection() as HttpURLConnection
         connection.requestMethod = "POST"
@@ -143,5 +150,26 @@ class ExportServiceImpl: ExportService {
         }
 
         connection.disconnect()
+    }
+
+    /**
+     * 文件上传方法2
+     */
+    override fun handleFileUpload(file: MultipartFile): ResponseEntity<String> {
+        if (file.isEmpty) {
+            return ResponseEntity.badRequest().body("No file uploaded")
+        }
+
+        val fileName = StringUtils.cleanPath(file.originalFilename!!)
+        val uploadDir = "/Users/wanghehui/projects/xzmProjects/kotlin-dream/dream-school/dream-school-server/src" // 指定上传文件的目录
+
+        try {
+            val path: Path = Paths.get(uploadDir).resolve(fileName)
+            Files.copy(file.inputStream, path)
+
+            return ResponseEntity.ok().body("File uploaded successfully")
+        } catch (e: Exception) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("无法上传文件")
+        }
     }
 }

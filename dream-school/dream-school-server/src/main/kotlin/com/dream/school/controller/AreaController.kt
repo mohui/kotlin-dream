@@ -5,7 +5,9 @@ import com.dream.school.dto.AreaDTO
 import com.dream.school.service.AreaService
 import com.dream.school.service.ExportService
 import com.dream.school.vo.AreaVO
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.multipart.MultipartFile
 
 @RestController("com.dream.school.api.AreaController")
 class AreaController(
@@ -31,6 +33,14 @@ class AreaController(
     override fun uploadPicture() {
         exportService.upload()
     }
+
+    /**
+     * 上传文件
+     */
+    override fun handleFileUpload(file: MultipartFile): ResponseEntity<String> {
+        return exportService.handleFileUpload(file)
+    }
+
 
     /**
      * 递归转换dot为vo
