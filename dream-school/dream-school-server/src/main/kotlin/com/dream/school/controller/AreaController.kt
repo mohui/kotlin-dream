@@ -1,9 +1,9 @@
 package com.dream.school.controller
 
 import com.dream.school.api.AreaApi
-import com.dream.school.dto.AreaDTO
 import com.dream.school.service.AreaService
 import com.dream.school.service.ExportService
+import com.dream.school.transfer.convertDtoToVo
 import com.dream.school.vo.AreaVO
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
@@ -46,20 +46,5 @@ class AreaController(
      */
     override fun uploadImageBuffer(file: MultipartFile): ResponseEntity<ByteArray> {
         return exportService.uploadImage(file)
-    }
-
-
-    /**
-     * 递归转换dot为vo
-     */
-    private fun convertDtoToVo(dtoNodes: List<AreaDTO>): List<AreaVO> {
-        return dtoNodes.map { dtoNode ->
-            AreaVO(
-                code = dtoNode.code,
-                name = dtoNode.name,
-                parent = dtoNode.parent,
-                child = dtoNode.child?.let { convertDtoToVo(it) }
-            )
-        }
     }
 }
