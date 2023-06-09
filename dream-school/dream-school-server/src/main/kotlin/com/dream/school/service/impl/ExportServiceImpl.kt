@@ -193,22 +193,4 @@ class ExportServiceImpl: ExportService {
             return ResponseEntity.status(500).build()
         }
     }
-
-
-    /**
-     * 输出URL
-     */
-    fun uploadFile(file: MultipartFile): ResponseEntity<String> {
-        val fileName = StringUtils.cleanPath(file.originalFilename ?: "")
-
-        try {
-            val destFile = File("上传目录的绝对路径", fileName)
-            file.transferTo(destFile)
-            val fileUrl = destFile.toURI().toString()
-            return ResponseEntity.ok(fileUrl)
-        } catch (e: IOException) {
-            e.printStackTrace()
-            return ResponseEntity.status(500).build()
-        }
-    }
 }
