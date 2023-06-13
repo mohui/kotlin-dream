@@ -39,5 +39,5 @@ interface SchoolApi {
         produces = ["application/json"],
         consumes = ["application/json"]
     )
-    fun list(@RequestBody id: BigInteger): String
+    fun list(@RequestBody id: String): String
 }

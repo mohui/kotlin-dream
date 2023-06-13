@@ -15,15 +15,16 @@ class UploadServiceImpl: UploadService {
      */
     override fun uploadImageUrl(file: MultipartFile): ResponseEntity<String> {
         val fileName = StringUtils.cleanPath(file.originalFilename ?: "")
-        println(fileName)
 
-        val url = "/Users/wanghehui/projects/xzmProjects/kotlin-dream/dream-school/dream-school-server/src/upload/"
+        // 获取项目根目录的绝对路径(用不到)
+        val projectDir = System.getProperty("user.dir")
+
+        val url = "${projectDir}/dream-school/dream-school-server/src/upload/"
 
         try {
             val destFile = File(url, fileName)
             file.transferTo(destFile)
             val fileUrl = destFile.toURI().toString()
-            println(fileUrl)
             return ResponseEntity.ok(fileUrl)
         } catch (e: IOException) {
             e.printStackTrace()
