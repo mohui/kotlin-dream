@@ -163,6 +163,7 @@ class ExportServiceImpl: ExportService {
         val hou = file.originalFilename?.let {
             getFileExtension(it)
         }?: return ResponseEntity.badRequest().body("未上传文件")
+        println("这是图片的后缀$hou")
 
 
         val fileName = StringUtils.cleanPath(file.originalFilename!!)
